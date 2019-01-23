@@ -1,16 +1,16 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\ApiAuth;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserLoginRequest;
 use App\Http\Requests\User\UserRegisterRequest;
-use App\Http\Requests\User\UserRequest;
 use App\User;
-use Illuminate\Support\Facades\Auth;
-use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+
     /**
      * Register new user
      *
@@ -19,7 +19,9 @@ class AuthController extends Controller
      */
     public function register(UserRegisterRequest $request)
     {
-        $user = User::create($request->all());
+        $credantials = $request->all();
+        $credantials['password'] = Hash::make($credantials['password']);
+        $user = User::create($credantials);
 
         return response()->json(['user' => $user->toArray()]);
     }
@@ -33,7 +35,7 @@ class AuthController extends Controller
     public function login(UserLoginRequest $request)
     {
         if (! $token = auth()->attempt($request->all())) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Unauthorized'], 422);
         }
 
         return $this->respondWithToken($token);
