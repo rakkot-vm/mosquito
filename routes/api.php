@@ -23,8 +23,6 @@ Route::middleware('api')->group(function () {
     Route::post('forgot', 'ApiAuth\ForgotPasswordController@sendResetLinkEmail');
     Route::post('reset-pass', 'ApiAuth\ResetPasswordController@doReset');
 
-//    Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
-//    Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
     Route::prefix('auth')->group(function () {
         Route::middleware('api.auth:api')->group(function () {
