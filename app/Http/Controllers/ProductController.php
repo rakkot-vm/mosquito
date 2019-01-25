@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -13,7 +14,11 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        if($products = Product::all()){
+            return $this->responseType('admin.products', $products);
+        }
+
+        return $this->responseType('admin.products', ['error' => 'Products not found'], 422);
     }
 
     /**
@@ -45,7 +50,13 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        if($product = Product::find($id)){
+            $product->attributes;
+            return response()->json($product);
+        }
+
+        return $this->responseType();
+        response()->json(['error' => 'Product id '.$id.' not found'], 422);
     }
 
     /**

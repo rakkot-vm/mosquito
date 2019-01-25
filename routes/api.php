@@ -32,11 +32,13 @@ Route::middleware('api')->group(function () {
         });
     });
 
-    Route::prefix('users')->group(function () {
+//    Route::prefix('users')->group(function () {
 //        Route::put('update', 'UserController@update');
 //        Route::delete('delete', 'UserController@delete');
 //        Route::get('all', 'UserController@getAll');
 //        Route::get('{id}', 'UserController@getOne');
-    });
+//    });
+
+    Route::resource('products', 'ProductController');
 
 });

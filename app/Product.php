@@ -15,4 +15,8 @@ class Product extends Model
         'title', 'img', 'price',
     ];
 
+    public function attributes()
+    {
+        return $this->hasMany('App\Attribute');
+    }
 }
