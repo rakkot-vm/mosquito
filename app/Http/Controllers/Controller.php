@@ -14,7 +14,7 @@ class Controller extends BaseController
 
     public function responseType($template, $data = [], $status = 200)
     {
-        if (Route::current()->getPrefix() == 'api') {;
+        if (Route::current()->getPrefix() == 'api') {
             return response()->json($data, $status);
         }
 
