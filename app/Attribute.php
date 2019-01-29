@@ -12,11 +12,16 @@ class Attribute extends Model
      * @var array
      */
     protected $fillable = [
-        'product_id', 'title', 'img', 'price',
+        'product_id', 'title',
     ];
 
     public function product()
     {
         $this->belongsTo('Product');
+    }
+
+    public function attributeValues()
+    {
+        $this->belongsTo('AttributeValues');
     }
 }

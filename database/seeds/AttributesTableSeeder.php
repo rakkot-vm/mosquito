@@ -15,9 +15,18 @@ class AttributesTableSeeder extends Seeder
         DB::table('attributes')->insert([
             'id' => '1',
             'product_id' => '1',
-            'title' => 'White',
-            'img' => '{"corner":"","line":"","corner_small":"","line_small":""}',
-            'price' => '10',
+            'title' => 'Border color',
+//            'img' => '{"corner":"","line":"","corner_small":"","line_small":""}',
+//            'price' => '10',
+            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+        DB::table('attributes')->insert([
+            'id' => '2',
+            'product_id' => '1',
+            'title' => 'Nets',
+//            'img' => '{"corner":"","line":"","corner_small":"","line_small":""}',
+//            'price' => '10',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);
