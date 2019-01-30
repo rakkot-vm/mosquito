@@ -39,6 +39,18 @@ Route::middleware('api')->group(function () {
 //        Route::get('{id}', 'UserController@getOne');
 //    });
 
-    Route::resource('products', 'ProductController');
+    Route::resource('products', 'ProductController')->only('index','show');
+    Route::resource('attributes', 'AttributeController')->only('index','show');
+    Route::resource('orders', 'OrderController')->only('index','show');
+
+    Route::get('orders/calc', 'OrderController@calc')->name('orders.calc');
+    Route::get('orders/order', 'OrderController@order')->name('orders.order');
+    Route::get('orders/thank', 'OrderController@thank')->name('orders.thank');
+
+    Route::resource('settings', 'SettingController')->only('show', 'index');
+//    Route::resource('settings', 'SettingsController')->except([
+//        'index','create', 'store', 'update', 'destroy'
+//    ]);
+//    Route::resource('attribute-values', 'AttributeValueController');
 
 });

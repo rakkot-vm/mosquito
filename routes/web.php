@@ -21,4 +21,9 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::prefix('admin')->group(function () {
     Route::resource('products', 'ProductController');
+    Route::resource('attributes', 'AttributesController');
+    Route::resource('attributeValues', 'AttributeValuesController');
+    Route::resource('orders', 'OrdersController');
+
+    Route::resource('settings', 'SettingController');
 });

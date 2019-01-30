@@ -65,7 +65,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        if($product = Product::find($id)){
+        if($product = Product::where('id',$id)->with('attributes')->first()){
             return $this->responseType('admin.products.show', $product);
         }
 

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Product extends Model
 {
+    protected $table = 'products';
     /**
      * The attributes that are mass assignable.
      *
@@ -17,6 +18,6 @@ class Product extends Model
 
     public function attributes()
     {
-        return $this->hasMany('App\Attribute');
+        return $this->hasMany('App\Attribute')->with('attributeValues');
     }
 }
