@@ -23,7 +23,7 @@
                 </tr>
             </thead>
 
-            @forelse($data as $settings)
+            @forelse($data as $settings){{ dd($data) }}
             <tbody>
                 <tr>
                     <td><a href="{{ route('settings.show', $settings->id) }}">{{ $settings->type }}</a></td>

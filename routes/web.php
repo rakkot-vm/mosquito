@@ -26,4 +26,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('orders', 'OrdersController');
 
     Route::resource('settings', 'SettingController');
+
+    Route::get('home/edit', 'HomeController@edit')->name('home.edit');
+    Route::patch('home/edit', 'HomeController@save')->name('home.save');
 });

@@ -18,6 +18,7 @@ class Controller extends BaseController
             return response()->json($data, $status);
         }
 
+        if(!empty($data['error'])) unset( $data['error']);
         return view($template, compact('data'));
     }
 }

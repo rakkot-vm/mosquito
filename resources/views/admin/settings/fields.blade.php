@@ -9,12 +9,28 @@
         {!! Form::text('title', null, ['class' => 'form-control']) !!}
     </div>
 
-    <div class="form-group">
+
+    <div class="form-group value-fields">
         {!! Form::label('value', 'Value:') !!}
-        {!! Form::text('value', null, ['class' => 'form-control']) !!}
+
+        <div class="clearfix">
+            <div class="col-xs-6">
+                {!! Form::label('value-text', 'File (The img link will be placed in the value):') !!}
+                <input type="radio" name="value-type" value="file"><br>
+            </div>
+            <div class="col-xs-6">
+                {!! Form::label('value-file', 'Text:') !!}
+                <input type="radio" name="value-type" value="text" checked>
+            </div>
+        </div>
+
+        <input type="file" name="value" class="form-control" style="display: none;" accept=".jpg, .jpeg, .png">
+        <div class="textarea">
+            {!! Form::textarea('value', null, ['id' => 'value-text']) !!}
+        </div>
     </div>
-    <textarea id="summernote" name="editordata"></textarea>
-    {!! Form::file('value', null, ['class' => 'form-control']) !!}
+
+
 </div>
 
 <div class="form-group col-xs-12">

@@ -6,7 +6,7 @@ use App\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
-class SettingController extends Controller
+class HomeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -70,13 +70,24 @@ class SettingController extends Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function show(Setting $setting)
+    public function edit()
     {
-        if($setting){
-            return $this->responseType('admin.settings.show', $setting);
-        }
+        $settings = Setting::where('type','home')->pluck('value', 'title');
 
-        return $this->responseType('admin.settings.show', ['error' => 'Setting id '.$setting.' not found'], 422);
+        return view('admin.home.edit', compact('settings'));
+    }
+
+    /**
+     * Return home page settings
+     *
+     * @param  \App\Setting  $setting
+     * @return \Illuminate\Http\Response
+     */
+    public function get()
+    {
+        $settings = Setting::where('type','home');
+
+        return response()->json($settings);
     }
 
     /**
@@ -85,7 +96,7 @@ class SettingController extends Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function edit(Setting $setting)
+    public function AAedit(Setting $setting)
     {
         if($setting){
             return view('admin.settings.edit', compact('setting'));
@@ -101,7 +112,7 @@ class SettingController extends Controller
      * @param  \App\Setting  $setting
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Setting $setting)
+    public function save(Request $request)
     {
         if($setting->update($request->all())){
             return back()->with('success', 'Setting has been updated');

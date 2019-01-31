@@ -158,6 +158,13 @@ return [
     //                'label'       => 4,
     //                'label_color' => 'success',
             ],
+            [
+                'text'        => 'Home Page settings',
+                'url'         => 'admin/home/show',
+                'icon'        => 'file',
+    //                'label'       => 4,
+    //                'label_color' => 'success',
+            ],
 //        'ACCOUNT SETTINGS',
 //            [
 //                'text' => 'Profile',
