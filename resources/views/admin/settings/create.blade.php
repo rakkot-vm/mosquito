@@ -1,10 +1,4 @@
-@extends('adminlte::page')
-
-@section('css')
-    <link rel="stylesheet" href="/css/admin.css">
-    <!-- include summernote css/js -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-@stop
+@extends('layouts.admin')
 
 @section('content_header')
     <h1>Create new setting</h1>
@@ -25,8 +19,3 @@
         </div>
     </div>
 @endsection
-
-@section('js')
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-    <script src="{{ asset('js/admin_create.js') }}"></script>
-@stop

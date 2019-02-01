@@ -72,7 +72,9 @@ class HomeController extends Controller
      */
     public function edit()
     {
-        $settings = Setting::where('type','home')->pluck('value', 'title');
+
+        $settings = Setting::where('type','home')->get()->keyBy('title')->all();
+//        $settings = Setting::all();
 
         return view('admin.home.edit', compact('settings'));
     }

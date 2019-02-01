@@ -28,4 +28,9 @@ class Setting extends Model
             $this->value = $request->value;
         }
     }
+
+    public function accordionTabs()
+    {
+        return $this->hasMany('App\AccordionTab');
+    }
 }
