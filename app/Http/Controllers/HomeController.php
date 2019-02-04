@@ -116,9 +116,14 @@ class HomeController extends Controller
      */
     public function save(Request $request)
     {
-        if($setting->update($request->all())){
-            return back()->with('success', 'Setting has been updated');
+        foreach ($request->patch() as $title => $field){
+            if(!is_array($field)){
+                $a = 'sad';
+            }
         }
+//        if($request->update($request->all())){
+//            return back()->with('success', 'Setting has been updated');
+//        }
 
         return back()->with('warning', 'Error, setting has not been updated');
     }
