@@ -75,7 +75,6 @@ class HomeController extends Controller
 
         $settings = Setting::where('type','home')->get()->keyBy('title')->all();
 //        $settings = Setting::all();
-
         return view('admin.home.edit', compact('settings'));
     }
 
@@ -116,11 +115,14 @@ class HomeController extends Controller
      */
     public function save(Request $request)
     {
-        foreach ($request->patch() as $title => $field){
+        foreach ($request->all() as $title => $field){
             if(!is_array($field)){
-                $a = 'sad';
+                Setting::where('title', $title)->update(['value' => $field]);
+            }else{
+
             }
         }
+//        }
 //        if($request->update($request->all())){
 //            return back()->with('success', 'Setting has been updated');
 //        }

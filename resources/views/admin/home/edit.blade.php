@@ -16,45 +16,45 @@
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec1_title', 'Title:') !!}
-                    {!! Form::text('sec1_title',  $valueHelper->valueIfExists($settings, 'sec1_title'), ['class' => 'form-control']) !!}
+                    {!! Form::text('sec1_title',  $settings['sec1_title']->value, ['class' => 'form-control']) !!}
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-8">
-                    {!! Form::label('sec1-text', 'Text:') !!}
-                    {!! Form::textarea('sec1-text', $valueHelper->valueIfExists($settings, 'sec1-text'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_text', 'Text:') !!}
+                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec1_text']->value }}</textarea>
                 </div>
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec1-img', 'Img(mosquito):') !!}
-                    <img src="{{ $valueHelper->valueIfExists($settings, 'sec1-img') }}" alt="">
-                    {!! Form::file('sec1-img', null) !!}
+                    {!! Form::label('sec1_img', 'Img(mosquito):') !!}
+                    <img src="{{ $settings['sec1_img']->value }}" alt="">
+                    {!! Form::file('sec1_img', null) !!}
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec1-img1', 'Image 1:') !!}
-                    <img src="{{ $valueHelper->valueIfExists($settings, 'sec1-img1') }}" alt="">
-                    {!! Form::file('sec1-img1', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_img1', 'Image 1:') !!}
+                    <img src="{{ $settings['sec1_img1']->value }}" alt="">
+                    {!! Form::file('sec1_img1', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-2">
-                    {!! Form::label('sec1-img2', 'Image 2:') !!}
-                    <img src="{{ $valueHelper->valueIfExists($settings, 'sec1-img2') }}" alt="">
-                    {!! Form::file('sec1-img2', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_img2', 'Image 2:') !!}
+                    <img src="{{ $settings['sec1_img2']->value }}" alt="">
+                    {!! Form::file('sec1_img2', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-2">
-                    {!! Form::label('sec1-im2', 'Image 2:') !!}
-                    <img src="{{ $valueHelper->valueIfExists($settings, 'sec1-img3') }}" alt="">
-                    {!! Form::file('sec1-img2', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_im2', 'Image 2:') !!}
+                    <img src="{{ $settings['sec1_img3']->value }}" alt="">
+                    {!! Form::file('sec1_img2', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec1-img4', 'Image 4:') !!}
-                    <img src="{{ $valueHelper->valueIfExists($settings, 'sec1-img4') }}" alt="">
-                    {!! Form::file('sec1-img4', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_img4', 'Image 4:') !!}
+                    <img src="{{ $settings['sec1_img4']->value }}" alt="">
+                    {!! Form::file('sec1_img4', null, ['class' => 'form-control']) !!}
                 </div>
             </div>
 
@@ -63,71 +63,70 @@
         <section class="sec2 box">
             <h3>Section 2</h3>
 
-
             <div class="row">
                 <div class="form-group col-sm-6">
-                    {!! Form::label('sec2-text', 'Text:') !!}
-                    {!! Form::textarea('sec2-text', $valueHelper->valueIfExists($settings, 'sec2-text'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_text', 'Text:') !!}
+                    <textarea class="form-control" name="sec2_text" cols="50" rows="10" id="sec2_text">{{ $settings['sec2_text']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2-textWidth', 'Width text:') !!}
-                    {!! Form::text('sec2-textWidth', $valueHelper->valueIfExists($settings, 'sec2-textWidth'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_textWidth', 'Width text:') !!}
+                    <input class="form-control" name="sec2_textWidth" type="text" value="" id="sec2_textWidth">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2-infoWidth', 'Width info button:') !!}
-                    {!! Form::checkbox('sec2-infoWidth', $valueHelper->valueIfExists($settings, 'sec2-infoWidth')) !!}
+                    {!! Form::label('sec2_infoWidth', 'Width info button:') !!}
+                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoWidth">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2-popupWidth', 'Width popup:') !!}
-                    {!! Form::textarea('sec2-popupWidth', $valueHelper->valueIfExists($settings, 'sec2-popupWidth'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_popupWidth', 'Width popup:') !!}
+                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupWidth']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2-textHeight', 'Height text:') !!}
-                    {!! Form::text('sec2-textHeight', $valueHelper->valueIfExists($settings, 'sec2-textHeight'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_textHeight', 'Height text:') !!}
+                    <input class="form-control" name="sec2_textHeight" type="text" value="" id="sec2_textHeight">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2-infoHeight', 'Height info button:') !!}
-                    {!! Form::checkbox('sec2-infoHeight', $valueHelper->valueIfExists($settings, 'sec2-infoHeight')) !!}
+                    {!! Form::label('sec2_infoHeight', 'Height info button:') !!}
+                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoHeight">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2-popupHeight', 'Height popup:') !!}
-                    {!! Form::textarea('sec2-popupHeight', $valueHelper->valueIfExists($settings, 'sec2-popupHeight'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_popupHeight', 'Height popup:') !!}
+                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupHeight']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2-textDeep', 'Deep text:') !!}
-                    {!! Form::text('sec2-textDeep', $valueHelper->valueIfExists($settings, 'sec2-textDeep'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_textDeep', 'Deep text:') !!}
+                    <input class="form-control" name="sec2_textDeep" type="text" value="" id="sec2_textDeep">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2-infoDeep', 'Deep info button:') !!}
-                    {!! Form::checkbox('sec2-infoDeep', $valueHelper->valueIfExists($settings, 'sec2-infoDeep')) !!}
+                    {!! Form::label('sec2_infoDeep', 'Deep info button:') !!}
+                    <input {{ $settings['sec2_infoDeep']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoDeep">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2-popupDeep', 'Deep popup:') !!}
-                    {!! Form::textarea('sec2-popupDeep', $valueHelper->valueIfExists($settings, 'sec2-popupDeep'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_popupDeep', 'Deep popup:') !!}
+                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupDeep']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2-textHols', 'Hols text:') !!}
-                    {!! Form::text('sec2-textHols', $valueHelper->valueIfExists($settings, 'sec2-textHols'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_textHols', 'Hols text:') !!}
+                    <input class="form-control" name="sec2_textHols" type="text" value="" id="sec2_textHols">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2-infoHols', 'Hols info button:') !!}
-                    {!! Form::checkbox('sec2-infoHols', $valueHelper->valueIfExists($settings, 'sec2-infoHols')) !!}
+                    {!! Form::label('sec2_infoHols', 'Hols info button:') !!}
+                    <input {{ $settings['sec2_infoHols']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoHols">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2-popupHols', 'Hols popup:') !!}
-                    {!! Form::textarea('sec2-popupHols', $valueHelper->valueIfExists($settings, 'sec2-popupHols'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec2_popupHols', 'Hols popup:') !!}
+                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupHols']->value }}</textarea>
                 </div>
             </div>
         </section>
@@ -140,15 +139,51 @@
                     <h3>Accordion</h3>
                 </div>
             </div>
-            @forelse($settings['sec3-acc']->accordionTabs as $tab)
-                @include('admin.home.edit-tab')
-            @empty
-                @include('admin.home.edit-tab')
-            @endforelse
+            @foreach($settings['sec3_acc']->accordionTabs->sortBy('sort') as $tab)
 
+                <div class="row accordion-item tab_{{ $tab->id }}">
+
+                    {!! Form::hidden('tab_id', $tab->id, ['id' => '']) !!}
+                    {!! Form::hidden('setting_id', $tab->id, ['id' => '']) !!}
+
+                    <div class="form-group col-sm-12">
+                        {!! Form::label('sec3_acc['. $tab->id .'][title]', 'Title:') !!}
+                        {!! Form::text('sec3_acc['. $tab->id .'][title]', $tab->title, ['class' => 'form-control']) !!}
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        {!! Form::label('sec3_acc['. $tab->id .'][img]', 'Image:') !!}
+                        <img src="{{ $tab->img }}" alt="{{ $tab->imgAlt }}" title="{{ $tab->imgTitle }}">
+                        {!! Form::file('sec3_acc['. $tab->id .'][img]', null, ['class' => 'form-control']) !!}
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                {!! Form::label('sec3_acc['. $tab->id .'][imgAlt]', 'Img alt:') !!}
+                                {!! Form::text('sec3_acc['. $tab->id .'][imgAlt]', $tab->imgAlt, ['class' => 'form-control']) !!}
+                            </div>
+                            <div class="col-sm-6">
+                                {!! Form::label('sec3_acc['. $tab->id .'][imgTitle]', 'Img title:') !!}
+                                {!! Form::text('sec3_acc['. $tab->id .'][imgTitle]', $tab->imgTitle, ['class' => 'form-control']) !!}
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group col-sm-6">
+                        {!! Form::label('sec3_acc['. $tab->id .'][imgText]', 'Text:') !!}
+                        {!! Form::text('sec3_acc['. $tab->id .'][imgText]', $tab->imgText, ['class' => 'form-control']) !!}
+
+                        <div class="btn-del-tab">
+                            <button type="button" class="btn btn-danger pull-right del_acc_item" id="del_acc_item_{!! $tab->id !!}" value="{!! $tab->id !!}">Delete</button>
+                            <button type="button" class="btn btn-primary pull-right cancel_del_acc_item" id="cancel_del_acc_item_{!! $tab->id !!}" value="{!! $tab->id !!}" style="display: none;">Cancel delete</button>
+                        </div>
+                    </div>
+                    <hr>
+                </div>
+
+            @endforeach
             <div class="row accord-btns">
                 <div class="col-sm-12">
-                    <button type="button" class="btn btn-default" id="add_accr_item">Add Item</button>
+                    <button type="button" class="btn btn-default" id="add_acc_item">Add Item</button>
                 </div>
             </div>
         </section>
@@ -158,12 +193,12 @@
 
             <div class="row">
                 <div class="form-group col-sm-12">
-                    {!! Form::label('sec4-title', 'Title:') !!}
-                    {!! Form::text('sec4-title', $valueHelper->valueIfExists($settings, 'sec4-title'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec4_title', 'Title:') !!}
+                    <input class="form-control" name="sec4_title" type="text" value="" id="sec4_title">
                 </div>
                 <div class="form-group col-sm-12">
-                    {!! Form::label('sec4-text', 'Text:') !!}
-                    {!! Form::textarea('sec4-text', $valueHelper->valueIfExists($settings, 'sec4-text'), ['class' => 'form-control']) !!}
+                    {!! Form::label('sec4_text', 'Text:') !!}
+                    <textarea class="form-control" name="sec4_text" cols="50" rows="10" id="sec4_text">{{ $settings['sec4_text']->value }}</textarea>
                 </div>
             </div>
         </section>
@@ -175,60 +210,60 @@
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        {!! Form::label('sec5-img1', 'Image:') !!}
-                        <img src="{{ $valueHelper->valueIfExists($settings, 'sec5-img1') }}" alt="">
-                        {!! Form::file('sec5-img1', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_img1', 'Image:') !!}
+                        <img src="{{ $settings['sec5_img1']->value }}" alt="">
+                        {!! Form::file('sec5_img1', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('sec5-title1', 'Title:') !!}
-                        {!! Form::text('sec5-title1', null, ['class' => 'form-control']) !!}
-                    </div>
-                </div>
-
-                <div class="col-sm-3">
-                    <div class="form-group">
-                        {!! Form::label('sec5-img2', 'Image:') !!}
-                        <img src="{{ $valueHelper->valueIfExists($settings, 'sec5-img2') }}" alt="">
-                        {!! Form::file('sec5-img2', null, ['class' => 'form-control']) !!}
-
-                    </div>
-                    <div class="form-group">
-                        {!! Form::label('sec5-title2', 'Title:') !!}
-                        {!! Form::text('sec5-title2', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_title1', 'Title:') !!}
+                        <input class="form-control" name="sec5_title1" type="text" value="" id="sec5_title1">
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        {!! Form::label('sec5-img3', 'Image:') !!}
-                        <img src="{{ $valueHelper->valueIfExists($settings, 'sec5-img3') }}" alt="">
-                        {!! Form::file('sec5-img3', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_img2', 'Image:') !!}
+                        <img src="{{ $settings['sec5_img2']->value }}" alt="">
+                        {!! Form::file('sec5_img2', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('sec5-title3', 'Title:') !!}
-                        {!! Form::text('sec5-title3', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_title2', 'Title:') !!}
+                        <input class="form-control" name="sec5_title2" type="text" value="" id="sec5_title2">
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
-                        {!! Form::label('sec5-img4', 'Image:') !!}
-                        <img src="{{ $valueHelper->valueIfExists($settings, 'sec5-img4') }}" alt="">
-                        {!! Form::file('sec5-img4', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_img3', 'Image:') !!}
+                        <img src="{{ $settings['sec5_img3']->value }}" alt="">
+                        {!! Form::file('sec5_img3', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('sec5-title4', 'Title:') !!}
-                        {!! Form::text('sec5-title4', null, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec5_title3', 'Title:') !!}
+                        <input class="form-control" name="sec5_title3" type="text" value="" id="sec5_title3">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec5_img4', 'Image:') !!}
+                        <img src="{{ $settings['sec5_img4']->value }}" alt="">
+                        {!! Form::file('sec5_img4', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec5_title4', 'Title:') !!}
+                        <input class="form-control" name="sec5_title4" type="text" value="" id="sec5_title4">
                     </div>
                 </div>
 
             </div>
         </section>
 
-        <section class="sec-btns">
+        <section class="sec_btns">
             <div class="form-group col-xs-12">
                 <input type="submit" value="save" class="btn btn-primary">
                 <a href="{!! route('home.edit') !!}" class="btn btn-default">Cancel</a>

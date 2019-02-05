@@ -13,5 +13,16 @@ section.sec-btns{
 }
 
 .btn-del-tab{
-    margin-top: 13px;
+
+    margin-top: 7px;
+}
+.btn-del-tab button{
+    margin: 5px;
+}
+
+.accordion-item hr{
+    width: 80%;
+    height: 2px;
+    margin: 5px auto;
+    background: darkgray;
 }
