@@ -27,7 +27,9 @@
                 </div>
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec1_img', 'Img(mosquito):') !!}
-                    <img src="{{ $settings['sec1_img']->value }}" alt="">
+                    <div class="img-wrap">
+                        <img src="{{ url($settings['sec1_img']->value) }}" alt="" class="img-thumbnail-1">
+                    </div>
                     {!! Form::file('sec1_img', null) !!}
                 </div>
             </div>
@@ -35,25 +37,33 @@
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec1_img1', 'Image 1:') !!}
-                    <img src="{{ $settings['sec1_img1']->value }}" alt="">
+                    <div class="img-wrap">
+                        <img src="{{ url($settings['sec1_img1']->value) }}" alt="" class="img-thumbnail-1">
+                    </div>
                     {!! Form::file('sec1_img1', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-2">
                     {!! Form::label('sec1_img2', 'Image 2:') !!}
-                    <img src="{{ $settings['sec1_img2']->value }}" alt="">
+                    <div class="img-wrap">
+                        <img src="{{ url($settings['sec1_img2']->value) }}" alt="" class="img-thumbnail-1">
+                    </div>
                     {!! Form::file('sec1_img2', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-2">
-                    {!! Form::label('sec1_im2', 'Image 2:') !!}
-                    <img src="{{ $settings['sec1_img3']->value }}" alt="">
-                    {!! Form::file('sec1_img2', null, ['class' => 'form-control']) !!}
+                    {!! Form::label('sec1_im3', 'Image 3:') !!}
+                    <div class="img-wrap">
+                        <img src="{{ url($settings['sec1_img3']->value) }}" alt="" class="img-thumbnail-1">
+                    </div>
+                    {!! Form::file('sec1_img3', null, ['class' => 'form-control']) !!}
                 </div>
 
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec1_img4', 'Image 4:') !!}
-                    <img src="{{ $settings['sec1_img4']->value }}" alt="">
+                    <div class="img-wrap">
+                        <img src="{{ url($settings['sec1_img4']->value) }}" alt="" class="img-thumbnail-1">
+                    </div>
                     {!! Form::file('sec1_img4', null, ['class' => 'form-control']) !!}
                 </div>
             </div>
@@ -73,7 +83,7 @@
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textWidth', 'Width text:') !!}
-                    <input class="form-control" name="sec2_textWidth" type="text" value="" id="sec2_textWidth">
+                    <input class="form-control" name="sec2_textWidth" type="text" value="{{ $settings['sec2_textWidth']->value }}" id="sec2_textWidth">
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoWidth', 'Width info button:') !!}
@@ -81,52 +91,52 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupWidth', 'Width popup:') !!}
-                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupWidth']->value }}</textarea>
+                    <textarea class="form-control" name="sec2_popupWidth" cols="50" rows="10" id="sec2_popupWidth">{{ $settings['sec2_popupWidth']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textHeight', 'Height text:') !!}
-                    <input class="form-control" name="sec2_textHeight" type="text" value="" id="sec2_textHeight">
+                    <input class="form-control" name="sec2_textHeight" type="text" value="{{ $settings['sec2_textHeight']->value }}" id="sec2_textHeight">
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoHeight', 'Height info button:') !!}
-                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoHeight">
+                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoHeight" type="checkbox" id="sec2_infoHeight">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHeight', 'Height popup:') !!}
-                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupHeight']->value }}</textarea>
+                    <textarea class="form-control" name="sec2_popupHeight" cols="50" rows="10" id="sec2_popupHeight">{{ $settings['sec2_popupHeight']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textDeep', 'Deep text:') !!}
-                    <input class="form-control" name="sec2_textDeep" type="text" value="" id="sec2_textDeep">
+                    <input class="form-control" name="sec2_textDeep" type="text" value="{{ $settings['sec2_textDeep']->value }}" id="sec2_textDeep">
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoDeep', 'Deep info button:') !!}
-                    <input {{ $settings['sec2_infoDeep']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoDeep">
+                    <input {{ $settings['sec2_infoDeep']->value == ''?: 'checked' }} name="sec2_infoDeep" type="checkbox" id="sec2_infoDeep">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupDeep', 'Deep popup:') !!}
-                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupDeep']->value }}</textarea>
+                    <textarea class="form-control" name="sec2_popupDeep" cols="50" rows="10" id="sec2_popupDeep">{{ $settings['sec2_popupDeep']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textHols', 'Hols text:') !!}
-                    <input class="form-control" name="sec2_textHols" type="text" value="" id="sec2_textHols">
+                    <input class="form-control" name="sec2_textHols" type="text" value="{{ $settings['sec2_textHols']->value }}" id="sec2_textHols">
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoHols', 'Hols info button:') !!}
-                    <input {{ $settings['sec2_infoHols']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoHols">
+                    <input {{ $settings['sec2_infoHols']->value == ''?: 'checked' }} name="sec2_infoHols" type="checkbox" id="sec2_infoHols">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHols', 'Hols popup:') !!}
-                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec2_popupHols']->value }}</textarea>
+                    <textarea class="form-control" name="sec2_popupHols" cols="50" rows="10" id="sec2_popupHols">{{ $settings['sec2_popupHols']->value }}</textarea>
                 </div>
             </div>
         </section>
@@ -139,12 +149,13 @@
                     <h3>Accordion</h3>
                 </div>
             </div>
+
             @foreach($settings['sec3_acc']->accordionTabs->sortBy('sort') as $tab)
 
                 <div class="row accordion-item tab_{{ $tab->id }}">
 
-                    {!! Form::hidden('tab_id', $tab->id, ['id' => '']) !!}
-                    {!! Form::hidden('setting_id', $tab->id, ['id' => '']) !!}
+                    {!! Form::hidden('sec3_acc['. $tab->id .'][tab_id]', $tab->id, ['id' => '']) !!}
+                    {!! Form::hidden('sec3_acc['. $tab->id .'][setting_id]', $tab->setting_id, ['id' => '']) !!}
 
                     <div class="form-group col-sm-12">
                         {!! Form::label('sec3_acc['. $tab->id .'][title]', 'Title:') !!}
@@ -153,7 +164,9 @@
 
                     <div class="form-group col-sm-6">
                         {!! Form::label('sec3_acc['. $tab->id .'][img]', 'Image:') !!}
-                        <img src="{{ $tab->img }}" alt="{{ $tab->imgAlt }}" title="{{ $tab->imgTitle }}">
+                        <div class="img-wrap">
+                            <img src="{{ url($tab->img) }}" alt="{{ $tab->imgAlt }}" title="{{ $tab->imgTitle }}" class="img-thumbnail-1">
+                        </div>
                         {!! Form::file('sec3_acc['. $tab->id .'][img]', null, ['class' => 'form-control']) !!}
 
                         <div class="row">
@@ -169,8 +182,8 @@
                     </div>
 
                     <div class="form-group col-sm-6">
-                        {!! Form::label('sec3_acc['. $tab->id .'][imgText]', 'Text:') !!}
-                        {!! Form::text('sec3_acc['. $tab->id .'][imgText]', $tab->imgText, ['class' => 'form-control']) !!}
+                        {!! Form::label('sec3_acc['. $tab->id .'][text]', 'Text:') !!}
+                        {!! Form::textarea('sec3_acc['. $tab->id .'][text]', $tab->text, ['class' => 'form-control']) !!}
 
                         <div class="btn-del-tab">
                             <button type="button" class="btn btn-danger pull-right del_acc_item" id="del_acc_item_{!! $tab->id !!}" value="{!! $tab->id !!}">Delete</button>
@@ -194,7 +207,7 @@
             <div class="row">
                 <div class="form-group col-sm-12">
                     {!! Form::label('sec4_title', 'Title:') !!}
-                    <input class="form-control" name="sec4_title" type="text" value="" id="sec4_title">
+                    <input class="form-control" name="sec4_title" type="text" value="{{ $settings['sec4_title']->value }}" id="sec4_title">
                 </div>
                 <div class="form-group col-sm-12">
                     {!! Form::label('sec4_text', 'Text:') !!}
@@ -211,52 +224,60 @@
                 <div class="col-sm-3">
                     <div class="form-group">
                         {!! Form::label('sec5_img1', 'Image:') !!}
-                        <img src="{{ $settings['sec5_img1']->value }}" alt="">
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec5_img1']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
                         {!! Form::file('sec5_img1', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
                         {!! Form::label('sec5_title1', 'Title:') !!}
-                        <input class="form-control" name="sec5_title1" type="text" value="" id="sec5_title1">
+                        <input class="form-control" name="sec5_title1" type="text" value="{{ $settings['sec5_title1']->value }}" id="sec5_title1">
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
                         {!! Form::label('sec5_img2', 'Image:') !!}
-                        <img src="{{ $settings['sec5_img2']->value }}" alt="">
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec5_img2']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
                         {!! Form::file('sec5_img2', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
                         {!! Form::label('sec5_title2', 'Title:') !!}
-                        <input class="form-control" name="sec5_title2" type="text" value="" id="sec5_title2">
+                        <input class="form-control" name="sec5_title2" type="text" value="{{ $settings['sec5_title2']->value }}" id="sec5_title2">
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
                         {!! Form::label('sec5_img3', 'Image:') !!}
-                        <img src="{{ $settings['sec5_img3']->value }}" alt="">
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec5_img3']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
                         {!! Form::file('sec5_img3', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
                         {!! Form::label('sec5_title3', 'Title:') !!}
-                        <input class="form-control" name="sec5_title3" type="text" value="" id="sec5_title3">
+                        <input class="form-control" name="sec5_title3" type="text" value="{{ $settings['sec5_title3']->value }}" id="sec5_title3">
                     </div>
                 </div>
 
                 <div class="col-sm-3">
                     <div class="form-group">
                         {!! Form::label('sec5_img4', 'Image:') !!}
-                        <img src="{{ $settings['sec5_img4']->value }}" alt="">
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec5_img4']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
                         {!! Form::file('sec5_img4', null, ['class' => 'form-control']) !!}
 
                     </div>
                     <div class="form-group">
                         {!! Form::label('sec5_title4', 'Title:') !!}
-                        <input class="form-control" name="sec5_title4" type="text" value="" id="sec5_title4">
+                        <input class="form-control" name="sec5_title4" type="text" value="{{ $settings['sec5_title4']->value }}" id="sec5_title4">
                     </div>
                 </div>
 
@@ -271,4 +292,8 @@
         </section>
         {!! Form::close() !!}
     </div>
+
+    <script>
+        var accordion_setting_id = {{ $settings['sec3_acc']->id }};
+    </script>
 @endsection

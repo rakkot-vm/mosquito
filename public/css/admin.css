@@ -8,8 +8,9 @@
 
 }
 
-section.sec-btns{
-    margin-bottom: 100px;
+section.sec_btns{
+    height: 200px;
+    margin-top: 50px;
 }
 
 .btn-del-tab{
@@ -25,4 +26,28 @@ section.sec-btns{
     height: 2px;
     margin: 5px auto;
     background: darkgray;
+}
+
+/*Home settings*/
+.img-thumbnail-1{
+    display: block;
+    max-width: 150px;
+    margin: 15px 0;
+    height: auto;
+    padding: 4px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    -webkit-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.img-wrap{
+    height: 200px;
+    margin-bottom: 15px;
+}
+.img-wrap img{
+    max-width: 170px;
 }

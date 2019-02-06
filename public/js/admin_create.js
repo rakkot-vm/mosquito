@@ -15,8 +15,7 @@ $('#add_acc_item').click(function(e){
     $('#add_acc_item').before(
         '<div class="row accordion-item tab_new'+newTabId+'">\n' +
 
-        '    <input id="" name="tab_id" type="hidden" value="new'+newTabId+'">' +
-        '    <input id="" name="setting_id" type="hidden" value="new'+newTabId+'">' +
+        '    <input id="" name="sec3_acc[new'+newTabId+'][setting_id]" type="hidden" value="'+accordion_setting_id+'">' +
 
         '    <div class="form-group col-sm-12">\n' +
         '        <label for="sec3_acc[new'+newTabId+'][title]">Title:</label>' +
@@ -24,24 +23,24 @@ $('#add_acc_item').click(function(e){
         '    </div>'+
 
         '    <div class="form-group col-sm-6">' +
-        '        <label for="sec3_acc[[new'+newTabId+'][img]">Image:</label>' +
-        '        <input name="sec3_acc[[new'+newTabId+'][img]" type="file" id="sec3_acc[[new'+newTabId+'][img]">' +
+        '        <label for="sec3_acc[new'+newTabId+'][img]">Image:</label>' +
+        '        <input name="sec3_acc[new'+newTabId+'][img]" type="file" id="sec3_acc[new'+newTabId+'][img]">' +
 
         '        <div class="row">' +
         '            <div class="col-sm-6">' +
-        '                <label for="sec3_acc[[new'+newTabId+'][imgAlt]">Img alt:</label>' +
-        '                <input class="form-control" name="sec3_acc[[new'+newTabId+'][imgAlt]" type="text" value="" id="sec3_acc[[new'+newTabId+'][imgAlt]">' +
+        '                <label for="sec3_acc[new'+newTabId+'][imgAlt]">Img alt:</label>' +
+        '                <input class="form-control" name="sec3_acc[new'+newTabId+'][imgAlt]" type="text" value="" id="sec3_acc[[new'+newTabId+'][imgAlt]">' +
         '            </div>' +
         '            <div class="col-sm-6">' +
-        '                <label for="sec3_acc[[new'+newTabId+'][imgTitle]">Img title:</label>' +
-        '                <input class="form-control" name="sec3_acc[[new'+newTabId+'][imgTitle]" type="text" value="" id="sec3_acc[[new'+newTabId+'][imgTitle]">' +
+        '                <label for="sec3_acc[new'+newTabId+'][imgTitle]">Img title:</label>' +
+        '                <input class="form-control" name="sec3_acc[new'+newTabId+'][imgTitle]" type="text" value="" id="sec3_acc[[new'+newTabId+'][imgTitle]">' +
         '            </div>' +
         '        </div>' +
         '    </div>' +
 
         '    <div class="form-group col-sm-6">' +
-        '        <label for="sec3_acc[[new'+newTabId+'][imgText]">Text:</label>' +
-        '        <input class="form-control" name="sec3_acc[[new'+newTabId+'][imgText]" type="text" id="sec3_acc[[new'+newTabId+'][imgText]">' +
+        '        <label for="sec3_acc[new'+newTabId+'][text]">Text:</label>' +
+        '        <textarea class="form-control" name="sec3_acc[new'+newTabId+'][text]" cols="50" rows="10" id="sec3_acc[new'+newTabId+'][text]"></textarea>'+
 
         '        <div class="btn-del-tab">' +
         '            <button type="button" class="btn btn-danger pull-right del_acc_item" id="del_acc_item_new'+newTabId+'" value="new'+newTabId+'" onclick="delNewTab(newTabId)">Delete</button>' +
@@ -53,11 +52,13 @@ $('#add_acc_item').click(function(e){
 
 /* Del/Cancel del accordion tabs*/
 $('.del_acc_item').click(function(e){
-    $('[name="tab_id"][value="'+e.target.value+'"]').attr('name','del_id');
+    let id = e.target.value;
+
+    $('[name="sec3_acc['+id+'][tab_id]"][value="'+id+'"]').attr('name','sec3_acc['+id+'][del_id]');
     toggleDel(e);
 });
 $('.cancel_del_acc_item').click(function(e){
-    $('[name="del_id"][value="'+e.target.value+'"]').attr('name','tab_id');
+    $('[name=sec3_acc['+id+'][del_id]"][value="'+id+'"]').attr('name','sec3_acc['+id+'][del_id]');
     toggleDel(e);
 });
 
@@ -70,6 +71,7 @@ function toggleDel(e){
     $('.tab_'+e.target.value+' input').toggle();
     $('.tab_'+e.target.value+' img').toggle();
     $('.tab_'+e.target.value+' label').toggle();
+    $('.tab_'+e.target.value+' textarea').toggle();
     $('#del_acc_item_'+e.target.value).toggle();
     $('#cancel_del_acc_item_'+e.target.value).toggle();
 }

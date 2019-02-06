@@ -48,6 +48,9 @@ Route::middleware('api')->group(function () {
     Route::get('orders/thank', 'OrderController@thank')->name('orders.thank');
 
     Route::resource('settings', 'SettingController')->only('show', 'index');
+
+    Route::get('home', 'HomeController@get')->name('home.get');
+
 //    Route::resource('settings', 'SettingsController')->except([
 //        'index','create', 'store', 'update', 'destroy'
 //    ]);

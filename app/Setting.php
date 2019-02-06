@@ -33,4 +33,21 @@ class Setting extends Model
     {
         return $this->hasMany('App\AccordionTab');
     }
+
+    public function saveImgs($file)
+    {
+        $this->value = $file->store('imgs');
+
+        $this->tryDelOldImg();
+
+        $this->save();
+    }
+
+    private function tryDelOldImg()
+    {
+        $oldModel = new Setting(['id' => $this->id]);
+        if($oldModel->value && file_exists(public_path($oldModel->value)) ) {
+            unlink(public_path($oldModel->value));
+        }
+    }
 }
