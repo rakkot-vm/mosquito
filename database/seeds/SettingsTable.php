@@ -174,20 +174,61 @@ class SettingsTable extends Seeder
     protected function main()
     {
         DB::table('settings')->insert([
-            'id' => '1',
-            'type' => 'main',
-            'title' => 'logo',
-            'value' => 'imgs\logo.png',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+            'type' => 'common',
+            'title' => 'logo_img',
+            'value' => 'imgs\no_img.jpg'
         ]);
         DB::table('settings')->insert([
-            'id' => '2',
-            'type' => 'main',
-            'title' => 'phone',
+            'type' => 'common',
+            'title' => 'logo_alt',
+            'value' => 'alt text logo title'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'logo_title',
+            'value' => 'text logo title'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'favicon',
+            'value' => 'imgs/favicon.ico'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'site_title',
+            'value' => 'TITLE of this SITE'
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'phone_1',
             'value' => '6666-66-66',
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
-            'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'email_1',
+            'value' => 'email@email.com',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'work_hours_1',
+            'value' => '8 AM - 6 PM',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'social_instagram',
+            'value' => 'instagram.com/fotochki',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'social_facebook',
+            'value' => 'facebook.com/zalipyha',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'social_youtube',
+            'value' => 'youtube.com/vidosiki',
         ]);
     }
 }

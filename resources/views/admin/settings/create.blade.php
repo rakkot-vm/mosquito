@@ -1,8 +1,7 @@
 @extends('layouts.admin')
 
-@section('content_header')
-    <h1>Create new setting</h1>
-@stop
+@section('title', 'Create new setting')
+@section('h1_title', 'Create new setting')
 
 @section('content')
     <div class="content">

@@ -1,10 +1,7 @@
 @extends('layouts.admin')
 
-@section('content_header')
-    @include('layouts.flash-message')
-
-    <h1>Setting : {{ $data->title }}</h1>
-@stop
+@section('title', 'Setting : '. $data->title)
+@section('h1_title', 'Setting : '. $data->title)
 
 @section('content')
     <div class="row content">

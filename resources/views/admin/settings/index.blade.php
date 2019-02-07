@@ -1,10 +1,7 @@
 @extends('layouts.admin')
 
-@section('content_header')
-    @include('layouts.flash-message')
-
-    <h1>Settings</h1>
-@stop
+@section('title', 'Settings')
+@section('h1_title', 'Settings')
 
 @section('content')
 
@@ -23,7 +20,7 @@
                 </tr>
             </thead>
 
-            @forelse($data as $settings){{ dd($data) }}
+            @forelse($data as $settings)
             <tbody>
                 <tr>
                     <td><a href="{{ route('settings.show', $settings->id) }}">{{ $settings->type }}</a></td>

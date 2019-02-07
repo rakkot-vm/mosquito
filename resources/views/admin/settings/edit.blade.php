@@ -1,18 +1,7 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
-@section('css')
-    <link rel="stylesheet" href="/css/admin.css">
-    <!-- include summernote css/js -->
-    <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-@stop
-
-@section('content_header')
-
-    @include('layouts.flash-message')
-
-    <h1>Edit setting : {{ $setting->title }}</h1>
-
-@stop
+@section('title', 'Edit setting : '. $setting->title)
+@section('h1_title', 'Edit setting : '. $setting->title)
 
 @section('content')
     <div class="content">
@@ -29,8 +18,3 @@
         </div>
     </div>
 @endsection
-
-@section('js')
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
-    <script src="{{ asset('js/admin_create.js') }}"></script>
-@stop

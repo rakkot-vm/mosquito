@@ -12,19 +12,6 @@ class AccordionTab extends Model
 
     protected $fillable = ['setting_id', 'title', 'img', 'imgAlt', 'imgTitle', 'text'];
 
-    public function setImg(Request $request)
-    {
-            $newName = time().'-'.$request->img->getClientOriginalName();
-
-            $file = $request->file()['img'];
-
-            if(!$file->move(public_path('imgs'), $newName)) {
-                throw new Exception('Error saving image');
-            }
-
-            $this->value = 'imgs/'.$newName;
-    }
-
     public function setting()
     {
         $this->belongsTo('Setting');

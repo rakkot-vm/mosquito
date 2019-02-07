@@ -10,6 +10,8 @@ class Setting extends Model
 {
     protected $table = 'settings';
 
+    public $timestamps = false;
+
     protected $fillable = ['type', 'title'];
 
     public function setValue(Request $request)
@@ -43,11 +45,10 @@ class Setting extends Model
         $this->save();
     }
 
-    private function tryDelOldImg()
+    public function tryDelOldImg()
     {
-        $oldModel = new Setting(['id' => $this->id]);
-        if($oldModel->value && file_exists(public_path($oldModel->value)) ) {
-            unlink(public_path($oldModel->value));
+        if($this->value && file_exists(public_path($this->value)) ) {
+            unlink(public_path($this->value));
         }
     }
 }

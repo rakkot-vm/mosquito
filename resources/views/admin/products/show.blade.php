@@ -1,9 +1,7 @@
-@extends('layouts.admin')
+@extends('adminlte::page')
 
-@section('title', 'Products')
-@section('content_header')
-    <h1>Product : {{ $data->title }}</h1>
-@stop
+@section('title', 'Product : '. $data->title)
+@section('h1_title', 'Product : '. $data->title)
 
 @section('content')
     <div class="row content">

@@ -1,6 +1,8 @@
-@extends('layouts.admin')
+@extends('adminlte::page')
 
 @section('title', 'Products')
+@section('h1_title', 'Edit product : Edit product : <a href="'. route('admin/products', $product->id) .'">'. $product->title .'</a>')
+
 @section('content_header')
     <h1>Edit product : <a href="{!! route('admin/products', $product->id) !!}">{{ $product->title }}</a></h1>
 @stop

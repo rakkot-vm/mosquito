@@ -1,9 +1,7 @@
-@extends('layouts.admin')
+@extends('adminlte::page')
 
 @section('title', 'Products')
-@section('content_header')
-    <h1>Products</h1>
-@stop
+@section('h1_title', 'Products')
 
 @section('content')
 

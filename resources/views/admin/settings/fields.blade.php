@@ -29,8 +29,6 @@
             {!! Form::textarea('value', null, ['id' => 'value-text']) !!}
         </div>
     </div>
-
-
 </div>
 
 <div class="form-group col-xs-12">

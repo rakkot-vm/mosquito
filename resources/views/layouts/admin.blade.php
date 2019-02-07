@@ -2,6 +2,12 @@
 
 @extends('adminlte::page')
 
+@section('content_header')
+    @include('layouts.flash-message')
+
+    <h1>@yield('title')</h1>
+@stop
+
 @section('css')
     <link rel="stylesheet" href="/css/admin.css">
     <!-- include summernote css/js -->

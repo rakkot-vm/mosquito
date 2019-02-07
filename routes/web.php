@@ -25,8 +25,12 @@ Route::prefix('admin')->group(function () {
     Route::resource('attributeValues', 'AttributeValuesController');
     Route::resource('orders', 'OrdersController');
 
-    Route::resource('settings', 'SettingController');
+//    Route::resource('settings', 'SettingController');
 
     Route::get('home/edit', 'HomeController@edit')->name('home.edit');
     Route::patch('home/edit', 'HomeController@save')->name('home.save');
+
+    Route::get('common/edit', 'CommonController@edit')->name('common.edit');
+//    Route::patch('common/edit', 'CommonController@save')->name('common.save');
+    Route::patch('common/update', 'CommonController@update')->name('common.update');
 });

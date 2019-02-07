@@ -50,6 +50,9 @@ Route::middleware('api')->group(function () {
     Route::resource('settings', 'SettingController')->only('show', 'index');
 
     Route::get('home', 'HomeController@get')->name('home.get');
+//    Route::get('all-home', 'HomeController@allSettings')->name('home.all');
+
+    Route::get('common', 'CommonController@get')->name('common.get');
 
 //    Route::resource('settings', 'SettingsController')->except([
 //        'index','create', 'store', 'update', 'destroy'

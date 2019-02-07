@@ -51,3 +51,6 @@ section.sec_btns{
 .img-wrap img{
     max-width: 170px;
 }
+.btns-block{
+    margin: 30px 0;
+}

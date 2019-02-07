@@ -33,9 +33,15 @@
 
 
         @if ($errors->any())
-            <div class="alert alert-danger">
+
+                <div class="alert alert-danger">
                 <button type="button" class="close" data-dismiss="alert">×</button>
                 Please check the form below for errors
+                <strong>{{ $errors->messages }}</strong>
+                    @foreach ($errors->all('<p>:message</p>') as $input_error)
+                        {!! $input_error !!}
+                    @endforeach
+
             </div>
         @endif
     </div>
