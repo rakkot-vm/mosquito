@@ -75,3 +75,13 @@ function toggleDel(e){
     $('#del_acc_item_'+e.target.value).toggle();
     $('#cancel_del_acc_item_'+e.target.value).toggle();
 }
+
+$(".image-upload").change(function(input) {
+    if (input.target.files && input.target.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#preview-'+input.target.name).attr('src', e.target.result);
+        }
+        reader.readAsDataURL(input.target.files[0]);
+    }
+});

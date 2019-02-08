@@ -1,20 +1,18 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
-@section('title', 'Products')
-@section('h1_title', 'Products')
+@section('title', 'Create product')
+@section('h1_title', 'Create product')
 
 @section('content')
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
+    <div class="row">
+        <div class="col-xs-12">
+            {!! Form::model($product, ['route' => 'products.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                 <div class="row">
-                    {!! Form::model($data['product'], ['route' => 'products.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
 
-                    @include('admin.products.fields')
+                    @include('admin.products.fields', ['action' => 'Save'])
 
-                    {!! Form::close() !!}
                 </div>
-            </div>
+            {!! Form::close() !!}
         </div>
     </div>
 @endsection

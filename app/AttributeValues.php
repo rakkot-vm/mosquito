@@ -12,7 +12,7 @@ class AttributeValues extends Model
      * @var array
      */
     protected $fillable = [
-        'attribute_id', 'title', 'price', 'img',
+        'attribute_id', 'title', 'price', 'preview_img', 'border_img',
     ];
 
     public function attribute()

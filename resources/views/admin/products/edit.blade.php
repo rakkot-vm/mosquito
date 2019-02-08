@@ -1,24 +1,14 @@
-@extends('adminlte::page')
+@extends('layouts.admin')
 
-@section('title', 'Products')
-@section('h1_title', 'Edit product : Edit product : <a href="'. route('admin/products', $product->id) .'">'. $product->title .'</a>')
-
-@section('content_header')
-    <h1>Edit product : <a href="{!! route('admin/products', $product->id) !!}">{{ $product->title }}</a></h1>
-@stop
+@section('title', 'Edit product')
+@section('h1_title', 'Edit product : ' .$product->title)
 
 @section('content')
-    <div class="content">
-        <div class="box box-primary">
-            <div class="box-body">
-                <div class="row">
-                    {!! Form::model($data['product'], ['route' => ['products.update', $data['product']->id], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
+    {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
+    <div class="row">
 
-                    @include('admin.products.fields')
+        @include('admin.products.fields', ['action' => 'Update'])
 
-                    {!! Form::close() !!}
-                </div>
-            </div>
-        </div>
     </div>
+    {!! Form::() !!}
 @endsection

@@ -27,13 +27,12 @@ class ProductStoreRequest extends FormRequest
     {
         return [
             'title' => 'required|string',
-            'price' => 'numeric',
-            'img' => 'image',
-//            'attributes' => 'array'
+            'price' => 'nullable|numeric',
+            'img' => 'nullable|image',
         ];
     }
 
-    protected function failedValidation(Validator $validator) {
-        throw new HttpResponseException(response()->json($validator->errors(), 422));
-    }
+//    protected function failedValidation(Validator $validator) {
+//        throw new HttpResponseException(response()->json($validator->errors(), 422));
+//    }
 }

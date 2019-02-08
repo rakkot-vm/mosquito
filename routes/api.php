@@ -39,7 +39,8 @@ Route::middleware('api')->group(function () {
 //        Route::get('{id}', 'UserController@getOne');
 //    });
 
-    Route::resource('products', 'ProductController')->only('index','show');
+//    Route::resource('products', 'ProductController')->only('index','show');
+    Route::get('products/{id}', 'ProductController@get');
     Route::resource('attributes', 'AttributeController')->only('index','show');
     Route::resource('orders', 'OrderController')->only('index','show');
 

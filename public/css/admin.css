@@ -54,3 +54,7 @@ section.sec_btns{
 .btns-block{
     margin: 30px 0;
 }
+
+.min-height-200{
+    min-height: 200px;
+}

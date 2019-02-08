@@ -1,9 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Home page settings')
-@section('content_header')
-    <h1>Home page settings</h1>
-@stop
+@section('h1_title', 'Home page settings')
 
 @section('content')
 

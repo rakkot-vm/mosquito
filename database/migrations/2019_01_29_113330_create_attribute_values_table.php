@@ -17,7 +17,8 @@ class CreateAttributeValuesTable extends Migration
             $table->increments('id');
             $table->integer('attribute_id');
             $table->string('title');
-            $table->string('img');
+            $table->string('preview_img');
+            $table->string('border_img');
             $table->integer('price');
             $table->timestamps();
         });

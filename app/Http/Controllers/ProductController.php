@@ -30,9 +30,9 @@ class ProductController extends Controller
      */
     public function create()
     {
-        $data['attributes'] = Attribute::all();
-        $data['product'] = new Product;
-        return $this->responseType('admin.products.create', $data);
+        $product = (new Product());
+
+        return view('admin.products.create', compact('product'));
     }
 
     /**
@@ -43,18 +43,11 @@ class ProductController extends Controller
      */
     public function store(ProductStoreRequest $request)
     {
-        $product = Product::create([
-            'title' => $request->title,
-            'price' => $request->price,
-            'img' => !empty($request->img) ? time() .'-'. $request->img->getClientOriginalName() : '',
-        ]);
+        $product = (new Product());
+        $product->fill($request->all());
+        $product->img = is_object($request['img']) ? $request['img']->store('imgs') : '';
 
-
-        if($product){
-            return $this->responseType('admin.products.show', $product);
-        }
-
-//        return $this->responseType('admin.products.show', ['error' => 'Product id '.$id.' not found'], 422);
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -65,11 +58,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        if($product = Product::where('id',$id)->with('attributes')->first()){
-            return $this->responseType('admin.products.show', $product);
-        }
+        $product = Product::firstOrFail($id)->with('attributes')->get()->first();
 
-        return $this->responseType('admin.products.show', ['error' => 'Product id '.$id.' not found'], 422);
+        return view('admin.products.show', compact('product'));
     }
 
     /**
@@ -80,7 +71,12 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+        $product = Product::where('id', $id)
+            ->with('attributes')
+            ->get()
+            ->first();
+
+        return view('admin.products.edit', compact('product'));
     }
 
     /**
@@ -101,8 +97,24 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Product $product)
     {
-        //
+        $product->delete();
+
+        return redirect(route('products.index'));
+    }
+
+
+    /**
+     * Return product for api
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function get($id)
+    {
+        $product = Product::findOrFail($id)->with('attributes')->get()->first();
+
+        return response()->json($product);
     }
 }
