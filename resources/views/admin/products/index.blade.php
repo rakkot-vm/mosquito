@@ -8,9 +8,9 @@
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
-                <div class="box-header">
-                    <a href="{{ route('products.create') }}" class="btn btn-default">Create</a>
-                </div>
+                {{--<div class="box-header">--}}
+                    {{--<a href="{{ route('products.create') }}" class="btn btn-primary">Create</a>--}}
+                {{--</div>--}}
 
                 <div class="box-body">
                     <table id="products_table" class="table table-hover" role="grid" style="width:100%">

@@ -21,9 +21,13 @@ Route::get('/admin', 'AdminController@index')->name('admin');
 
 Route::prefix('admin')->group(function () {
     Route::resource('products', 'ProductController');
-    Route::resource('attributes', 'AttributesController');
-    Route::resource('attributeValues', 'AttributeValuesController');
-    Route::resource('orders', 'OrdersController');
+
+    Route::resource('attributes', 'AttributeController');
+
+    Route::resource('attributeValues', 'AttributeValueController')->except(['create']);
+    Route::get('attributeValues/{attr_id}/create', 'AttributeValueController@create')->name('attributeValues.create');
+
+    Route::resource('orders', 'OrderController');
 
 //    Route::resource('settings', 'SettingController');
 

@@ -22,6 +22,6 @@ class Attribute extends Model
 
     public function attributeValues()
     {
-        return $this->hasMany('App\AttributeValues');
+        return $this->hasMany('App\AttributeValue');
     }
 }

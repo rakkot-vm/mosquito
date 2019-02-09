@@ -10,5 +10,5 @@
         @include('admin.products.fields', ['action' => 'Update'])
 
     </div>
-    {!! Form::() !!}
+    {!! Form::close() !!}
 @endsection

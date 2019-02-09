@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AttributeValues extends Model
+class AttributeValue extends Model
 {
     /**
      * The attributes that are mass assignable.
@@ -12,7 +12,7 @@ class AttributeValues extends Model
      * @var array
      */
     protected $fillable = [
-        'attribute_id', 'title', 'price', 'preview_img', 'border_img',
+        'attribute_id', 'title', 'price'
     ];
 
     public function attribute()

@@ -85,3 +85,7 @@ $(".image-upload").change(function(input) {
         reader.readAsDataURL(input.target.files[0]);
     }
 });
+
+$('.delete-confirm').click(function () {
+   return confirm('Are you sure?');
+});

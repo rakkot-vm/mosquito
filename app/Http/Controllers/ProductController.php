@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Attribute;
 use App\Http\Requests\Product\ProductStoreRequest;
 use App\Product;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -58,7 +61,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::firstOrFail($id)->with('attributes')->get()->first();
+        $product = Product::findOrFail($id)->with('attributes')->get()->first();
 
         return view('admin.products.show', compact('product'));
     }
@@ -82,20 +85,24 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  ProductStoreRequest  $request
+     * @param  Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ProductStoreRequest $request, Product $product)
     {
-        //
+        $product->fill($request->all());
+        $product->img = is_object($request['img']) ? $this->updateImg($request['img'], $product->img, 'imgs') : $product->img;
+        $product->update();
+
+        return view('admin.products.show', compact('product'));
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Product $product
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
     public function destroy(Product $product)
     {
@@ -103,7 +110,6 @@ class ProductController extends Controller
 
         return redirect(route('products.index'));
     }
-
 
     /**
      * Return product for api
@@ -113,8 +119,11 @@ class ProductController extends Controller
      */
     public function get($id)
     {
-        $product = Product::findOrFail($id)->with('attributes')->get()->first();
-
+        try {
+            $product = Product::findOrFail($id)->with('attributes')->get()->first();
+        } catch (ModelNotFoundException $ex) {
+            return response()->json(['error' => 'Product not found'], 404);
+        }
         return response()->json($product);
     }
 }

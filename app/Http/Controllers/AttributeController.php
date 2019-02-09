@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Attribute;
+use App\Http\Requests\AttributesStoreRequest;
+use Nexmo\Network\Number\Request;
 
 class AttributeController extends Controller
 {
@@ -13,7 +15,7 @@ class AttributeController extends Controller
      */
     public function index()
     {
-        //
+        return redirect(route('products.show', ['id' => 1]));
     }
 
     /**
@@ -23,7 +25,10 @@ class AttributeController extends Controller
      */
     public function create()
     {
-        //
+        $attribute = new Attribute();
+        $attribute->product_id = 1;
+
+        return view('admin.attributes.create', compact('attribute'));
     }
 
     /**
@@ -32,9 +37,13 @@ class AttributeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AttributesStoreRequest $request)
     {
-        //
+        $attribute = (new Attribute());
+        $attribute->fill($request->all());
+        $attribute->save();
+
+        return redirect(route('attributes.show', ['id' => $attribute->id]));
     }
 
     /**
@@ -45,40 +54,45 @@ class AttributeController extends Controller
      */
     public function show($id)
     {
-        //
+        return redirect(route('products.show', ['id' => 1]));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  (Attribute $attribute
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Attribute $attribute)
     {
-        //
+        return view('admin.attributes.edit', compact('attribute'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(AttributesStoreRequest $request, Attribute $attribute)
     {
-        //
+        $attribute->fill($request->all());
+        $attribute->update();
+
+        return redirect(route('attributes.show', ['id' => $attribute->id]));
     }
 
     /**
      * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Attribute $attribute
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Exception
      */
-    public function destroy($id)
+    public function destroy(Attribute $attribute)
     {
-        //
+        $attribute->delete();
+
+        return redirect(route('products.show', ['id' => 1]));
     }
 }
