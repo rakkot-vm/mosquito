@@ -16,5 +16,6 @@ class DatabaseSeeder extends Seeder
         $this->call(AttributesTableSeeder::class);
         $this->call(AttributeValuesTableSeeder::class);
         $this->call(SettingsTable::class);
+        $this->call(RolesSeeder::class);
     }
 }

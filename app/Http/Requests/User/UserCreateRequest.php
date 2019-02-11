@@ -8,7 +8,7 @@ use Illuminate\Http\Exceptions\HttpResponseException;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
-class UserRegisterRequest extends FormRequest
+class UserCreateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -29,11 +29,7 @@ class UserRegisterRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => [
-                Rule::unique('users')->ignore(Auth::id()),
-                'required',
-                'email',
-                ],
+            'email' => 'unique:users|required|email',
             'password' => 'required|min:6',
         ];
     }

@@ -16,10 +16,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::prefix('admin')->middleware('auth:web')->group( function () {
+    Route::get('', 'ProductController@index')->name('admin');
 
-Route::get('/admin', 'AdminController@index')->name('admin');
-
-Route::prefix('admin')->group(function () {
     Route::resource('products', 'ProductController');
 
     Route::resource('attributes', 'AttributeController');
@@ -31,10 +30,14 @@ Route::prefix('admin')->group(function () {
 
 //    Route::resource('settings', 'SettingController');
 
-    Route::get('home/edit', 'HomeController@edit')->name('home.edit');
-    Route::patch('home/edit', 'HomeController@save')->name('home.save');
+    Route::group(['middleware' => ['role:admin']], function() {
 
-    Route::get('common/edit', 'CommonController@edit')->name('common.edit');
-//    Route::patch('common/edit', 'CommonController@save')->name('common.save');
-    Route::patch('common/update', 'CommonController@update')->name('common.update');
+        Route::resource('users', 'UserController');
+
+        Route::get('home/edit', 'HomeController@edit')->name('home.edit');
+        Route::patch('home/edit', 'HomeController@save')->name('home.save');
+
+        Route::get('common/edit', 'CommonController@edit')->name('common.edit');
+        Route::patch('common/update', 'CommonController@update')->name('common.update');
+    });
 });

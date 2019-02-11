@@ -2,13 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Attribute;
 use App\Http\Requests\Product\ProductStoreRequest;
 use App\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
