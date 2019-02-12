@@ -150,6 +150,11 @@ return [
                 'url'         => 'admin/common/edit',
                 'icon'        => 'cog',
             ],
+            [
+                'text'        => 'General settings',
+                'url'         => 'admin/general/edit',
+                'icon'        => 'cog',
+            ],
 //        'ACCOUNT SETTINGS',
 //            [
 //                'text' => 'Profile',

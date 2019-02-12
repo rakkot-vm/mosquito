@@ -17,4 +17,5 @@
 @section('js')
     <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
     <script src="{{ asset('js/admin_create.js') }}"></script>
+    @yield('inner_js')
 @stop

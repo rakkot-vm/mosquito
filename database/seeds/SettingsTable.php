@@ -15,6 +15,8 @@ class SettingsTable extends Seeder
         $this->main();
 
         $this->home();
+
+        $this->general();
     }
 
     protected function home()
@@ -229,6 +231,25 @@ class SettingsTable extends Seeder
             'type' => 'common',
             'title' => 'social_youtube',
             'value' => 'youtube.com/vidosiki',
+        ]);
+    }
+
+    protected function general()
+    {
+        DB::table('settings')->insert([
+            'type' => 'general',
+            'title' => 'currency',
+            'value' => 'eur'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'general',
+            'title' => 'stripe_publish_key',
+            'value' => 'pk_test_AcmqjKi2CpY5PgKpGDwKp8SV'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'general',
+            'title' => 'stripe_secret_key',
+            'value' => 'sk_test_wxsNKuPVMxQAjX5ot0aBoCiS'
         ]);
     }
 }

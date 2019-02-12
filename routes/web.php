@@ -39,5 +39,8 @@ Route::prefix('admin')->middleware('auth:web')->group( function () {
 
         Route::get('common/edit', 'CommonController@edit')->name('common.edit');
         Route::patch('common/update', 'CommonController@update')->name('common.update');
+
+        Route::get('general/edit', 'GeneralSettingsController@edit')->name('general.edit');
+        Route::patch('general/update', 'GeneralSettingsController@update')->name('general.update');
     });
 });

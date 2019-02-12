@@ -54,6 +54,12 @@ Route::middleware('api')->group(function () {
 //    Route::get('all-home', 'HomeController@allSettings')->name('home.all');
 
     Route::get('common', 'CommonController@get')->name('common.get');
+    Route::get('general', 'GeneralSettingsController@get')->name('general.get');
+
+
+
+    Route::middleware('check_order_amount')->get('stripeCreate', 'StripeController@create')->name('stripe.create');
+    Route::get('stripe-pay', 'StripeController@pay')->name('stripe.pay');
 
 //    Route::resource('settings', 'SettingsController')->except([
 //        'index','create', 'store', 'update', 'destroy'
