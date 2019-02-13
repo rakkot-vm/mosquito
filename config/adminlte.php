@@ -131,7 +131,7 @@ return [
                 'icon'        => 'file',
             ],
             [
-                'text'        => 'Orders (in dev)',
+                'text'        => 'Orders',
                 'url'         => 'admin/orders',
                 'icon'        => 'shopping-cart',
             ],

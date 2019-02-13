@@ -56,10 +56,10 @@ Route::middleware('api')->group(function () {
     Route::get('common', 'CommonController@get')->name('common.get');
     Route::get('general', 'GeneralSettingsController@get')->name('general.get');
 
-
-
-    Route::middleware('check_order_amount')->get('stripeCreate', 'StripeController@create')->name('stripe.create');
-    Route::get('stripe-pay', 'StripeController@pay')->name('stripe.pay');
+    Route::middleware('check_order_amount')->group(function () {
+        Route::get('stripeCreate', 'StripeController@create')->name('stripe.create');
+        Route::post('orders/store', 'OrderController@store')->name('order.store');
+    });
 
 //    Route::resource('settings', 'SettingsController')->except([
 //        'index','create', 'store', 'update', 'destroy'

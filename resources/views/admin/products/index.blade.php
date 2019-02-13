@@ -56,8 +56,9 @@
                         </tr>
                         </thead>
 
+                        <tbody>
                         @forelse($data as $product)
-                            <tbody>
+
                             <tr>
                                 <td><a href="{{ route('products.show', $product->id) }}">{{ $product->title }}</a></td>
                                 <td>{{ $product->attributes()->count() }}</td>
@@ -70,10 +71,11 @@
                                 <td>{{ $product->created_at }}</td>
                                 <td>{{ $product->updated_at }}</td>
                             </tr>
-                            </tbody>
+
                         @empty
 
                         @endforelse
+                        </tbody>
 
                         <tfoot>
                         <tr>
@@ -96,7 +98,14 @@
 @section('inner_js')
     <script>
         $(document).ready(function() {
-            $('#products_table').DataTable();
+            $('#products_table').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : false,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            });
         } );
     </script>
 @stop

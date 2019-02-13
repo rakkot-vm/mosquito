@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\OrderStatusRequest;
 use App\Order;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        $orders = Order::all();
+        return view('admin.orders.index', compact('orders'));
     }
 
     /**
@@ -35,7 +27,7 @@ class OrderController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        dd($request->all());
     }
 
     /**
@@ -46,30 +38,8 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Order $order)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Order  $order
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Order $order)
-    {
-        //
+        $products = json_decode($order->products_json, true);
+        return view('admin.orders.show', compact('order', 'products'));
     }
 
     /**
@@ -80,7 +50,15 @@ class OrderController extends Controller
      */
     public function destroy(Order $order)
     {
-        //
+        $order->delete();
+
+        return redirect(route('orders.index'));
+    }
+
+    public function changeStatus(OrderStatusRequest $request, $id)
+    {
+        $order->update(['status' => $request->status]);
+        return back();
     }
 
     public function get()
