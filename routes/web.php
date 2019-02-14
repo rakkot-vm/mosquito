@@ -26,8 +26,8 @@ Route::prefix('admin')->middleware('auth:web')->group( function () {
     Route::resource('attributeValues', 'AttributeValueController')->except(['create']);
     Route::get('attributeValues/{attr_id}/create', 'AttributeValueController@create')->name('attributeValues.create');
 
-    Route::resource('orders', 'OrderController')->except(['create', 'edit', 'update', 'store']);
     Route::patch('orders/{id}/changeStatus', 'OrderController@changeStatus')->name('orders.changeStatus');
+    Route::resource('orders', 'OrderController')->except(['create', 'edit', 'update', 'store']);
 
 //    Route::resource('settings', 'SettingController');
 

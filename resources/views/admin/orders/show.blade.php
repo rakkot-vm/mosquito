@@ -13,7 +13,8 @@
                     {{ Form::close() }}
 
                     <div class="form-group-inline">
-                        {{Form::open(['method'  => 'PATCH', 'route' => route('orders.changeStatus', ['id' => $order->id]), 'class' => 'pull-left'])}}
+                        {{Form::open(['method'  => 'PATCH', 'route' => ['orders.changeStatus', 'id' => $order->id], 'class' => 'pull-left'])}}
+{{--                        {{Form::open(['method'  => 'PATCH', 'route' => url('admin/orders/'.$order->id.'/changeStatus'), 'class' => 'pull-left'])}}--}}
                             {{ Form::select('status', ['paid' =>'paid','canceled' =>'canceled', 'completed' =>'completed'], $order->status, ['class' => 'form-control pull-left', 'style' => 'width:100px;'] ) }}
                             <input type="submit" class="btn btn-success mr-l-10" value="Change status">
                         {{Form::close()}}
@@ -24,7 +25,7 @@
                 <div class="box-body  with-border">
                     <div class="row">
                         <div class="col-xs-12 col-lg-4">
-                            <p><strong>Order id: </strong> {{ $order->order_id }}</p>
+                            <p><strong>Order id: </strong> {{ $order->id }}</p>
                         </div>
                         <div class="col-xs-12 col-lg-4">
                             <p><strong>Amount:</strong> {{ $order->amount }}</p>

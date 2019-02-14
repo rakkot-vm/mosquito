@@ -64,7 +64,6 @@ class OrderSeeder extends Seeder
         DB::table('orders')->insert([
             'id' => '1',
             'status' => 'paid',
-            'order_id' => '007',
             'amount' => '100500',
 
             'first_name' => 'TestName',

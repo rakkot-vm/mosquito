@@ -35,7 +35,7 @@
                         @forelse($orders as $order)
 
                             <tr role="row" class="odd">
-                                <td class="sorting_1"><a href="{{ route('orders.show', $order->id) }}">{{ $order->order_id }}</a></td>
+                                <td class="sorting_1"><a href="{{ route('orders.show', $order->id) }}">{{ $order->id }}</a></td>
                                 <td class="sorting_1">{{ $order->status }}</td>
                                 <td>{{ $order->amount }}</td>
 

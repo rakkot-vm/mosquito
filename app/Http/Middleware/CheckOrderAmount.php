@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Order;
 use Closure;
 
 class CheckOrderAmount
@@ -15,8 +16,7 @@ class CheckOrderAmount
      */
     public function handle($request, Closure $next)
     {
-//        if($request->amount == Order::calc($request->products)){
-        if($request->amount == 1000){
+        if($request->amount == (new Order)->calcAmount($request->products_json)){
             return $next($request);
         }
 

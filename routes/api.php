@@ -42,11 +42,6 @@ Route::middleware('api')->group(function () {
 //    Route::resource('products', 'ProductController')->only('index','show');
     Route::get('products/{id}', 'ProductController@get');
     Route::resource('attributes', 'AttributeController')->only('index','show');
-    Route::resource('orders', 'OrderController')->only('index','show');
-
-    Route::get('orders/calc', 'OrderController@calc')->name('orders.calc');
-    Route::get('orders/order', 'OrderController@order')->name('orders.order');
-    Route::get('orders/thank', 'OrderController@thank')->name('orders.thank');
 
     Route::resource('settings', 'SettingController')->only('show', 'index');
 
@@ -56,9 +51,10 @@ Route::middleware('api')->group(function () {
     Route::get('common', 'CommonController@get')->name('common.get');
     Route::get('general', 'GeneralSettingsController@get')->name('general.get');
 
+    Route::get('orders/calc', 'OrderController@calc')->name('order.calc');
     Route::middleware('check_order_amount')->group(function () {
         Route::get('stripeCreate', 'StripeController@create')->name('stripe.create');
-        Route::post('orders/store', 'OrderController@store')->name('order.store');
+        Route::post('orders', 'OrderController@store')->name('order.store');
     });
 
 //    Route::resource('settings', 'SettingsController')->except([
