@@ -91,52 +91,19 @@ $('.delete-confirm').click(function () {
 });
 
 
+// --------------------
+var stripe = Stripe('pk_test_AcmqjKi2CpY5PgKpGDwKp8SV', {
+    betas: ['payment_intent_beta_3']
+});
 
+var elements = stripe.elements();
+var cardElement = elements.create('card');
+cardElement.mount('#card-element');
 
-
-
-// $(function() {
-//     var $form = $('#payment-form');
-//     $form.submit(function(event) {
-//         // Отключим кнопку, чтобы предотвратить повторные клики
-//         $form.find('.submit').prop('disabled', true);
-//
-//         // Запрашиваем token у Stripe
-//         Stripe.card.createToken($form, stripeResponseHandler);
-//
-//         // Запретим форме submit
-//         return false;
-//     });
-// });
-//
-// function stripeResponseHandler(status, response) {
-//     // Получим форму:
-//     var $form = $('#payment-form');
-//
-//     if (response.error) { // Problem!
-//
-//         // Показываем ошибки в форме:
-//         $form.find('.payment-errors').text(response.error.message);
-//         $form.find('.submit').prop('disabled', false); // Разрешим submit
-//
-//     } else { // Token был создан
-//
-//         // Получаем token id:
-//         var token = response.id;
-//
-//         alert(token);
-//
-//         // // Вставим token в форму, чтобы при submit он пришел на сервер:
-//         // $form.append($('<input type="hidden" name="stripeToken">').val(token));
-//         //
-//         // // Сабмитим форму:
-//         // $form.get(0).submit();
-//     }
-// };
-
+// ----
 var cardholderName = document.getElementById('cardholder-name');
 var cardButton = document.getElementById('card-button');
-var clientSecret = 'pi_1E31nrFylioTibqRvhiCwrWV_secret_tukvTXbU1yLcffbNnMHzhLhLc';
+var clientSecret = cardButton.dataset.secret;
 
 cardButton.addEventListener('click', function(ev) {
     stripe.handleCardPayment(
@@ -147,9 +114,9 @@ cardButton.addEventListener('click', function(ev) {
         }
     ).then(function(result) {
         if (result.error) {
-            // Display error.message in your UI.
+            alert('bad');
         } else {
-            // The payment has succeeded. Display a success message.
+            alert('good');
         }
     });
 });

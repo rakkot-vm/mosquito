@@ -30,6 +30,7 @@ class CreateOrdersTable extends Migration
             $table->string('client_type');
 
             $table->json('products_json');
+            $table->string('payment')->nullable();
 
             $table->timestamps();
         });

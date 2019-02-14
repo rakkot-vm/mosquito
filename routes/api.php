@@ -43,7 +43,7 @@ Route::middleware('api')->group(function () {
     Route::get('products/{id}', 'ProductController@get');
     Route::resource('attributes', 'AttributeController')->only('index','show');
 
-    Route::resource('settings', 'SettingController')->only('show', 'index');
+//    Route::resource('settings', 'SettingController')->only('show', 'index');
 
     Route::get('home', 'HomeController@get')->name('home.get');
 //    Route::get('all-home', 'HomeController@allSettings')->name('home.all');
@@ -53,9 +53,9 @@ Route::middleware('api')->group(function () {
 
     Route::get('orders/calc', 'OrderController@calc')->name('order.calc');
     Route::middleware('check_order_amount')->group(function () {
-        Route::get('stripeCreate', 'StripeController@create')->name('stripe.create');
         Route::post('orders', 'OrderController@store')->name('order.store');
     });
+    Route::post('orders/confirm', 'OrderController@confirm')->name('stripe.confirm');
 
 //    Route::resource('settings', 'SettingsController')->except([
 //        'index','create', 'store', 'update', 'destroy'

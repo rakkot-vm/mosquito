@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Stripe\PaymentIntent;
+use Stripe\Stripe;
 
 class Order extends Model
 {
@@ -32,9 +34,9 @@ class Order extends Model
 
             $amount += !empty($model_product->price) ? $model_product->price : 0;
 
-            foreach ($product['attributes'] as $attr_id => $value_id){
-                $model_attr = Attribute::findOrFail($attr_id);
-                $model_value = AttributeValue::findOrFail($value_id);
+            foreach ($product['attributes'] as $attr_id => $attr){
+                $model_attr = Attribute::findOrFail($attr[0]);
+                $model_value = AttributeValue::findOrFail($attr[1]);
 
                 $amount += !empty($model_attr->price) ? $model_attr->price : 0;
                 $amount += !empty($model_value->price) ? $model_value->price : 0;
@@ -52,9 +54,9 @@ class Order extends Model
             $model_product = Product::findOrFail($order_product['id']);
             $order_product['title'] = $model_product->title;
 
-            foreach ($order_product['attributes'] as $attr_id => $value_id){
-                $model_attr = Attribute::findOrFail($attr_id);
-                $model_value = AttributeValue::findOrFail($value_id);
+            foreach ($order_product['attributes'] as $attr_id => $attr){
+                $model_attr = Attribute::findOrFail($attr[0]);
+                $model_value = AttributeValue::findOrFail($attr[1]);
 
                 unset($order_product['attributes'][$attr_id]);
 
@@ -74,5 +76,31 @@ class Order extends Model
 
 
         return json_encode($order_products);
+    }
+
+    public function stripePay() : PaymentIntent
+    {
+        $secret_key = Setting::where('title', 'stripe_secret_key')->get()->first()->value;
+        $currency = Setting::where('title', 'currency')->get()->first()->value;
+
+        Stripe::setApiKey($secret_key);
+
+        $intent = PaymentIntent::create([
+            "amount" => $this->amount,
+            "currency" => $currency,
+            "allowed_source_types" => ["card"],
+        ]);
+
+        return $intent;
+    }
+
+    public function stripeCheck()
+    {
+        $secret_key = Setting::where('title', 'stripe_secret_key')->get()->first()->value;
+
+        \Stripe\Stripe::setApiKey($secret_key);
+
+        $intent = \Stripe\PaymentIntent::retrieve($this->payment);
+        dd($intent);
     }
 }

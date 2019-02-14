@@ -41,6 +41,7 @@ class OrderStoreRequest extends FormRequest
             'client_type' => 'string|max:255',
 
             'products_json' => 'json',
+            'payment' => 'string|max:255',
         ];
     }
 

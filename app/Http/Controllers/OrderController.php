@@ -31,11 +31,14 @@ class OrderController extends Controller
         $order = new Order();
         $order->fill($request->all());
         $order->products_json = $order->convertProductsJsonToOrder($request->products_json);
-        $order->status = 'paid';
+        $order->status = 'not paid';
+
+        $intent = $order->stripePay();
+        $order->payment = $intent->id;
 
         $order->save();
 
-        return response('OK');
+        return response('{"status":"OK","client_key":"'.$intent->client_secret.'"');
     }
 
     /**
@@ -74,4 +77,17 @@ class OrderController extends Controller
     {
         return response()->json(['amount' => (new Order)->calcAmount($request->products_json)]);
     }
+
+    public function confirm(Request $request)
+    {
+        $order = Order::where('payment', $request->client_key)->get()->first();
+
+        $order->stripeCheck($request->client_key);
+        dd($order);
+//        $order = Order::findOrFail($id);
+//        $order->update(['status' => $request->status]);
+        return back();
+    }
+
+
 }
