@@ -12,7 +12,7 @@ class SettingsTable extends Seeder
      */
     public function run()
     {
-        $this->main();
+        $this->common();
 
         $this->home();
 
@@ -237,7 +237,7 @@ class SettingsTable extends Seeder
         ]);
     }
 
-    protected function main()
+    protected function common()
     {
         DB::table('settings')->insert([
             'type' => 'common',
@@ -295,6 +295,12 @@ class SettingsTable extends Seeder
             'type' => 'common',
             'title' => 'social_youtube',
             'value' => 'youtube.com/vidosiki',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'common',
+            'title' => 'privacy_policy',
+            'value' => 'It is privacy policy text :)',
         ]);
     }
 

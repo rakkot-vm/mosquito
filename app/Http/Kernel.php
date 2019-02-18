@@ -65,6 +65,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middlewares\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middlewares\RoleOrPermissionMiddleware::class,
         'check_order_amount' => Middleware\CheckOrderAmount::class,
+        'check_private_policy' => Middleware\CheckPrivatePolicy::class,
     ];
 
     /**

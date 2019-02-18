@@ -42,6 +42,8 @@ class OrderStoreRequest extends FormRequest
 
             'products_json' => 'json',
             'payment' => 'string|max:255',
+
+            'private_policy' => 'required|boolean',
         ];
     }
 

@@ -52,7 +52,7 @@ Route::middleware('api')->group(function () {
     Route::get('general', 'GeneralSettingsController@get')->name('general.get');
 
     Route::get('orders/calc', 'OrderController@calc')->name('order.calc');
-    Route::middleware('check_order_amount')->group(function () {
+    Route::middleware(['check_order_amount', 'check_private_policy'])->group(function () {
         Route::post('orders', 'OrderController@store')->name('order.store');
     });
     Route::post('orders/confirm', 'OrderController@confirm')->name('stripe.confirm');
