@@ -18,7 +18,7 @@ class CreateAttributesTable extends Migration
             $table->integer('product_id');
             $table->string('title');
 //            $table->string('img')->nullable();
-//            $table->string('price');
+//            $table->float('price');
             $table->timestamps();
         });
     }

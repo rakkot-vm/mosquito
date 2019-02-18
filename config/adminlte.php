@@ -135,75 +135,32 @@ return [
                 'url'         => 'admin/orders',
                 'icon'        => 'shopping-cart',
             ],
-        'Settings',[
-            'text'        => 'Users',
-            'url'         => 'admin/users',
-            'icon'        => 'users',
-        ],
+
+        'Settings',
+            [
+                'text'        => 'Users',
+                'url'         => 'admin/users',
+                'icon'        => 'users',
+                'can'         => 'view settings'
+            ],
             [
                 'text'        => 'Home Page settings',
                 'url'         => 'admin/home/edit',
                 'icon'        => 'cog',
+                'can'         => 'edit settings'
             ],
             [
                 'text'        => 'Common settings',
                 'url'         => 'admin/common/edit',
                 'icon'        => 'cog',
+                'can'         => 'edit settings'
             ],
             [
                 'text'        => 'General settings',
                 'url'         => 'admin/general/edit',
                 'icon'        => 'cog',
+                'can'         => 'edit settings'
             ],
-//        'ACCOUNT SETTINGS',
-//            [
-//                'text' => 'Profile',
-//                'url'  => 'admin/settings',
-//                'icon' => 'user',
-//            ],
-//            [
-//                'text' => 'Change Password',
-//                'url'  => 'admin/settings',
-//                'icon' => 'lock',
-//            ],
-//            [
-//                'text'    => 'Multilevel',
-//                'icon'    => 'share',
-//                'submenu' => [
-//                    [
-//                        'text' => 'Level One',
-//                        'url'  => '#',
-//                    ],
-//                    [
-//                        'text'    => 'Level One',
-//                        'url'     => '#',
-//                        'submenu' => [
-//                            [
-//                                'text' => 'Level Two',
-//                                'url'  => '#',
-//                            ],
-//                            [
-//                                'text'    => 'Level Two',
-//                                'url'     => '#',
-//                                'submenu' => [
-//                                    [
-//                                        'text' => 'Level Three',
-//                                        'url'  => '#',
-//                                    ],
-//                                    [
-//                                        'text' => 'Level Three',
-//                                        'url'  => '#',
-//                                    ],
-//                                ],
-//                            ],
-//                        ],
-//                    ],
-//                    [
-//                        'text' => 'Level One',
-//                        'url'  => '#',
-//                    ],
-//                ],
-//            ],
 //        'LABELS',
 //            [
 //                'text'       => 'Important',

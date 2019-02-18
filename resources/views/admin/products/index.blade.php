@@ -12,16 +12,6 @@
                     {{--<a href="{{ route('products.create') }}" class="btn btn-primary">Create</a>--}}
                 {{--</div>--}}
 
-                <script src="https://js.stripe.com/v3/"></script>
-
-                <input id="cardholder-name" type="text">
-                <!-- placeholder for Elements -->
-                <div id="card-element"></div>
-                <button id="card-button" data-secret="pi_1E3kGJFylioTibqRlDAtPOUB_secret_WUrAKvlfTaNB9cJfjzu8kCVWr">
-                    Submit Payment
-                </button>
-                {{--END NEW TEST--}}
-
                 <div class="box-body">
                     <table id="products_table" class="table table-hover" role="grid" style="width:100%">
                         <thead>

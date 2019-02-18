@@ -35,6 +35,7 @@ class OrderController extends Controller
 
         $intent = $order->stripePay();
         $order->payment = $intent->id;
+        $order->amount = $request->amount;
 
         $order->save();
 
@@ -80,13 +81,17 @@ class OrderController extends Controller
 
     public function confirm(Request $request)
     {
-        $order = Order::where('payment', $request->client_key)->get()->first();
+        $order = Order::where('payment', $request->payment_id)->get()->first();
+        if(empty($order)) return response()->json(['status'=>'error']);
 
-        $order->stripeCheck($request->client_key);
-        dd($order);
-//        $order = Order::findOrFail($id);
-//        $order->update(['status' => $request->status]);
-        return back();
+        if($order->stripeCheck($request->payment_id)){
+            $order->update(['status' => 'paid']);
+        }else{
+            $order->update(['status' => 'error']);
+            return response()->json(['status'=>'error']);
+        }
+
+        return response()->json(['status'=>'OK']);
     }
 
 

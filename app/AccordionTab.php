@@ -20,7 +20,7 @@ class AccordionTab extends Model
     public function save(array $options = [])
     {
         if(is_object($this->img)) {
-            $this->img = $this->img->store('imgs');
+            $this->img = url('/'.$this->img->store('imgs'));
 
             $this->tryDelOldImg();
         }

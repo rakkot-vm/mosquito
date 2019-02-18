@@ -214,6 +214,101 @@
             </div>
         </section>
 
+        <section class="sec4-5 box">
+            <h3>Section 4.5</h3>
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_title', 'Title:') !!}
+                        <input class="form-control" name="sec4-5_title" type="text" value="{{ $settings['sec4-5_title']->value }}" id="sec4-5_title">
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_img1', 'Image:') !!}
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec4-5_img1']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
+                        {!! Form::file('sec4-5_img1', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_title-img1', 'Title img:') !!}
+                        <input class="form-control" name="sec4-5_title-img1" type="text" value="{{ $settings['sec4-5_title-img1']->value }}" id="sec4-5_title-img1">
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_alt-img1', 'Alt img:') !!}
+                        <input class="form-control" name="sec4-5_alt-img1" type="text" value="{{ $settings['sec4-5_alt-img1']->value }}" id="sec4-5_alt-img1">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_img2', 'Image2:') !!}
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec4-5_img2']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
+                        {!! Form::file('sec4-5_img2', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_title-img2', 'Title img2:') !!}
+                        <input class="form-control" name="sec4-5_title-img2" type="text" value="{{ $settings['sec4-5_title-img2']->value }}" id="sec4-5_title-img2">
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_alt-img2', 'Alt img2:') !!}
+                        <input class="form-control" name="sec4-5_alt-img2" type="text" value="{{ $settings['sec4-5_alt-img2']->value }}" id="sec4-5_alt-img2">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_img3', 'Image3:') !!}
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec4-5_img3']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
+                        {!! Form::file('sec4-5_img3', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_title-img3', 'Title img3:') !!}
+                        <input class="form-control" name="sec4-5_title-img3" type="text" value="{{ $settings['sec4-5_title-img3']->value }}" id="sec4-5_title-img3">
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_alt-img3', 'Alt img3:') !!}
+                        <input class="form-control" name="sec4-5_alt-img3" type="text" value="{{ $settings['sec4-5_alt-img3']->value }}" id="sec4-5_alt-img3">
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_img4', 'Image4:') !!}
+                        <div class="img-wrap">
+                            <img src="{{ url($settings['sec4-5_img4']->value) }}" alt="" class="img-thumbnail-1">
+                        </div>
+                        {!! Form::file('sec4-5_img4', null, ['class' => 'form-control']) !!}
+
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_title-img4', 'Title img4:') !!}
+                        <input class="form-control" name="sec4-5_title-img4" type="text" value="{{ $settings['sec4-5_title-img4']->value }}" id="sec4-5_title-img4">
+                    </div>
+                    <div class="form-group">
+                        {!! Form::label('sec4-5_alt-img4', 'Alt img4:') !!}
+                        <input class="form-control" name="sec4-5_alt-img4" type="text" value="{{ $settings['sec4-5_alt-img4']->value }}" id="sec4-5_alt-img4">
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
         <section class="sec5 box">
             <h3>Section 5</h3>
 

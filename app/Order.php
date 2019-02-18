@@ -24,7 +24,7 @@ class Order extends Model
         'client_type',
     ];
 
-    public function calcAmount(string $products_json): int
+    public function calcAmount(string $products_json): float
     {
         $products = json_decode($products_json, true);
 
@@ -86,7 +86,7 @@ class Order extends Model
         Stripe::setApiKey($secret_key);
 
         $intent = PaymentIntent::create([
-            "amount" => $this->amount,
+            "amount" => $this->amount*100,
             "currency" => $currency,
             "allowed_source_types" => ["card"],
         ]);
@@ -94,13 +94,16 @@ class Order extends Model
         return $intent;
     }
 
-    public function stripeCheck()
+    public function stripeCheck() : bool
     {
         $secret_key = Setting::where('title', 'stripe_secret_key')->get()->first()->value;
 
         \Stripe\Stripe::setApiKey($secret_key);
 
         $intent = \Stripe\PaymentIntent::retrieve($this->payment);
-        dd($intent);
+
+        if($intent->status == "succeeded" && ($intent->amount/100) == $this->amount){
+            return true;
+        }
     }
 }

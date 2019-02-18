@@ -38,9 +38,9 @@ class Setting extends Model
 
     public function saveImgs($file)
     {
-        $this->value = $file->store('imgs');
-
         $this->tryDelOldImg();
+
+        $this->value = url('/'.$file->store('imgs'));
 
         $this->save();
     }

@@ -58,7 +58,9 @@ $('.del_acc_item').click(function(e){
     toggleDel(e);
 });
 $('.cancel_del_acc_item').click(function(e){
-    $('[name=sec3_acc['+id+'][del_id]"][value="'+id+'"]').attr('name','sec3_acc['+id+'][del_id]');
+    let id = e.target.value;
+
+    $('[name="sec3_acc['+id+'][del_id]"][value="'+id+'"]').attr('name','sec3_acc['+id+'][tab_id]');
     toggleDel(e);
 });
 
@@ -88,35 +90,4 @@ $(".image-upload").change(function(input) {
 
 $('.delete-confirm').click(function () {
    return confirm('Are you sure?');
-});
-
-
-// --------------------
-var stripe = Stripe('pk_test_AcmqjKi2CpY5PgKpGDwKp8SV', {
-    betas: ['payment_intent_beta_3']
-});
-
-var elements = stripe.elements();
-var cardElement = elements.create('card');
-cardElement.mount('#card-element');
-
-// ----
-var cardholderName = document.getElementById('cardholder-name');
-var cardButton = document.getElementById('card-button');
-var clientSecret = cardButton.dataset.secret;
-
-cardButton.addEventListener('click', function(ev) {
-    stripe.handleCardPayment(
-        clientSecret, cardElement, {
-            source_data: {
-                owner: {name: cardholderName.value}
-            }
-        }
-    ).then(function(result) {
-        if (result.error) {
-            alert('bad');
-        } else {
-            alert('good');
-        }
-    });
 });

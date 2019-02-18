@@ -33,7 +33,7 @@ class HomeController extends Controller
             ->where('type','home')
             ->with('accordionTabs')
             ->get();
-//        dd($settings);
+        $settings = $this->cleanApiResponse($settings);
 
         return response()->json($settings);
     }
@@ -57,7 +57,7 @@ class HomeController extends Controller
 
         $this->saveFiles($request);
 
-        return back()->with('warning', 'Error, setting has not been updated');
+        return back()->with('success', 'Setting has been updated');
     }
 
     private function accordionTabs($field)
@@ -98,5 +98,37 @@ class HomeController extends Controller
     {
         AccordionTab::find($id)
             ->delete();
+    }
+
+    private function cleanApiResponse($settings)
+    {
+        $settings = $settings->mapWithKeys(function($item){
+            $title = $item['title'];
+            $accordionTabs = $item['accordionTabs'];
+
+            $item = [$item['title'] => [
+                'id' => $item['id'],
+                'value' => $item['value'],
+            ]];
+
+            if($accordionTabs->isNotEmpty()){
+                $accordionTabs = $accordionTabs->mapWithKeys(function($tab){
+                    return [[
+                        'sort' => $tab['sort'],
+                        'title' => $tab['title'],
+                        'img' => $tab['img'],
+                        'imgAlt' => $tab['imgAlt'],
+                        'imgTitle' => $tab['imgTitle'],
+                        'text' => $tab['text'],
+                    ]];
+                });
+
+                $item[$title]['accordionTabs'] = $accordionTabs;
+            }
+
+            return $item;
+        });
+
+        return $settings;
     }
 }

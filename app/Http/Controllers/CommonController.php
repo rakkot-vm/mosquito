@@ -34,7 +34,7 @@ class CommonController extends Controller
             if(!is_object($item['value'])) {
                 Setting::where('title', $item['title'])->update(['value' => $item['value']]);
             }else{
-                $item['value'] = $item['value']->store('imgs');
+                $item['value'] = url('/'.$item['value']->store('imgs'));
 
                 $model = Setting::where('title', $item['title'])->first();
                 $model->tryDelOldImg();

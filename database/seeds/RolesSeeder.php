@@ -31,5 +31,6 @@ class RolesSeeder extends Seeder
         $user_manager = User::findOrFail(2)->assignRole('manager');
 
         $manager->syncPermissions( [$viewSettings, $viewOrders, $editOrders, $viewProducts, $editProducts] );
+        $admin->syncPermissions( [$viewUsers, $editUsers, $viewSettings, $editSettings, $viewOrders, $editOrders, $viewProducts, $editProducts] );
     }
 }

@@ -45,10 +45,10 @@ class GeneralSettingsController extends Controller
      */
     public function get()
     {
-        $settings = Setting::select('title', 'value')
-            ->where('title','currency')
+        $settings = Setting::where('title','currency')
             ->orWhere('title','stripe_publish_key')
-            ->get();
+            ->get()
+            ->pluck('value', 'title');
 
         return response()->json($settings);
     }

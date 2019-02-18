@@ -131,6 +131,70 @@ class SettingsTable extends Seeder
             'title' => 'sec4_text',
         ]);
 
+
+        //4-5
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_title',
+            'value' => 'Unsere Arbeit',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_img1',
+            'value' => 'imgs/no_img.jpg'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_title-img1',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_alt-img1',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_img2',
+            'value' => 'imgs/no_img.jpg'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_title-img2',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_alt-img2',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_img3',
+            'value' => 'imgs/no_img.jpg'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_title-img3',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_alt-img3',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_img4',
+            'value' => 'imgs/no_img.jpg'
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_title-img4',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec4-5_alt-img4',
+        ]);
+
         //5
         DB::table('settings')->insert([
             'type' => 'home',
