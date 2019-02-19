@@ -30,6 +30,6 @@ class Controller extends BaseController
             Storage::delete($oldImg);
         }
 
-        return $requestImg->store($path);
+        return url('/'.$requestImg->store($path));
     }
 }

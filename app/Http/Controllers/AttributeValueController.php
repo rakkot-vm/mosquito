@@ -42,8 +42,8 @@ class AttributeValueController extends Controller
         $attributeValue = new AttributeValue();
         $attributeValue->fill($request->all());
 
-        $attributeValue->preview_img = is_object($request['preview_img']) ? $request['preview_img']->store('imgs') : '' ;
-        $attributeValue->border_img = is_object($request['border_img']) ? $request['preview_img']->store('imgs') : '' ;
+        $attributeValue->preview_img = is_object($request['preview_img']) ?  url('/'.$request['preview_img']->store('imgs')) : '' ;
+        $attributeValue->border_img = is_object($request['border_img']) ?  url('/'.$request['preview_img']->store('imgs')) : '' ;
 
         $attributeValue->save();
 

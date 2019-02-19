@@ -9,7 +9,7 @@
             {!! Form::model($product, ['route' => 'products.store', 'method' => 'post', 'enctype' => 'multipart/form-data']) !!}
                 <div class="row">
 
-                    @include('admin.products.fields', ['action' => 'Save'])
+                    @include('admin.products._fields', ['action' => 'Save'])
 
                 </div>
             {!! Form::close() !!}

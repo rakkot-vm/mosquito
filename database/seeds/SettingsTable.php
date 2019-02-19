@@ -34,27 +34,27 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec1_img',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec1_img1',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec1_img2',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec1_img3',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec1_img4',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
 
         //sec2
@@ -142,7 +142,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec4-5_img1',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -156,7 +156,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec4-5_img2',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -170,7 +170,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec4-5_img3',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -184,7 +184,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec4-5_img4',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -199,7 +199,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec5_img1',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -209,7 +209,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec5_img2',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -219,7 +219,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec5_img3',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -229,7 +229,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec5_img4',
-            'value' => 'imgs/no_img.jpg'
+            'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
@@ -242,7 +242,7 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'common',
             'title' => 'logo_img',
-            'value' => 'imgs\no_img.jpg'
+            'value' => ' '
         ]);
         DB::table('settings')->insert([
             'type' => 'common',

@@ -7,8 +7,13 @@
     {!! Form::model($product, ['route' => ['products.update', $product->id], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
     <div class="row">
 
-        @include('admin.products.fields', ['action' => 'Update'])
+        @include('admin.products._fields', ['action' => 'Update' ])
 
     </div>
     {!! Form::close() !!}
+
+    <div class="row">
+        @include('admin.products._fieldsAttrs')
+    </div>
+
 @endsection
