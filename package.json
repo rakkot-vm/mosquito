@@ -17,7 +17,6 @@
         "@vue/cli-plugin-babel": "^3.0.5",
         "@vue/cli-plugin-eslint": "^3.0.5",
         "@vue/cli-service": "^3.0.5",
-        "@vue/eslint-config-standard": "^3.0.5",
         "axios": "^0.18",
         "bootstrap": "^4.0.0",
         "cross-env": "^5.1",
@@ -44,21 +43,6 @@
         "vue-slick": "^1.1.15",
         "vuex": "^3.0.1"
     },
-    "eslintConfig": {
-        "root": true,
-        "env": {
-            "node": true
-        },
-        "extends": [
-            "plugin:vue/essential",
-            "@vue/standard",
-            "eslint:recommended"
-        ],
-        "rules": {},
-        "parserOptions": {
-            "parser": "babel-eslint"
-        }
-    },
     "postcss": {
         "plugins": {
             "autoprefixer": {}
@@ -68,8 +52,5 @@
         "> 1%",
         "last 2 versions",
         "not ie <= 8"
-    ],
-    "gitHooks": {
-        "pre-commit": "lint-staged"
-    }
+    ]
 }
