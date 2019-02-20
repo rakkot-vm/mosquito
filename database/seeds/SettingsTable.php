@@ -132,67 +132,67 @@ class SettingsTable extends Seeder
         ]);
 
 
-        //4-5
+        //45
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_title',
+            'title' => 'sec45_title',
             'value' => 'Unsere Arbeit',
         ]);
 
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_img1',
+            'title' => 'sec45_img1',
             'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_title-img1',
+            'title' => 'sec45_titleImg1',
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_alt-img1',
+            'title' => 'sec45_altImg1',
         ]);
 
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_img2',
+            'title' => 'sec45_img2',
             'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_title-img2',
+            'title' => 'sec45_titleImg2',
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_alt-img2',
+            'title' => 'sec45_altImg2',
         ]);
 
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_img3',
+            'title' => 'sec45_img3',
             'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_title-img3',
+            'title' => 'sec45_titleImg3',
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_alt-img3',
+            'title' => 'sec45_altImg3',
         ]);
 
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_img4',
+            'title' => 'sec45_img4',
             'value' => ''
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_title-img4',
+            'title' => 'sec45_titleImg4',
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec4-5_alt-img4',
+            'title' => 'sec45_altImg4',
         ]);
 
         //5
