@@ -116,10 +116,46 @@ class ProductController extends Controller
     public function get($id)
     {
         try {
-            $product = Product::findOrFail($id)->with('attributes')->get()->first();
+            $product = Product::findOrFail($id)->with('attributes')->get();
         } catch (ModelNotFoundException $ex) {
             return response()->json(['error' => 'Product not found'], 404);
         }
         return response()->json($product);
     }
+
+//    private function cleanApiResponse($product)
+//    {
+//        $product = $product->mapWithKeys(function($item){
+//            $newItem = [
+//                'title' => $item['title'],
+//                'img' => $item['img'],
+//                'price' => $item['price'],
+//                'attributes' => $item['attributes'],
+//            ];
+//
+//
+//            $newItem['attributes'] = collect($item['attributes'])->mapWithKeys(function($attribute){
+//                $newAttribute = [
+//                    'title' => $attribute['title'],
+//
+////                    'attribute_values' => collect($attribute['attributeValues'])->mapWithKeys(function($attribute_value){
+////                                return [[
+////                                    'title' => $attribute_value['title'],
+////                                    'preview_img' => $attribute_value['preview_img'],
+////                                    'border_img' => $attribute_value['preview_img'],
+////                                    'price' => $attribute_value['price'],
+////                        ]];
+////                    }),
+//                    'attribute_values' => $attribute['attributeValues']
+//
+//                ];
+//                return $newAttribute;
+//            });
+//
+//
+//            return $newItem;
+//        });
+//
+//        return $product;
+//    }
 }
