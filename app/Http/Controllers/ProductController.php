@@ -116,46 +116,24 @@ class ProductController extends Controller
     public function get($id)
     {
         try {
-            $product = Product::findOrFail($id)->with('attributes')->get();
+            $product = Product::findOrFail($id)->with('attributes')->get()->first();
         } catch (ModelNotFoundException $ex) {
             return response()->json(['error' => 'Product not found'], 404);
         }
-        return response()->json($product);
+        return response()->json($this->cleanApiResponse($product));
     }
 
-//    private function cleanApiResponse($product)
-//    {
-//        $product = $product->mapWithKeys(function($item){
-//            $newItem = [
-//                'title' => $item['title'],
-//                'img' => $item['img'],
-//                'price' => $item['price'],
-//                'attributes' => $item['attributes'],
-//            ];
-//
-//
-//            $newItem['attributes'] = collect($item['attributes'])->mapWithKeys(function($attribute){
-//                $newAttribute = [
-//                    'title' => $attribute['title'],
-//
-////                    'attribute_values' => collect($attribute['attributeValues'])->mapWithKeys(function($attribute_value){
-////                                return [[
-////                                    'title' => $attribute_value['title'],
-////                                    'preview_img' => $attribute_value['preview_img'],
-////                                    'border_img' => $attribute_value['preview_img'],
-////                                    'price' => $attribute_value['price'],
-////                        ]];
-////                    }),
-//                    'attribute_values' => $attribute['attributeValues']
-//
-//                ];
-//                return $newAttribute;
-//            });
-//
-//
-//            return $newItem;
-//        });
-//
-//        return $product;
-//    }
+    private function cleanApiResponse($product)
+    {
+        $product->attributes = $product->attributes->map(function($item_attr, $key_attr){
+
+            $item_attr->attributeValues = $item_attr->attributeValues->map(function($item, $key){
+                return $item->only(['title', 'preview_img', 'border_img', 'price']);
+            });
+
+            return $item_attr->only(['title', 'attributeValues']);
+        });
+
+        return $product->only(['title', 'img', 'price', 'attributes']);
+    }
 }
