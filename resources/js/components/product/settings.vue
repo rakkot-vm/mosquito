@@ -1,5 +1,5 @@
 <template>
-    <div class="settings-product">
+    <div class="settings-product" :class="{fullWidth: this.$store.state.common.showTablets}">
         <h2 class="underline">SlimLine</h2>
         <h3 class="subtitle">Konfigurieren Sie hier Ihren SlimLine Spannrahmen</h3>
         <hr>
@@ -9,8 +9,9 @@
             <span>Standard</span>
         </p>
         
-        <product-frames @getImageURL="updateImageURL($event)"></product-frames>
+        <product-frames></product-frames>
         <product-nettings></product-nettings>
+        <product-dimensions></product-dimensions>
     </div>
 </template>
 
@@ -22,11 +23,27 @@ export default{
         productFrames: () => import('./../product/frames/section.vue'),
         productNettings: () => import('./../product/nettings/section.vue'),
         productDimensions: () => import('./../product/dimensions/section.vue'),
-    },
-    methods: {
-        updateImageURL: function (updatedURL) {
-            this.$store.state.selectedProduct.frame.image = updatedURL;
-        },
     }
 }
 </script>
+
+
+<style scoped lang="scss">
+.settings-product{
+    width: 480px;
+    &.fullWidth{
+        width: 100%;
+    }
+}
+.subtitle{
+    font-size: 20px;
+    letter-spacing: normal;
+}
+.aluminum-profile{
+    margin-bottom: 8px;
+}
+.img-check{
+    margin-top: -2px;
+    margin-right: 7px;
+}
+</style>

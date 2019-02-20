@@ -1,10 +1,10 @@
 <template>
     <div class="profile">
         <div class="image-border">
-            <img :src="this.profile.image.mini" alt="">
+            <img :src="this.profile.preview_img" alt="">
         </div>
         <p class="caption">{{this.profile.title}}</p>
-        <p class="code">{{this.profile.code}}</p>
+        <p class="code">{{this.profile.price}}</p>
     </div>
 </template>
 

@@ -12,8 +12,18 @@ export default{
       HeaderComp: () => import('./components/main-parts/Header.vue'),
       FooterComp: () => import('./components/main-parts/Footer.vue')
     },
-    created(){
-        this.$store.dispatch('getDataHome')
+    methods:{
+        getWindowWidth(){
+            if(window.innerWidth >= 1200){
+                this.$store.state.common.showTablets = false
+            } else {
+                this.$store.state.common.showTablets = true
+            }
+        }
+    },
+    mounted(){
+        window.addEventListener('resize', this.getWindowWidth);
+        this.getWindowWidth()
     }
 }
 </script>

@@ -4,10 +4,11 @@
             <div class="product__grid">
                 
                 <product-image></product-image>
+                <product-cart v-if="this.$store.state.common.showTablets"></product-cart>
                 
                 <product-settings></product-settings>
                 
-                <product-cart></product-cart>
+                <product-cart v-if="this.$store.state.common.showTablets === false"></product-cart>
             </div>
         </div>
     </section>
@@ -17,22 +18,14 @@
 <script>
 export default{
     name: "product",
-    /*data () {
-        return{
-            getter: ''
-        }
-    },*/
     components: {
         productImage: () => import('./../product/image.vue'),
         productSettings: () => import('./../product/settings.vue'),
         productCart: () => import('./../product/cart.vue'),
     },
-    /*methods: {
-        getSettings: function(settingsData) {
-            this.getter = settingsData
-        }
-    },*/
-    
+    mounted(){
+        this.$store.dispatch('getDataProducts');
+    }
 }
 </script>
 
@@ -44,20 +37,6 @@ export default{
     .product__grid{
         display: flex;
         justify-content: space-between;
-    }
-    
-    .settings-product{
-        width: 480px;
-    }
-    .subtitle{
-        font-size: 20px;
-        letter-spacing: normal;
-    }
-    .aluminum-profile{
-        margin-bottom: 8px;
-    }
-    .img-check{
-        margin-top: -2px;
-        margin-right: 7px;
+        flex-wrap: wrap;
     }
 </style>

@@ -1,7 +1,10 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
 
 Vue.use(Vuex)
+Vue.use(VueAxios, axios)
 
 export default new Vuex.Store({
   state: {
@@ -15,107 +18,226 @@ export default new Vuex.Store({
         netting: {
             image: '',
             title: ''
+        },
+        dimensions: {
+            width: 20,
+            height: null,
+            deep: null,
+            hole: true
+        },
+        count: 0,
+        priceRange: {
+            
         }
-        
       },
       
-      home: 'empty',
+      home: {
+          "sec1_title": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_text": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_img": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_img1": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_img2": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_img3": {
+            "id": null,
+            "value": ""
+          },
+          "sec1_img4": {
+            "id": null,
+            "value": ""
+          },
+          
+          "sec2_text": {
+            "id": null,
+            "value": null
+          },
+          "sec2_textWidth": {
+            "id": null,
+            "value": null
+          },
+          "sec2_infoWidth": {
+            "id": null,
+            "value": null
+          },
+          "sec2_popupWidth": {
+            "id": null,
+            "value": null
+          },
+          "sec2_textHeight": {
+            "id": null,
+            "value": null
+          },
+          "sec2_infoHeight": {
+            "id": null,
+            "value": null
+          },
+          "sec2_popupHeight": {
+            "id": null,
+            "value": null
+          },
+          "sec2_textDeep": {
+            "id": null,
+            "value": null
+          },
+          "sec2_infoDeep": {
+            "id": null,
+            "value": null
+          },
+          "sec2_popupDeep": {
+            "id": null,
+            "value": null
+          },
+          "sec2_textHols": {
+            "id": null,
+            "value": null
+          },
+          "sec2_infoHols": {
+            "id": null,
+            "value": null
+          },
+          "sec2_popupHols": {
+            "id": null,
+            "value": null
+          },
+          
+          "sec45_title": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_img1": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_titleImg1": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_altImg1": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_img2": {
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_titleImg2": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_altImg2": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_img3": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_titleImg3": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_altImg3": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_img4": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_titleImg4": { 
+              "id": null, 
+              "value": null 
+          }, 
+          "sec45_altImg4": { 
+              "id": null, 
+              "value": null 
+          },
+          
+          "sec5_img1": {
+            "id": null,
+            "value": ""
+          },
+          "sec5_title1": {
+            "id": null,
+            "value": ''
+          },
+          "sec5_img2": {
+            "id": null,
+            "value": ""
+          },
+          "sec5_title2": {
+            "id": null,
+            "value": ''
+          },
+          "sec5_img3": {
+            "id": null,
+            "value": ""
+          },
+          "sec5_title3": {
+            "id": null,
+            "value": ''
+          },
+          "sec5_img4": {
+            "id": null,
+            "value": ""
+          },
+          "sec5_title4": {
+            "id": null,
+            "value": ''
+          },
+      },
+      products: [
+          {
+            "id": 1,
+            "title": "",
+            "img": "#",
+            "price": null,
+            "created_at": null,
+            "updated_at": null,
+            "attributes": [
+                {
+                    "id": 1,
+                    "product_id": 1,
+                    "title": null,
+                    "created_at": null,
+                    "updated_at": null,
+                    "attribute_values": [
+                        {
+                            "id": 1,
+                            "attribute_id": 1,
+                            "title": null,
+                            "preview_img": null,
+                            "border_img": null,
+                            "price": null,
+                            "created_at": null,
+                            "updated_at": null
+                        }
+                    ]
+                }
+            ]
+        }
+      ],
+      common:{
+          bodyOverflow: true,
+          showTablets: false,
+          popupShow: false,
+      },
       
       
-      "sec1_title": {
-        "id": 12,
-        "value": "Insektenschutz Für Fenster Mit Rolladen"
-      },
-      "sec1_text": {
-        "id": 13,
-        "value": `
-                    <p>
-                        Wünschst du dir einen flexiblen, unkomplizierten und zuverlässigen Insektenschutz fürs Fenster? Einen, der leicht zu montieren ist und sich auch für eine Mietwohnung eignet?
-                    </p>
-                    <p>
-                        Dann sind. Unsere Fliegengitter fürs Fenster die passende Losung für dich:
-                    </p>
-                    <ul>
-                        <li>Formschöne, leichte und stabile Fliegengitter dank Alu-Rahmen</li>
-                        <li>Fenster-Insektenschutz in unterschiedlichen Größen, der außerdem Kurzbar ist individuellen Insektenschutzfenster nach Maß</li>
-                        <li>Modelle mit Spezial-Gewebe für höhere Lichtdurchlässigkeit</li>
-                        <li>Sets zum Sparpreis erhältlich</li>
-                        <li>Insektenschutz Spannrahmen extrem flach für eure Fenster</li>
-                    </ul>
-                `
-      },
-      "sec1_img": {
-        "id": 14,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec1_img1": {
-        "id": 15,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec1_img2": {
-        "id": 16,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec1_img3": {
-        "id": 17,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec1_img4": {
-        "id": 18,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec2_text": {
-        "id": 19,
-        "value": null
-      },
-      "sec2_textWidth": {
-        "id": 20,
-        "value": null
-      },
-      "sec2_infoWidth": {
-        "id": 21,
-        "value": null
-      },
-      "sec2_popupWidth": {
-        "id": 22,
-        "value": null
-      },
-      "sec2_textHeight": {
-        "id": 23,
-        "value": null
-      },
-      "sec2_infoHeight": {
-        "id": 24,
-        "value": null
-      },
-      "sec2_popupHeight": {
-        "id": 25,
-        "value": null
-      },
-      "sec2_textDeep": {
-        "id": 26,
-        "value": null
-      },
-      "sec2_infoDeep": {
-        "id": 27,
-        "value": null
-      },
-      "sec2_popupDeep": {
-        "id": 28,
-        "value": null
-      },
-      "sec2_textHols": {
-        "id": 29,
-        "value": null
-      },
-      "sec2_infoHols": {
-        "id": 30,
-        "value": null
-      },
-      "sec2_popupHols": {
-        "id": 31,
-        "value": null
-      },
       "sec3_acc": {
         "id": 32,
         "value": null,
@@ -146,48 +268,20 @@ export default new Vuex.Store({
         "id": 34,
         "value": null
       },
-      "sec5_img1": {
-        "id": 35,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec5_title1": {
-        "id": 36,
-        "value": 'text'
-      },
-      "sec5_img2": {
-        "id": 37,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec5_title2": {
-        "id": 38,
-        "value": 'text'
-      },
-      "sec5_img3": {
-        "id": 39,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec5_title3": {
-        "id": 40,
-        "value": 'text'
-      },
-      "sec5_img4": {
-        "id": 41,
-        "value": "imgs/no_img.jpg"
-      },
-      "sec5_title4": {
-        "id": 42,
-        "value": 'text'
-      },
+      
       
       
   },
   mutations: {
       updateHome(state, res){
           state.home = res
-      }
+      },
+      updateHomeProducts(state, res){
+          state.products = res
+      },
   },
   actions: {
-      getDataHome(context){
+      getDataHome: async function(context){
           axios.get('http://vetalya-mosquito.urich.work/api/home', {crossdomain: true})
             .then(response => {
                 context.commit('updateHome', response.data)    
@@ -195,17 +289,15 @@ export default new Vuex.Store({
             .catch(e => {
                 this.errors.push(e)
             })
-      }
-  }
-  /*mutations: {
-      getAPI(state){
-          axios.get('http://vetalya-mosquito.urich.work/api/home', {crossdomain: true})
+      },
+      getDataProducts: async function(context){
+          axios.get('http://vetalya-mosquito.urich.work/api/products/1', {crossdomain: true})
             .then(response => {
-                state.home = response.data
+                context.commit('updateHomeProducts', response.data)    
             })
             .catch(e => {
                 this.errors.push(e)
             })
       }
-  },*/
+  }
 })

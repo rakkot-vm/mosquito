@@ -5,29 +5,29 @@
             <div class="row">
                 <div class="col-md-3 col-6">
                     <div class="advantage__item">
-                        <img :src="this.advantage1.image" alt="">
-                        <p class="text">{{this.advantage1.title}}</p>
+                        <img :src="this.$store.state.home.sec5_img1.value" alt="">
+                        <p class="text">{{this.$store.state.home.sec5_title1.value}}</p>
                     </div>
                 </div>
                 
                 <div class="col-md-3 col-6">
                     <div class="advantage__item">
-                        <img :src="this.advantage2.image" alt="">
-                        <p class="text">{{this.advantage2.title}}</p>
+                        <img :src="this.$store.state.home.sec5_img2.value" alt="">
+                        <p class="text">{{this.$store.state.home.sec5_title2.value}}</p>
                     </div>
                 </div>
                 
                 <div class="col-md-3 col-6">
                     <div class="advantage__item">
-                        <img :src="this.advantage3.image" alt="">
-                        <p class="text">{{this.advantage3.title}}</p>
+                        <img :src="this.$store.state.home.sec5_img3.value" alt="">
+                        <p class="text">{{this.$store.state.home.sec5_title3.value}}</p>
                     </div>
                 </div>
                 
                 <div class="col-md-3 col-6">
                     <div class="advantage__item">
-                        <img :src="this.advantage4.image" alt="">
-                        <p class="text">{{this.advantage4.title}}</p>
+                        <img :src="this.$store.state.home.sec5_img4.value" alt="">
+                        <p class="text">{{this.$store.state.home.sec5_title4.value}}</p>
                     </div>
                 </div>
             </div>
@@ -38,44 +38,7 @@
 <script>
 export default{
     name: 'advantage',
-    data(){
-        return{
-            advantage1:{
-                image: '',
-                title: ''
-            },
-            advantage2:{
-                image: '',
-                title: ''
-            },
-            advantage3:{
-                image: '',
-                title: ''
-            },
-            advantage4:{
-                image: '',
-                title: ''
-            }
-        }
-    },
-    methods: {
-        getStore(){
-            this.advantage1.image = this.$store.state.sec5_img1.value;
-            this.advantage1.title = this.$store.state.sec5_title1.value;
-            
-            this.advantage2.image = this.$store.state.sec5_img2.value;
-            this.advantage2.title = this.$store.state.sec5_title2.value;
-            
-            this.advantage3.image = this.$store.state.sec5_img3.value;
-            this.advantage3.title = this.$store.state.sec5_title3.value;
-            
-            this.advantage4.image = this.$store.state.sec5_img4.value;
-            this.advantage4.title = this.$store.state.sec5_title4.value;
-        }
-    },
-    mounted(){
-        this.getStore()
-    }
+    
 }
 </script>
 

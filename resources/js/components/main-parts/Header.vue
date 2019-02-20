@@ -20,19 +20,30 @@
                    </div>
                </div>
                <div class="col-md-1 col-2 flex-end">
-                   <router-link to="/cart" class="btn-cart-block">
+                   <div class="btn-cart-block" @click="openPopupCart">
                        <img src="../../../static/img/icons/cart.svg" alt="">
-                       <div class="count-products-in-cart"><span>2</span></div>
-                   </router-link>
+                       <div class="count-products-in-cart">
+                           <span>{{this.$store.state.selectedProduct.count}}</span>
+                       </div>
+                   </div>
                </div>
            </div>
+           <popup-cart></popup-cart>
        </div>
    </header>
 </template>
 
 <script>
 export default{
-  name: 'header-nav'
+    name: 'header-nav',
+    components:{
+        popupCart: () => import('../cart/PopupCart.vue')
+    },
+    methods:{
+        openPopupCart(){
+            this.$store.state.common.popupShow = true
+        }
+    }
 }
 </script>
 
@@ -71,6 +82,7 @@ export default{
 }
 .btn-cart-block{
     position: relative;
+    cursor: pointer;
     .count-products-in-cart{
         position: absolute;
         top: -7px;

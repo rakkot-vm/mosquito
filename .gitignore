@@ -12,3 +12,10 @@ yarn-error.log
 /config/mail.php
 .idea
 composer.lock
+
+/public/fonts
+/public/css/app.css
+/public/images
+/public/js/main.js
+/public/*.js
+/public/mix-manifest.json

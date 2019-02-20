@@ -25,9 +25,33 @@
                 <div class="col-12">
                     <h2 class="title underline underline-center text-center">Unsere Arbeit</h2>
                 </div>
-                <!--<div class="col-md-3 col-6" v-for="image in images" :key="image.id">
-                    <img :src="image" alt="">
-                </div>-->
+                <div class="col-md-3 col-6">
+                    <div class="image-block">
+                        <img 
+                            :src="this.$store.state.home.sec45_img1.value"     :alt="this.$store.state.home.sec45_altImg1.value">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="image-block">
+                        <img 
+                            :src="this.$store.state.home.sec45_img2.value" 
+                            :alt="this.$store.state.home.sec45_altImg2.value">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="image-block">
+                        <img 
+                            :src="this.$store.state.home.sec45_img3.value" 
+                            :alt="this.$store.state.home.sec45_altImg3.value">
+                    </div>
+                </div>
+                <div class="col-md-3 col-6">
+                    <div class="image-block">
+                        <img 
+                            :src="this.$store.state.home.sec45_img4.value" 
+                            :alt="this.$store.state.home.sec45_altImg4.value">
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -35,22 +59,17 @@
 
 <script>
 export default{
-    data () {
-        return{
-            images: []
-        }
-    },
     methods:{
         
     },
-    /*mounted() {
-        this.images = this.$store.state.section.advice.images
-    }*/
 }
 </script>
 
 
 <style scoped lang="scss">
+    #advice-and-delivery{
+        margin-bottom: 16px;
+    }
     .advice{
         margin-bottom: 20px;
     }
@@ -65,6 +84,15 @@ export default{
         }
         .title{
             
+        }
+    }
+    .image-block{
+        height: 194px;
+        margin-bottom: 20px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
     }
 </style>

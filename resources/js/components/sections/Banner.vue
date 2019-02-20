@@ -1,14 +1,14 @@
 <template>
     <section id="banner" v-on:resize="getWindowWidth">
         <div class="container">
-            <h1>{{this.$store.state.home}}</h1>
+            <h1>{{this.$store.state.home.sec1_title.value}}</h1>
             <div class="row">
                 <div class="col-xl-3 col-lg-4 col-md-12 col-12" v-if="this.imageShow ">
                     <div class="img-no-mosquito">
-                        <img :src="this.imageURL" alt="no mosquito">
+                        <img :src="this.$store.state.home.sec1_img.value" alt="no mosquito">
                     </div>
                 </div>
-                <div class="col-md-12 col-12 list-dots" :class="{'col-xl-9 col-lg-8': imageShow}" v-html="this.text">
+                <div class="col-md-12 col-12 list-dots" :class="{'col-xl-9 col-lg-8': imageShow}" v-html="this.$store.state.home.sec1_text.value">
                     
                 </div>
             </div>
@@ -22,13 +22,8 @@ export default{
     name: 'banner',
     data () {
         return{
-            title: String,
-            imageURL: '',
-            text: '',
             windowWidth: null,
             imageShow: false,
-            json: [],
-            errors: []
         }
     },
     methods:{
@@ -36,13 +31,8 @@ export default{
             this.windowWidth = document.documentElement.clientWidth;
             this.checkStateImage()
         },
-        getStore(){
-            this.title = this.$store.state.sec1_title.value,
-            this.imageURL = this.$store.state.sec1_img.value,
-            this.text = this.$store.state.sec1_text.value
-        },
         checkStateImage(){
-            if(this.windowWidth > 767 && this.imageURL != ''){
+            if(this.windowWidth > 767 && this.$store.state.home.sec1_img.value !== ''){
                 this.imageShow = true
             } else {
                 this.imageShow = false
@@ -52,10 +42,10 @@ export default{
     mounted() {
         window.addEventListener('resize', this.getWindowWidth);
         this.getWindowWidth(); 
-        
-        this.getStore()
-        this.checkStateImage()
     },
+    updated(){
+        this.checkStateImage()
+    }
 }
 </script>
 

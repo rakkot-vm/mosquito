@@ -1,10 +1,10 @@
 <template>
     <div class="profiles">
         <profile 
-            v-for="profile in profiles" 
+            v-for="profile in $store.state.products.attributes[0].attribute_values" 
             :key='profile.id' 
             :profile="profile"
-            @click.native='getImageURL(profile.image.standart)'
+            @click.native='getImageURL(profile.border_img)'
         ></profile>
     </div>
 </template>
@@ -13,68 +13,19 @@
 <script>
 export default{
     name: 'profiles',
-    data () {
-        return{
-            profiles: [
-                {
-                    id: '0',
-                    title: 'Weiß',
-                    code: 'RAL 9016',
-                    image: {
-                        standart: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg',
-                        mini: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg'
-                    }
-                },
-                {
-                    id: '1',
-                    title: 'Goldene Eiche',
-                    code: 'RAL 9016',
-                    image: {
-                        standart: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg',
-                        mini: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg'
-                    }
-                },
-                {
-                    id: '2',
-                    title: 'Weiß',
-                    code: 'RAL 9016',
-                    image: {
-                        standart: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg',
-                        mini: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg'
-                    }
-                },
-                {
-                    id: '3',
-                    title: 'Weiß',
-                    code: 'RAL 9016',
-                    image: {
-                        standart: '#',
-                        mini: '#'
-                    }
-                },
-                {
-                    id: '4',
-                    title: 'Weiß',
-                    code: 'RAL 9016',
-                    image: {
-                        standart: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg',
-                        mini: 'https://static.tbmmarket.ru/risunok1024x768/Profil_MS_s_chetvertu_osnovnoi_belii_60m_Alutek_MOS2005_07_001.jpg'
-                    }
-                },
-            ]
-        }
-    },
     components: {
         Profile: () => import('./item.vue')
     },
     methods: {
         getImageURL: function (image){
-            this.$emit('getImageURL', image)
+            this.$store.state.selectedProduct.frame.image = image;
+            /*this.$emit('getImageURL', image)*/
         }
     },
-    mounted () {
-        this.getImageURL(this.profiles[0].image.standart)
-    }
+    mounted() {
+        this.getImageURL(this.$store.state.products.img)
+    },
+    
 }
 </script>
 

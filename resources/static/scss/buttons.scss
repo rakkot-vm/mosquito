@@ -1,4 +1,5 @@
 @mixin btn{
+    position: relative;
     border-radius: 3px;
     transition: .2s;
     cursor: pointer;
@@ -46,6 +47,13 @@
         }
         span{
             color:#242424;
+        }
+    }
+    &-img{
+        padding-left: 30px;
+        img{
+            position: absolute;
+            left: 15px;
         }
     }
 }
