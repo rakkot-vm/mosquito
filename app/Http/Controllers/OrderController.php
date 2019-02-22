@@ -74,9 +74,16 @@ class OrderController extends Controller
         return back();
     }
 
-    public function calc(OrderStatusRequest $request)
+    public function calcProduct(OrderStatusRequest $request)
     {
-        return response()->json(['amount' => (new Order)->calcAmount($request->products_json)]);
+        $product = json_decode($request->products_json, true);
+        return response()->json(['amount' => (new Order)->calcAmount($product)]);
+    }
+
+    public function calcAllProducts(OrderStatusRequest $request)
+    {
+        $products = json_decode($request->products_json, true);
+        return response()->json(['amount' => (new Order)->calcAmountAll($products)]);
     }
 
     public function confirm(Request $request)

@@ -51,7 +51,8 @@ Route::middleware('api')->group(function () {
     Route::get('common', 'CommonController@get')->name('common.get');
     Route::get('general', 'GeneralSettingsController@get')->name('general.get');
 
-    Route::get('orders/calc', 'OrderController@calc')->name('order.calc');
+    Route::get('orders/calc-product', 'OrderController@calcProduct')->name('order.calcProduct');
+    Route::get('orders/calc-all-products', 'OrderController@calcAllProducts')->name('order.calcAllProducts');
     Route::middleware(['check_order_amount', 'check_private_policy'])->group(function () {
         Route::post('orders', 'OrderController@store')->name('order.store');
     });

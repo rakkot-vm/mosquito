@@ -24,23 +24,29 @@ class Order extends Model
         'client_type',
     ];
 
-    public function calcAmount(string $products_json): float
+    public function calcAmount(array $product): float
     {
-        $products = json_decode($products_json, true);
+        $model_product = Product::findOrFail($product['id']);
 
+        $amount = !empty($model_product->price) ? $model_product->price : 0;
+
+        foreach ($product['attributes'] as $attr_value_id){
+            $model_value = AttributeValue::findOrFail($attr_value_id);
+            $model_attr = Attribute::findOrFail($model_value->attribute_id);
+
+            $amount += !empty($model_attr->price) ? $model_attr->price : 0;
+            $amount += !empty($model_value->price) ? $model_value->price : 0;
+        }
+
+        return $product['count'] ? $amount * $product['count'] : $amount;
+    }
+
+    public function calcAmountAll(array $products): float
+    {
         $amount = 0;
+
         foreach($products as $product){
-            $model_product = Product::findOrFail($product['id']);
-
-            $amount += !empty($model_product->price) ? $model_product->price : 0;
-
-            foreach ($product['attributes'] as $attr_value_id){
-//                $model_attr = Attribute::findOrFail($attr[0]);
-                $model_value = AttributeValue::findOrFail($attr_value_id);
-
-//                $amount += !empty($model_attr->price) ? $model_attr->price : 0;
-                $amount += !empty($model_value->price) ? $model_value->price : 0;
-            }
+            $amount += $this->calcAmount($product);
         }
 
         return $amount;
