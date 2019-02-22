@@ -16,7 +16,9 @@ class CheckOrderAmount
      */
     public function handle($request, Closure $next)
     {
-        if($request->amount == (new Order)->calcAmountAll($request->products_json)){
+        $products = json_decode($request->products_json, true);
+
+        if($request->amount == (new Order)->calcAmountAll($products)){
             return $next($request);
         }
 
