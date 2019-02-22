@@ -34,11 +34,11 @@ class Order extends Model
 
             $amount += !empty($model_product->price) ? $model_product->price : 0;
 
-            foreach ($product['attributes'] as $attr_id => $attr){
-                $model_attr = Attribute::findOrFail($attr[0]);
-                $model_value = AttributeValue::findOrFail($attr[1]);
+            foreach ($product['attributes'] as $attr_value_id){
+//                $model_attr = Attribute::findOrFail($attr[0]);
+                $model_value = AttributeValue::findOrFail($attr_value_id);
 
-                $amount += !empty($model_attr->price) ? $model_attr->price : 0;
+//                $amount += !empty($model_attr->price) ? $model_attr->price : 0;
                 $amount += !empty($model_value->price) ? $model_value->price : 0;
             }
         }
@@ -54,11 +54,11 @@ class Order extends Model
             $model_product = Product::findOrFail($order_product['id']);
             $order_product['title'] = $model_product->title;
 
-            foreach ($order_product['attributes'] as $attr_id => $attr){
-                $model_attr = Attribute::findOrFail($attr[0]);
-                $model_value = AttributeValue::findOrFail($attr[1]);
+            foreach ($order_product['attributes'] as $key=>$attr_value_id){
+                $model_value = AttributeValue::findOrFail($attr_value_id);
+                $model_attr = Attribute::findOrFail($model_value->attribute_id);
 
-                unset($order_product['attributes'][$attr_id]);
+                unset($order_product['attributes'][$key]);
 
                 $order_product['attributes'][] = [
                     'title' => $model_attr->title,
@@ -73,7 +73,6 @@ class Order extends Model
 
             $order_product['attributes'] = array_values($order_product['attributes']);
         }
-
 
         return json_encode($order_products);
     }
