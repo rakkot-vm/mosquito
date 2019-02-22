@@ -1,0 +1,59 @@
+@mixin btn{
+    position: relative;
+    border-radius: 3px;
+    transition: .2s;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 0;
+    padding: 10px;
+    span{
+        font-family: "Exo2-Bold";
+        font-size: 16px;
+        line-height: 1.46;
+        text-align: center;
+    }
+    @media(max-width: 380px){
+        span{
+            font-size: 15px;
+        }
+    }
+}
+
+.btn{
+    &-darkblue{
+        @include btn;
+        width: 236px;
+        height: 46px;
+        background-color: #395781;
+        border: 0;
+        border-bottom: 4px solid #153665;
+        &:hover{
+            border-bottom: 0px solid #153665;
+        }
+        span{
+            color: #fff;
+        }
+    }
+    &-grey{
+        @include btn;
+        width: 236px;
+        height: 46px;
+        background-color: #e5e5e5;
+        border-bottom: 4px solid #9C9C9C;
+        &:hover{
+            border-bottom: 0px solid #153665;
+        }
+        span{
+            color:#242424;
+        }
+    }
+    &-img{
+        padding-left: 30px;
+        img{
+            position: absolute;
+            left: 15px;
+        }
+    }
+}
