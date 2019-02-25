@@ -40,7 +40,13 @@ class OrderStoreRequest extends FormRequest
             'client_type' => 'required|string|max:255',
 
             'products_json' => 'required|json',
-            'private_policy' => 'required|boolean',
+            'private_policy' => [
+                'required',
+                function ($attribute, $value, $fail) {
+                    if ($value != 'true') {
+                        $fail($attribute.' is invalid.');
+                    }
+                }],
         ];
     }
 
