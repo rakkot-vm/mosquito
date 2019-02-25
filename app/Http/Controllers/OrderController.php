@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\OrderStatusRequest;
-use App\Http\Requests\OrderStoreRequest;
+use App\Http\Requests\Order\OrderCalcRequest;
+use App\Http\Requests\Order\OrderConfirmRequest;
+use App\Http\Requests\Order\OrderStatusRequest;
+use App\Http\Requests\Order\OrderStoreRequest;
 use App\Order;
-use Illuminate\Http\Request;
 
 class OrderController extends Controller
 {
@@ -74,19 +75,19 @@ class OrderController extends Controller
         return back();
     }
 
-    public function calcProduct(OrderStatusRequest $request)
+    public function calcProduct(OrderCalcRequest $request)
     {
         $product = json_decode($request->products_json, true);
         return response()->json(['amount' => (new Order)->calcAmount($product)]);
     }
 
-    public function calcAllProducts(OrderStatusRequest $request)
+    public function calcAllProducts(OrderCalcRequest $request)
     {
         $products = json_decode($request->products_json, true);
         return response()->json(['amount' => (new Order)->calcAmountAll($products)]);
     }
 
-    public function confirm(Request $request)
+    public function confirm(OrderConfirmRequest $request)
     {
         $order = Order::where('payment', $request->payment_id)->get()->first();
         if(empty($order)) return response()->json(['status'=>'error']);

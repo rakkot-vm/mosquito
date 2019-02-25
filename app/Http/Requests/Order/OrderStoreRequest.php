@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests;
+namespace App\Http\Requests\Order;
 
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Foundation\Http\FormRequest;
@@ -26,23 +26,20 @@ class OrderStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'status' => 'string|max:20',
-            'amount' => 'numeric',
+            'amount' => 'required|numeric',
 
-            'first_name' => 'string|max:255',
-            'last_name' => 'string|max:255',
-            'phone' => 'numeric',
-            'email' => 'email',
-            'land' => 'string|max:255',
-            'index' => 'numeric',
-            'city' => 'string|max:255',
-            'street' => 'string|max:255',
-            'house' => 'string|max:255',
-            'client_type' => 'string|max:255',
+            'first_name' => 'required|string|max:255',
+            'last_name' => 'required|string|max:255',
+            'phone' => 'required|numeric',
+            'email' => 'required|email',
+            'land' => 'required|string|max:255',
+            'index' => 'required|numeric',
+            'city' => 'required|string|max:255',
+            'street' => 'required|string|max:255',
+            'house' => 'required|string|max:255',
+            'client_type' => 'required|string|max:255',
 
-            'products_json' => 'json',
-            'payment' => 'string|max:255',
-
+            'products_json' => 'required|json',
             'private_policy' => 'required|boolean',
         ];
     }
