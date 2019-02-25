@@ -128,12 +128,12 @@ class ProductController extends Controller
         $product->attributes = $product->attributes->map(function($item_attr, $key_attr){
 
             $item_attr->attributeValues = $item_attr->attributeValues->map(function($item, $key){
-                return $item->only(['title', 'preview_img', 'border_img', 'price']);
+                return $item->only(['id', 'title', 'preview_img', 'border_img', 'price']);
             });
 
-            return $item_attr->only(['title', 'attributeValues']);
+            return $item_attr->only(['id', 'title', 'attributeValues']);
         });
 
-        return $product->only(['title', 'img', 'price', 'attributes']);
+        return $product->only(['id', 'title', 'img', 'price', 'attributes']);
     }
 }
