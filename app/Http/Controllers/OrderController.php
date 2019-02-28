@@ -40,7 +40,7 @@ class OrderController extends Controller
 
         $order->save();
 
-        return response('{"status":"OK","client_key":"'.$intent->client_secret.'"');
+        return response()->json(['client_key' => $intent->client_secret]);
     }
 
     /**
