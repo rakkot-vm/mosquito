@@ -21,7 +21,7 @@ class CreateAccordionTabsTable extends Migration
             $table->string('img')->default('imgs/no_img.jpg');
             $table->string('imgAlt')->nullable();
             $table->string('imgTitle')->nullable();
-            $table->string('text')->nullable();
+            $table->text('text')->nullable();
             $table->timestamps();
         });
     }
