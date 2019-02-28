@@ -85,7 +85,9 @@
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoWidth', 'Width info button:') !!}
-                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoWidth" type="checkbox" id="sec2_infoWidth">
+
+                    <input {{ $settings['sec2_infoWidth']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoWidth" type="checkbox" id="sec2_infoWidth" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupWidth', 'Width popup:') !!}
@@ -100,7 +102,9 @@
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoHeight', 'Height info button:') !!}
-                    <input {{ $settings['sec2_infoHeight']->value == ''?: 'checked' }} name="sec2_infoHeight" type="checkbox" id="sec2_infoHeight">
+
+                    <input {{ $settings['sec2_infoHeight']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoHeight" type="checkbox" id="sec2_infoHeight" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHeight', 'Height popup:') !!}
@@ -115,7 +119,9 @@
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoDeep', 'Deep info button:') !!}
-                    <input {{ $settings['sec2_infoDeep']->value == ''?: 'checked' }} name="sec2_infoDeep" type="checkbox" id="sec2_infoDeep">
+
+                    <input {{ $settings['sec2_infoDeep']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoDeep" type="checkbox" id="sec2_infoDeep" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupDeep', 'Deep popup:') !!}
@@ -130,7 +136,8 @@
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoHols', 'Hols info button:') !!}
-                    <input {{ $settings['sec2_infoHols']->value == ''?: 'checked' }} name="sec2_infoHols" type="checkbox" id="sec2_infoHols">
+                    <input {{ $settings['sec2_infoHols']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoHols" type="checkbox" id="sec2_infoHols" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHols', 'Hols popup:') !!}

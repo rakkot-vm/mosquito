@@ -8,6 +8,15 @@ $('[name="value-type"]').click(function(e){
     $('.value-fields .textarea').toggle();
 });
 
+$('.popup-toggle').click(function(e){
+    if(e.target.checked){
+        e.target.value = 'on';
+        $('input[type=hidden][name=' + e.target.name +']').remove();
+    }else{
+        $('<input type="hidden" name="'+ e.target.name +'" value="off">').insertBefore(e.target);
+    }
+});
+
 var newTabId = 0;
 $('#add_acc_item').click(function(e){
     newTabId = newTabId+1;

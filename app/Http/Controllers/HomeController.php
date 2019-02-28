@@ -112,15 +112,8 @@ class HomeController extends Controller
             ]];
 
             if($accordionTabs->isNotEmpty()){
-                $accordionTabs = $accordionTabs->mapWithKeys(function($tab){
-                    return [[
-                        'sort' => $tab['sort'],
-                        'title' => $tab['title'],
-                        'img' => $tab['img'],
-                        'imgAlt' => $tab['imgAlt'],
-                        'imgTitle' => $tab['imgTitle'],
-                        'text' => $tab['text'],
-                    ]];
+                $accordionTabs = $accordionTabs->map(function($item, $key){
+                    return $item->only(['id', 'title', 'img', 'imgAlt', 'imgTitle', 'text']);
                 });
 
                 $item[$title]['accordionTabs'] = $accordionTabs;
