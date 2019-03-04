@@ -1,48 +1,70 @@
 <template>
     <div class="dimensions-section">
         <h3 class="title">Abmessungen</h3>
-        <p>
-            Vor der Bestellung können Sie nach unseren Empfehlungen Moskitonetze unabhängig messen. Dies beschleunigt die Auftragsabwicklung und reduziert die Arbeitskosten. 
-        </p>
-        <p>
-            Achtung, wir übernehmen keine Haftung für falsche Größen Bitte beachten sie, dass unser Insektenschutz nur für die Standard Fenster Ansicht passt
-        </p>
-        <div class="download-file-installation">
-            
+        <div style="margin-bottom: 15px;" v-html="$store.state.home.sec2_text.value">
+
         </div>
+        
+        <a class="download-file-installation" href="#" download>
+            <img src="../../../../static/img/pdf-file-format-symbol.png" alt=""><span>Montageanleitung und Installation</span>
+        </a>
         
         <div class="dimension">
             <span class="caption">{{this.$store.state.home.sec2_textWidth.value}}</span>
             <div class="field">
-                <input type="text" v-model="$store.state.selectedProduct.dimensions.width">
+                <input type="text" v-model="$store.state.selectedProduct.adds.weight">
                 <span class="units">mm</span>
+            </div>
+            <div 
+                class="additional-information"
+                @click="$store.state.popupDimension1 = true"
+                v-if="this.$store.state.home.sec2_infoWidth.value === 'on'">
+                 <span>i</span>
             </div>
         </div>
         
         <div class="dimension">
             <span class="caption">{{this.$store.state.home.sec2_textHeight.value}}</span>
             <div class="field">
-                <input type="text" v-model="$store.state.selectedProduct.dimensions.height">
+                <input type="text" v-model="$store.state.selectedProduct.adds.height">
                 <span class="units">mm</span>
+            </div>
+            <div 
+                class="additional-information"
+                @click="$store.state.popupDimension2 = true"
+                v-if="this.$store.state.home.sec2_infoHeight.value === 'on'">
+                 <span>i</span>
             </div>
         </div>
         
         <div class="dimension">
             <span class="caption">{{this.$store.state.home.sec2_textDeep.value}}</span>
             <div class="field">
-                <input type="text" v-model="$store.state.selectedProduct.dimensions.deep">
+                <input type="text" v-model="$store.state.selectedProduct.adds.deep">
                 <span class="units">mm</span>
+            </div>
+            <div 
+                class="additional-information"
+                @click="$store.state.popupDimension3 = true"
+                v-if="this.$store.state.home.sec2_infoDeep.value === 'on'">
+                 <span>i</span>
             </div>
         </div>
         
         <div class="dimension">
-            <span class="caption">{{this.$store.state.home.sec2_textWidth.value}}</span>
+            <span class="caption">{{this.$store.state.home.sec2_textHols.value}}</span>
             <div class="field" style="padding: 0">
-                <select v-model="$store.state.selectedProduct.dimensions.hole">
-                    <option value="true">Ja</option>
-                    <option value="false">No</option>
+                <select v-model="$store.state.selectedProduct.adds.holes">
+                    <option value="1">Ja</option>
+                    <option value="0">No</option>
                 </select>
                 <label class="select-arrow"></label>
+            </div>
+            <div 
+                class="additional-information"
+                @click="$store.state.popupDimension4 = true"
+                v-if="this.$store.state.home.sec2_infoHols.value === 'on'">
+                 <span>i</span>
             </div>
         </div>
         
@@ -52,6 +74,46 @@
                 <input type="text" v-model="$store.state.selectedProduct.count">
             </div>
         </div>
+        <p class="text-blue" style="margin: 20px 0;">
+            Insektenschutz Alu Rahmen mit Maße ab 1500 mm (Breite oder Höhe) wird mit einer Querstange ausgestattet
+        </p>
+        <strong>
+            Preisspanne bei Rahmengröße
+        </strong>
+        <!-- {{this.$store.state.products.attributes[2].attributeValues}} -->
+        <ul style="margin: 15px 0;">
+            <li v-for="(item, index) in $store.state.products.attributes[2].attributeValues" :key="item.id">
+                <label :for="'spec_param-' + index" @click="$store.state.selectedProduct.attributes.spec = item.id">
+                    <input 
+                        :id="'spec_param-' + index" 
+                        type="radio"
+                        name="spec_param">
+                        <span>{{item.title}} <strong>({{item.price}} €)</strong></span>
+                </label>
+            </li>
+        </ul>
+        
+
+        
+        <popupDimension v-if="$store.state.popupDimension1">
+            <div class="close" @click="$store.state.popupDimension1 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupWidth.value"></div>
+        </popupDimension>
+
+        <popupDimension v-if="$store.state.popupDimension2">
+            <div class="close" @click="$store.state.popupDimension2 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupHeight.value"></div>
+        </popupDimension>
+
+        <popupDimension v-if="$store.state.popupDimension3">
+            <div class="close" @click="$store.state.popupDimension3 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupDeep.value"></div>
+        </popupDimension>
+
+        <popupDimension v-if="$store.state.popupDimension4">
+            <div class="close" @click="$store.state.popupDimension4 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupHols.value"></div>
+        </popupDimension>
     </div>
 </template>
 
@@ -59,9 +121,15 @@
 <script>
 export default{
     name: 'dimensions-section',
-    /*components: {
-        dimensionsInputs: () => import('./inputs.vue')
-    }*/
+    components: {
+        popupDimension: () => import('./popup.vue')
+    },
+    mounted(){
+        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes[2].attributeValues[0].id
+    },
+    beforeUpdate(){
+        document.getElementById('spec_param-0').setAttribute('checked', 'checked');
+    }
 }
 </script>
 
@@ -75,6 +143,7 @@ export default{
         padding: 4px 34px;
         height: 37px;
         margin-bottom: 9px;
+        position: relative;
     }
     .title{
         font-size: 16px;
@@ -83,6 +152,8 @@ export default{
         color: #fff;
         display: inline-block;
         width: calc(100% - 110px);
+        height: 22px;
+        overflow: hidden;
     }
     .field{
         display: flex;
@@ -145,6 +216,70 @@ export default{
         .field{
             border: 1px solid #242424;
             margin-left: 22px;
+        }
+    }
+    .additional-information{
+        width: 18px;
+        height: 18px;
+        background-color: #ffffff;
+        color: #242424;
+        position: absolute;
+        right: 8px;
+        top: 10px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        span{
+            font-family: "Proxima-Nova-Bold"
+        }
+    }
+    .close{
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        width: 24px;
+        height: 20px;
+        color: #395781;
+        cursor: pointer;
+        opacity: 1;
+        &:before, &:after{
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 2px;
+            background-color: #395781;
+            border-radius: 2px;
+        }
+        &:before{
+            top: 10px;
+            left: 0;
+            transform: rotate(45deg)
+        }
+        &:after{
+            bottom: 8px;
+            right: 0;
+            transform: rotate(-45deg)
+        }
+    }
+    .text-blue{
+        color: #395781;
+        font-family: "Proxima-Nova-Bold"
+    }
+    .download-file-installation{
+        margin-bottom: 15px;
+        display: block;
+        text-decoration: underline;
+        img{
+            margin-right: 5px;
+        }
+    }
+    @media(max-width:480px){
+        .dimension{
+            padding: 4px 15px 4px 15px;
+        }
+        .additional-information{
+            display: none;
         }
     }
 </style>

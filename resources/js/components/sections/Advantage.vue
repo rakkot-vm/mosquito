@@ -63,6 +63,11 @@ export default{
             font-family: 'Exo2-Bold';
             font-size: 16px;
         }
+        img{
+            width: 45px;
+            height: 45px;
+            object-fit: contain;
+        }
     }
     @media(max-width:767px) {
         #advantage{

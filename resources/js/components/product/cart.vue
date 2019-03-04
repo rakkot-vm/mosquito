@@ -6,12 +6,12 @@
           ref="productCartWrapper"
           class="wrapper" 
           :class="{fixed: this.position.fixed}">
-           <p class="price underline underline-right">38.45 €</p>
+           <p class="price underline underline-right">{{this.$store.state.productPrice}} €</p>
            <p>
                Lieferzeit <strong> 3 - 5 </strong> Werktage <br/>
                Versandkosten: <strong> 4.99 € </strong>
            </p>
-           <button class="btn-darkblue btn-img">
+           <button class="btn-darkblue btn-img" @click="addProductToCart()">
                <img src="../../../static/img/icons/shopping-cart.png" alt="">
                <span>In den Warenkorb</span>
             </button>
@@ -33,13 +33,15 @@ export default{
                     height: null,
                     top: null
                 },
-                fixed: false
+                fixed: false,
+
+                windowTop: 0,
             }
         }
     },
     methods:{
         getPositionCart(){
-            if(window.innerWidth >= 1200){
+            if(window.innerWidth >= 1200 && location.pathname == '/'){
                 this.position.wrapper.height = this.$refs.productCartWrapper.getBoundingClientRect().height;
                 /*position cart*/
                 this.position.cart.top = this.$refs.productCart.getBoundingClientRect().y;
@@ -54,13 +56,28 @@ export default{
                 } else {
                     this.position.fixed = false
                 }
+            } else {
+                this.position.fixed = false
             }
+        },
+        addProductToCart(){
+            window.scrollTo({
+                top: 0,
+                left: 0,
+                behavior: 'smooth'
+            });
+
+            this.$store.commit('COUNT_PRODUCTS_IN_CART');
+            this.$store.commit('ADD_PRODUCT_TO_CART');
+            this.$store.dispatch('calcProducts');
+
+            
         }
     },
     mounted(){
         this.position.wrapper.height = this.$refs.productCartWrapper.getBoundingClientRect().height;
         window.addEventListener('scroll', this.getPositionCart);
-    }
+    },
 }
 </script>
 
@@ -94,5 +111,25 @@ p{
 }
 .btn-darkblue{
     width: 100%;
+}
+@media(max-width: 1200px){
+    .cart{
+        width: 100%;
+        margin-top: 20px;
+    }
+}
+@media(max-width: 767px){
+    .cart{
+        width: 49%;
+        margin-top: 0;
+        .wrapper{
+            width: 100%;
+        }
+    }
+}
+@media(max-width: 480px){
+    .cart{
+        width: 100%;
+    }
 }
 </style>

@@ -1,7 +1,10 @@
 <template>
-    <div class="netting">
+    <div 
+       class="netting"
+       :class="{active: netting.id == this.$store.state.selectedProduct.attributes.net}" 
+       @click='getData(netting.id)'>
         <div class="image-border">
-            <img :src="this.netting.imageURL" alt="">
+            <img :src="this.netting.preview_img" alt="">
         </div>
         <p class="caption">{{this.netting.title}}</p>
     </div>
@@ -11,7 +14,15 @@
 <script>
 export default{
     name: 'netting',
-    props: ['netting']
+    props: ['netting'],
+    methods: {
+        getData: function (idNetting){
+            this.$store.state.selectedProduct.attributes.net = idNetting;
+        }
+    },
+    mounted(){
+        this.getData(this.$store.state.products.attributes[1].attributeValues[0].id)
+    }
 }
 </script>
 
@@ -42,6 +53,17 @@ export default{
         margin: 4px 0;
         &:first-letter{
             text-transform: uppercase;
+        }
+    }
+    .active{
+        .image-border{
+            border: 1px solid #395781;
+        }
+    }
+    @media(max-width: 767px){
+        .image-border{
+            width: 120px;
+            height: 120px;
         }
     }
 </style>

@@ -8,7 +8,7 @@
             <img src="./../../../static/img/tick-inside-circle.png" alt="" class="img-check">
             <span>Standard</span>
         </p>
-        
+
         <product-frames></product-frames>
         <product-nettings></product-nettings>
         <product-dimensions></product-dimensions>
@@ -45,5 +45,16 @@ export default{
 .img-check{
     margin-top: -2px;
     margin-right: 7px;
+}
+@media(max-width: 1200px){
+    .settings-product{
+        width: calc(100% - 300px);
+    }
+}
+@media(max-width: 767px){
+    .settings-product{
+        width: 100%;
+        margin-top: 20px;
+    }
 }
 </style>

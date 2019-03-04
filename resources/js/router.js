@@ -18,11 +18,6 @@ export default new Router({
       name: 'payment',
       component: () => import( './pages/Payment.vue')
     },
-      {
-      path: '/registration',
-      name: 'registration',
-      component: () => import( './pages/Registration.vue')
-    },
     {
       path: '/404',
       name: '404',

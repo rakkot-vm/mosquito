@@ -4,11 +4,8 @@
             <div class="row advice">
                 <div class="col-md-2"></div>
                 <div class="col-md-8">
-                    <h2 class="underline underline-center text-center">Ratschläge</h2>
-                    <p class="text-center">
-                        Im Gegensatz zu anderen Arten von Anti-Moskito-Produkten empfehlen wir, das Rahmen-Moskitonetz im Winter von den Fenstern zu entfernen - dies schützt es vor widrigen Witterungsbedingungen und verlängert die Lebensdauer erheblich.<br>
-                        Unsere Berater beantworten gerne alle Fragen und beraten Sie kompetent zu unseren Produkten.
-                    </p>
+                    <h2 class="underline underline-center text-center" v-html="$store.state.home.sec4_title.value"></h2>
+                    <p class="text-center" v-html="$store.state.home.sec4_text.value"></p>
                 </div>
                 <div class="col-md-2"></div>
             </div>
@@ -93,6 +90,11 @@ export default{
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+    }
+    @media(max-width: 480px){
+        .image-block{
+            height: 120px;
         }
     }
 </style>

@@ -27,7 +27,7 @@ export default{
 }
 .popup{
     width: 580px;
-    min-height: 260px;
+    min-height: 200px;
     margin: 20vh auto;
     padding: 65px 40px 49px;
     background-color: #fff;

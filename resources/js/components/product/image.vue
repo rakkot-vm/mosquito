@@ -6,8 +6,9 @@
            class="image-border"
            :class="{fixed: this.position.fixed}" 
            ref="imageWrapper">
-            <img :src="this.$store.state.selectedProduct.frame.image" alt="">
+            <img :src="this.$store.state.viewImg" alt="">
         </div>
+        <product-cart v-if="this.$store.state.showTablets"></product-cart>
     </div>
 </template>
 
@@ -29,9 +30,12 @@ export default{
             }
         }
     },
+    components:{
+        productCart: () => import('./../product/cart.vue'),
+    },
     methods:{
         getPosition(){
-            if(window.innerWidth >= 1200){
+            if(window.innerWidth >= 1200 && location.pathname == '/'){
                 /*position wrapper*/
                 this.position.wrapper.top = this.$refs.imageProduct.getBoundingClientRect().y;
                 this.position.wrapper.height = this.$refs.imageProduct.getBoundingClientRect().height;
@@ -50,10 +54,8 @@ export default{
         },
     },
     mounted(){
+        /*this.$store.state.selectedProduct.frame.image = this.$store.state.products.attributes[0].attribute_values[0].border_img*/
         window.addEventListener('scroll', this.getPosition);
-    },
-    updated(){
-        this.$store.state.selectedProduct.frame.image = this.$store.state.products.attributes[0].attribute_values[0].border_img
     }
 }
 </script>
@@ -75,6 +77,35 @@ export default{
         top: 0;
         margin-top: 20px;
         width: inherit;
+    }
+}
+@media(max-width: 1200px){
+    .image-product{
+        width: 280px;
+    }
+}
+@media(max-width: 767px){
+    .image-product{
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .image-border{
+        width: 49%;
+    }
+}
+@media(max-width: 480px){
+    .image-product{
+        flex-direction: column;
+    }
+    .image-border{
+        width: 100%;
+        max-height: 380px;
+        margin-bottom: 20px;
+        img{
+            height: 100%;
+            object-fit: contain;
+        }
     }
 }
 </style>

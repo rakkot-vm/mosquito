@@ -1,5 +1,8 @@
 <template>
-    <div class="profile">
+    <div 
+       class="profile" 
+       :class="{active: profile.id == this.$store.state.selectedProduct.attributes.border}" 
+       @click='getData(profile.border_img, profile.id)'>
         <div class="image-border">
             <img :src="this.profile.preview_img" alt="">
         </div>
@@ -12,7 +15,16 @@
 <script>
 export default{
     name: "frame",
-    props: ['profile']
+    props: ['profile'],
+    methods: {
+        getData: function (image, id){
+            this.$store.state.viewImg = image;
+            this.$store.state.selectedProduct.attributes.border = id;
+        }
+    },
+    mounted() {
+        this.getData(this.$store.state.products.attributes[0].attributeValues[0].border_img, this.$store.state.products.attributes[0].attributeValues[0].id)
+    },
 }
 </script>
 
@@ -22,16 +34,6 @@ export default{
         padding: 0 5px;
         margin-bottom: 24px;
         cursor: pointer;
-        &:hover{
-            .image-border{
-                border-color: #153665;
-                transition: .5s;
-            }
-            .caption{
-                color: #153665;
-                transition: .5s;
-            }
-        }
     }
     .image-border{
         border: 1px solid #a0a0a0;
@@ -63,5 +65,16 @@ export default{
         color: rgba(36, 36, 36, 0.75);
         text-transform: uppercase;
         margin-bottom: 0;
+    }
+    .active{
+        .image-border{
+            border: 1px solid #395781;
+        }
+    }
+    @media(max-width: 767px){
+        .image-border{
+            width: 120px;
+            height: 120px;
+        }
     }
 </style>

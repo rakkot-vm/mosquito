@@ -6,6 +6,7 @@
     <tabs-section></tabs-section>
     <advice-section></advice-section>
     <advantage-section></advantage-section>
+    
   </div>
 </template>
 
@@ -21,8 +22,5 @@ export default {
     AdviceSection: () => import('./../components/sections/Advice.vue'),
     AdvantageSection: () => import('./../components/sections/Advantage.vue')
   },
-  mounted(){
-      this.$store.dispatch('getDataHome');
-  }
 }
 </script>

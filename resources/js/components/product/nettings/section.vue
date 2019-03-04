@@ -1,9 +1,9 @@
 <template>
-    <div class="nettings-section">
+    <div class="nettings-section" v-if="this.$store.state.getJsonHome">
         <h3 class="title">Moskitonetz-Tuch</h3>
         <div class="nettings-grid">
             <netting
-                v-for="netting in nettings"
+                v-for="netting in $store.state.products.attributes[1].attributeValues"
                 :key="netting.id"
                 :netting="netting"
             ></netting>
@@ -15,23 +15,6 @@
 <script>
 export default{
     name: 'nettings',
-    data () {
-        return{
-            nettings:[
-                {
-                    id: 0,
-                    title: 'Schwarz',
-                    imageURL: '#'
-                    
-                },
-                {
-                    id: 1,
-                    title: 'Grau',
-                    imageURL: '#'
-                }
-            ]
-        }
-    },
     components: {
         netting: () => import('./item.vue')
     }
@@ -41,7 +24,7 @@ export default{
 
 <style scoped lang="scss">
     .nettings-section{
-        margin-top: 56px;
+        margin-top: 36px;
     }
     .nettings-grid{
         display: flex;
@@ -51,5 +34,10 @@ export default{
     }
     .title{
         font-size: 16px;
+    }
+    @media(max-width: 767px){
+        .nettings-section{
+            margin-top: 20px;
+        }
     }
 </style>
