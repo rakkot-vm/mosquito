@@ -23,10 +23,10 @@ class AttributeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($product_id)
     {
         $attribute = new Attribute();
-        $attribute->product_id = 1;
+        $attribute->product_id = $product_id;
 
         return view('admin.attributes.create', compact('attribute'));
     }

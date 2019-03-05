@@ -57,7 +57,7 @@ export default{
     }
     .active{
         .image-border{
-            border: 1px solid #395781;
+            border: 10px solid #395781;
         }
     }
     @media(max-width: 767px){

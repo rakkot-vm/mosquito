@@ -13,11 +13,11 @@
                    <div class="header__contact-info">
                        <p class="phone">
                            <img src="../../../static/img/icons/telephone.svg" alt="" class="footer-top__icon">
-                           <span class="text">{{this.$store.state.common.phone_1}}</span>
+                           <a :href="'tel:' + $store.state.common.phone_1">{{this.$store.state.common.phone_1}}</a>
                        </p>
                        <p class="email">
                            <img src="../../../static/img/icons/envelope.svg" alt="" class="footer-top__icon">
-                           <span class="text">{{this.$store.state.common.email_1}}</span>
+                           <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                        </p>
                    </div>
                </div>
@@ -97,6 +97,7 @@ export default{
         margin-bottom: 0;
         img{
             margin-top: -4px;
+            margin-right: 8px;
         }
     }
 }

@@ -64,3 +64,7 @@ section.sec_btns{
 .mr-l-10{
     margin-left: 10px;
 }
+
+input.form-control{
+    height: unset;
+}

@@ -168,6 +168,7 @@ export default{
             margin: 0 5px 0 0;
             padding: 0;
             height: 100%;
+            width: 60%;
             border-radius: 0;
             border: 0;
             color: #242424;

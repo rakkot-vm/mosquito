@@ -12,11 +12,11 @@
                            </p>
                            <p>
                                <img src="../../../static/img/icons/telephone.svg" alt="" class="icon--mr">
-                               <span>{{this.$store.state.common.phone_1}}</span>
+                               <a :href="'tel:' + $store.state.common.phone_1">{{this.$store.state.common.phone_1}}</a>
                             </p>
                            <p>
                                <img src="../../../static/img/icons/envelope.svg" alt="" class="icon--mr">
-                               <span>{{this.$store.state.common.email_1}}</span>
+                               <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                             </p>
                            <p>
                                <a href="#">FAQ</a> und <a href="#">Kontaktformular</a>
@@ -65,7 +65,7 @@
                 <div class="social-links">
                     <a :href="this.$store.state.common.social_instagram" title="instagram"><img src="../../../static/img/icons/instagram.svg" alt=""></a>
                     <a :href="this.$store.state.common.social_facebook" title="facebook"><img src="../../../static/img/icons/facebook.svg" alt=""></a>
-                    <a :href="this.$store.state.common.youtube" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_youtube" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
                 </div>
                 <div class="copyright">
                     <p><span>© Copyright Website 2018</span></p>
