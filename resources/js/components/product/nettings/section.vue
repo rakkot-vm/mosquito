@@ -3,7 +3,7 @@
         <h3 class="title">Moskitonetz-Tuch</h3>
         <div class="nettings-grid">
             <netting
-                v-for="netting in $store.state.products.attributes[1].attributeValues"
+                v-for="netting in $store.state.products.attributes.attr_2.attributeValues"
                 :key="netting.id"
                 :netting="netting"
             ></netting>

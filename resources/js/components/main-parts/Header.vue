@@ -17,7 +17,7 @@
                        </p>
                        <p class="email">
                            <img src="../../../static/img/icons/envelope.svg" alt="" class="footer-top__icon">
-                           <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
+                           <a :href="'mailto:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                        </p>
                    </div>
                </div>

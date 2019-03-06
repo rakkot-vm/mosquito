@@ -8,6 +8,7 @@
     align-items: center;
     border: 0;
     padding: 10px;
+    text-decoration: none;
     span{
         font-family: "Exo2-Bold";
         font-size: 16px;
@@ -54,6 +55,14 @@
         img{
             position: absolute;
             left: 15px;
+        }
+    }
+    @media(max-width: 600px){
+        &-img{
+            padding-left: 25px;
+            img{
+                left: 10px;
+            }
         }
     }
 }

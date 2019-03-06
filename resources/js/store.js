@@ -53,7 +53,7 @@ export default new Vuex.Store({
                 "weight" : "20",
                 "height" : "20",
                 "deep" : "20",
-                "holes" : "1"
+                "holes" : "true"
             },
       },
       
@@ -238,8 +238,10 @@ export default new Vuex.Store({
                 "title": "",
                 "img": "#",
                 "price": null,
-                "attributes": [
-                    {
+                "doc": "#",
+                "docName": "TEst doc",
+                "attributes": {
+                    "attr_1":{
                         "id": 1,
                         "title": "Border",
                         "attributeValues": [
@@ -259,7 +261,7 @@ export default new Vuex.Store({
                             }
                         ]
                     },
-                    {
+                    "attr_2":{
                         "id": 2,
                         "title": "Nets",
                         "attributeValues": [
@@ -279,7 +281,7 @@ export default new Vuex.Store({
                             }
                         ]
                     },
-                    {
+                    "attr_3":{
                         "id": 3,
                         "title": "Special parameters",
                         "attributeValues": [
@@ -299,7 +301,7 @@ export default new Vuex.Store({
                             },
                         ]
                     }
-                ]
+                }
            },
       ],
       common:{

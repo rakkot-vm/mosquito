@@ -1,7 +1,7 @@
 <template>
     <div class="profiles" v-if="this.$store.state.getJsonHome">
         <profile 
-            v-for="profile in $store.state.products.attributes[0].attributeValues" 
+            v-for="profile in $store.state.products.attributes.attr_1.attributeValues" 
             :key='profile.id' 
             :profile="profile"
         ></profile>
