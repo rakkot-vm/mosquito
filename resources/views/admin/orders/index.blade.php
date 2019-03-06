@@ -36,7 +36,17 @@
 
                             <tr role="row" class="odd">
                                 <td class="sorting_1"><a href="{{ route('orders.show', $order->id) }}">{{ $order->id }}</a></td>
-                                <td class="sorting_1">{{ $order->status }}</td>
+
+                                <td class="sorting_1">
+                                    @if($order->status == 'paid')
+                                        <span class="label label-success">paid</span>
+                                    @elseif($order->status == 'not paid')
+                                        <span class="label label-warning">not paid</span>
+                                    @else
+                                        <span class="label label-danger">undefined status</span>
+                                    @endif
+                                </td>
+
                                 <td>{{ $order->amount }}</td>
 
                                 <td>{{ $order->first_name .' '. $order->last_name }}</td>
