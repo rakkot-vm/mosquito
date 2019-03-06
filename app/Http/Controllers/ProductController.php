@@ -122,6 +122,7 @@ class ProductController extends Controller
         } catch (ModelNotFoundException $ex) {
             return response()->json(['error' => 'Product not found'], 404);
         }
+
         return response()->json($this->cleanApiResponse($product));
     }
 
@@ -134,7 +135,7 @@ class ProductController extends Controller
             });
 
             return $item_attr->only(['id', 'title', 'attributeValues']);
-        });
+        })->keyBy('id');
 
         return $product->only(['id', 'title', 'img', 'price', 'attributes']);
     }
