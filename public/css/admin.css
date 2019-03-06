@@ -68,3 +68,7 @@ section.sec_btns{
 input.form-control{
     height: unset;
 }
+
+.note-editor-page .note-editable{
+height: 300px;
+}

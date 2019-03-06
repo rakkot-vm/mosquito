@@ -14,7 +14,9 @@ class PageController extends Controller
      */
     public function index()
     {
-        //
+        $pages = Page::all();
+
+        return view('admin.pages.index', compact('pages'));
     }
 
     /**
@@ -24,7 +26,9 @@ class PageController extends Controller
      */
     public function create()
     {
-        //
+        $page = new Page();
+
+        return view('admin.pages.create', compact('page'));
     }
 
     /**
@@ -35,7 +39,12 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $page = new Page();
+        $page->fill($request->all());
+
+        $page->save();
+
+        return redirect(route('pages.show', ['id' => $page->id]))->with('success', 'Page has been create');
     }
 
     /**
@@ -44,9 +53,11 @@ class PageController extends Controller
      * @param  \App\Page  $page
      * @return \Illuminate\Http\Response
      */
-    public function show(Page $page)
+    public function show(int $id)
     {
-        //
+        $page = Page::findOrFail($id);
+
+        return view('admin.pages.show', compact('page'));
     }
 
     /**
@@ -57,7 +68,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        //
+        return view('admin.pages.edit', compact('page'));
     }
 
     /**
@@ -69,7 +80,9 @@ class PageController extends Controller
      */
     public function update(Request $request, Page $page)
     {
-        //
+        $page->fill($request->all());
+
+        return redirect(route('pages.show', ['id' => $page->id]))->with('success', 'Page has been update');
     }
 
     /**
@@ -80,6 +93,15 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+
+        return redirect(route('pages.index'))->with('success', 'Page has been delete');
+    }
+
+    public function get(int $id)
+    {
+        $page = Page::findOrFail($id)->only('title', 'content');
+
+        return response()->json($page);
     }
 }

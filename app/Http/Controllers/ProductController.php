@@ -130,7 +130,7 @@ class ProductController extends Controller
 
     private function cleanApiResponse($product)
     {
-        $product->attributes = $product->attributes->map(function($item_attr, $key_attr){
+        $attributes = $product->attributes->map(function($item_attr, $key_attr){
 
             $item_attr->attributeValues = $item_attr->attributeValues->map(function($item, $key){
                 return $item->only(['id', 'title', 'preview_img', 'border_img', 'price']);
@@ -139,6 +139,12 @@ class ProductController extends Controller
             return $item_attr->only(['id', 'title', 'attributeValues']);
         })->keyBy('id');
 
-        return $product->only(['id', 'title', 'img', 'price', 'doc', 'docName', 'attributes']);
+        $product = $product->only(['id', 'title', 'img', 'price', 'doc', 'docName']);
+
+        foreach($attributes->toArray() as $key => $attrs){
+            $product['attributes']['attr_'.$key] = $attrs;
+        }
+
+        return $product;
     }
 }

@@ -23,7 +23,7 @@ export default{
         }
     },
     mounted() {
-        this.getData(this.$store.state.products.attributes[0].attributeValues[0].border_img, this.$store.state.products.attributes[0].attributeValues[0].id)
+        this.getData(this.$store.state.products.attributes.attr_1.attributeValues[0].border_img, this.$store.state.products.attributes.attr_1.attributeValues[0].id)
     },
 }
 </script>
