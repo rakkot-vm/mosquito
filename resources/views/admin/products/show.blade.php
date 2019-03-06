@@ -26,6 +26,14 @@
                             <div class="min-height-200">
                                 <img src="{{ $product->img ? url($product->img) : '' }}" class="img-responsive">
                             </div>
+
+                            <div class="form-group">
+                                @if (!empty($product->doc))
+                                    <a href="{{ url($product->doc) }}">{{ $product->docName }}</a>
+                                @else
+                                    <p>Pdf document not loaded</p>
+                                @endif
+                            </div>
                         </div>
 
                         <div class="col-xs-12 col-lg-4">

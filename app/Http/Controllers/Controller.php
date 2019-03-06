@@ -24,12 +24,12 @@ class Controller extends BaseController
         return view($template, compact('data'));
     }
 
-    protected function updateImg(UploadedFile $requestImg, string $oldImg, string $path) : string
+    protected function updateFile(UploadedFile $requestFile, string $oldFile, string $path) : string
     {
-        if(file_exists($oldImg)){
-            Storage::delete($oldImg);
+        if(file_exists($oldFile)){
+            Storage::delete($oldFile);
         }
 
-        return url('/'.$requestImg->store($path));
+        return url('/'.$requestFile->store($path));
     }
 }

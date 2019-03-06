@@ -18,6 +18,8 @@ class CreateProductsTable extends Migration
             $table->string('title');
             $table->string('img')->nullable();
             $table->float('price')->nullable();
+            $table->string('doc')->nullable();
+            $table->string('docName')->nullable();
             $table->timestamps();
         });
     }
