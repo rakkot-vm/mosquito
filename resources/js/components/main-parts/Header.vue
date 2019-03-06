@@ -4,18 +4,20 @@
            <div class="row">
                <div class="col-lg-5 col-md-6 col-sm-12">
                    <router-link to="/" class="logo">
-                       <img title="Home" src="./../../../static/img/logo.png" alt="">
+                       <img :title="this.$store.state.common.logo_title" 
+                            :src="this.$store.state.common.logo_img" 
+                            :alt="this.$store.state.common.logo_alt">
                    </router-link>
                </div>
                <div class="col-lg-6 col-md-5 col-10">
                    <div class="header__contact-info">
                        <p class="phone">
                            <img src="../../../static/img/icons/telephone.svg" alt="" class="footer-top__icon">
-                           <span class="text">08178 / 932 932</span>
+                           <a :href="'tel:' + $store.state.common.phone_1">{{this.$store.state.common.phone_1}}</a>
                        </p>
                        <p class="email">
                            <img src="../../../static/img/icons/envelope.svg" alt="" class="footer-top__icon">
-                           <span class="text">example@domen.com</span>
+                           <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                        </p>
                    </div>
                </div>
@@ -23,8 +25,10 @@
                    <div class="btn-cart-block" @click="openPopupCart">
                        <img src="../../../static/img/icons/cart.svg" alt="">
                        <div class="count-products-in-cart">
-                           <span>{{this.$store.state.selectedProduct.count}}</span>
+                           <span>{{this.$store.state.countCart}}</span>
                        </div>
+                       
+                        <alert-popup :alertShow="alertShow">Cart is empty!</alert-popup> 
                    </div>
                </div>
            </div>
@@ -36,12 +40,28 @@
 <script>
 export default{
     name: 'header-nav',
+    data(){
+        return{
+            alertShow: false,
+        }
+    },
     components:{
-        popupCart: () => import('../cart/PopupCart.vue')
+        popupCart: () => import('../cart/PopupCart.vue'),
+        alertPopup: () => import('../alerts/alert.vue'),
     },
     methods:{
         openPopupCart(){
-            this.$store.state.common.popupShow = true
+            if(this.$store.state.cart.length > 0){
+                document.body.style.overflow = 'hidden';
+                this.$store.state.popupCart = true
+            } else {
+                this.alertShow = true;
+
+                var alertVar = this;
+                setTimeout(function(){
+                    alertVar.alertShow = false;
+                }, 3000)
+            }
         }
     }
 }
@@ -77,6 +97,7 @@ export default{
         margin-bottom: 0;
         img{
             margin-top: -4px;
+            margin-right: 8px;
         }
     }
 }

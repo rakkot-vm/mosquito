@@ -1,10 +1,9 @@
 <template>
-    <div class="profiles">
+    <div class="profiles" v-if="this.$store.state.getJsonHome">
         <profile 
-            v-for="profile in $store.state.products.attributes[0].attribute_values" 
+            v-for="profile in $store.state.products.attributes[0].attributeValues" 
             :key='profile.id' 
             :profile="profile"
-            @click.native='getImageURL(profile.border_img)'
         ></profile>
     </div>
 </template>
@@ -15,17 +14,7 @@ export default{
     name: 'profiles',
     components: {
         Profile: () => import('./item.vue')
-    },
-    methods: {
-        getImageURL: function (image){
-            this.$store.state.selectedProduct.frame.image = image;
-            /*this.$emit('getImageURL', image)*/
-        }
-    },
-    mounted() {
-        this.getImageURL(this.$store.state.products.img)
-    },
-    
+    }
 }
 </script>
 
@@ -37,5 +26,10 @@ export default{
     margin-left: -5px;
     margin-right: -5px;
     margin-top: 56px;
+}
+@media(max-width: 767px){
+    .profiles{
+        margin-top: 20px;
+    }
 }
 </style>

@@ -8,10 +8,19 @@
                            Kontakt & Support
                        </h3>
                        <div>
-                           <p>Montag bis Freitag von 08:00 bis 18:00 Uhr</p>
-                           <p><img src="../../../static/img/icons/telephone.svg" alt="" class="icon--mr"><span>08178 / 932 932</span></p>
-                           <p><img src="../../../static/img/icons/envelope.svg" alt="" class="icon--mr"><span>example@domen.com</span></p>
-                           <p><a href="#">FAQ</a> und <a href="#">Kontaktformular</a></p>
+                           <p>Montag bis Freitag von         {{this.$store.state.common.work_hours_1}}
+                           </p>
+                           <p>
+                               <img src="../../../static/img/icons/telephone.svg" alt="" class="icon--mr">
+                               <a :href="'tel:' + $store.state.common.phone_1">{{this.$store.state.common.phone_1}}</a>
+                            </p>
+                           <p>
+                               <img src="../../../static/img/icons/envelope.svg" alt="" class="icon--mr">
+                               <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
+                            </p>
+                           <p>
+                               <a href="#">FAQ</a> und <a href="#">Kontaktformular</a>
+                            </p>
                        </div>
                    </div>
                    <div class="col-md-4 col-xs-12">
@@ -54,9 +63,9 @@
             <hr>
             <div class="footer-bottom">
                 <div class="social-links">
-                    <a href="#" title="instagram"><img src="../../../static/img/icons/instagram.svg" alt=""></a>
-                    <a href="#" title="facebook"><img src="../../../static/img/icons/facebook.svg" alt=""></a>
-                    <a href="#" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_instagram" title="instagram"><img src="../../../static/img/icons/instagram.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_facebook" title="facebook"><img src="../../../static/img/icons/facebook.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_youtube" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
                 </div>
                 <div class="copyright">
                     <p><span>© Copyright Website 2018</span></p>

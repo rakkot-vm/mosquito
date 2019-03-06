@@ -1,19 +1,25 @@
 <template>
    <transition name="fade">
-        <div class="darkback" v-if="this.$store.state.common.popupShow">
+        <div class="darkback" v-if="this.$store.state.popupCart">
             <div class="popup">
                 <div class="close" @click="closePopupCart"></div>
                 <h3 class="title-popup">Sie haben den Artikel erfolgreich in den Warenkorb gelegt:</h3>
                 <ul class="products">
-                    <product-item></product-item>
+                    <product-item v-for="(item, index) in this.$store.state.cart"
+                        :key="index"
+                        :product="item"
+                        :index="index"
+                    ></product-item>
                 </ul>
                 <div class="buttons">
-                    <div class="btn btn-grey">
+                    <div class="btn btn-grey" @click="closePopupCart">
                         <span>Weiter Einkaufen</span>
                     </div>
-                    <div class="btn btn-darkblue btn-img">
+                    <router-link to="/payment">
+                    <div class="btn btn-darkblue btn-img" @click="closePopupCart()">
                         <img src="../../../static/img/icons/shopping-cart-white.svg" alt=""><span>Zum warekorb</span>
                     </div>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -28,7 +34,8 @@ export default{
     },
     methods:{
         closePopupCart(){
-            this.$store.state.common.popupShow = false
+            document.body.style.overflow = 'auto';
+            this.$store.state.popupCart = false
         }
     }
 }
@@ -44,6 +51,7 @@ export default{
         height: 100vh;
         background-color: rgba(0, 0, 0, 0.59);
         z-index: 99999;
+        overflow: auto;
     }
     .popup{
         width: 580px;

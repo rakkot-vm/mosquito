@@ -4,6 +4,8 @@
         <div class="row">
 
             <div class="col-xs-12 col-lg-4">
+                {!! Form::hidden('id', null, ['class' => 'form-control']) !!}
+
                 <div class="form-group">
                     {!! Form::label('name', 'Name *:') !!}
                     {!! Form::text('name', null, ['class' => 'form-control']) !!}
@@ -14,14 +16,12 @@
                 </div>
                 <div class="form-group">
                     {!! Form::label('role', 'Role:') !!}
-                    {{--{!! Form::select('role', null, ['class' => 'form-control']) !!}--}}
-{{--                    {!!Form::select('roles[]', $roles, $roles, ['class' => 'form-control'])!!}--}}
                     {{ Form::select('roles[]', $roles, $userRoles, ['multiple '=> 'multiple','class' => 'form-control'] ) }}
                 </div>
 
                 <div class="form-group">
                     {!! Form::label('password', 'Password *:') !!}
-                    {!! Form::password('password', null, ['class' => 'form-control']) !!}
+                    {!! Form::password('password', [null, 'class' => 'form-control']) !!}
                 </div>
             </div>
 

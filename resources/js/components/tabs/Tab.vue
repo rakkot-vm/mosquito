@@ -8,7 +8,7 @@
             ></span>
         </div>
         <transition name="collapse">
-            <div class="body" v-if="this.showTabContent">
+            <div class="body" v-show="this.showTabContent">
                 
                     <div class="image">
                         <img :src="this.tab.img" :alt="this.tab.imgAlt" :title="this.tab.imgTitle">

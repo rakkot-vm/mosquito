@@ -43,7 +43,7 @@
             <div class="box">
 
                 <div class="box-header with-border">
-                        <h3>Product attributes</h3>
+                    <h3>Product attributes</h3>
                 </div>
 
                 <div class="box-body">

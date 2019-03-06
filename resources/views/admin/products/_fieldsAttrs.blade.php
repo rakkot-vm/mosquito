@@ -6,7 +6,7 @@
                 <a href="{{ route('attributes.index') }}" class="">
                     <h3>Product attributes</h3>
                 </a>
-                <a href="{{ route('attributes.create') }}" class="btn btn-success">Create attribute</a>
+                <a href="{{ route('attributes.create', ['product_id' => $product->id]) }}" class="btn btn-success">Create attribute</a>
             </div>
 
             <div class="box-body">

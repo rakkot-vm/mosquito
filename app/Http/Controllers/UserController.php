@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserRegisterRequest;
+use App\Http\Requests\User\UserUpdateRequest;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -22,11 +23,14 @@ class UserController extends Controller
         return view('admin.users.show', compact('user'));
     }
 
-    public function update(UserRegisterRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         $user = User::findOrFail($id);
         $user->fill($request->all());
-        $user->password = bcrypt($request->password);
+        if(!empty($request->password)){
+            $user->password = bcrypt($request->password);
+        }
+
         $user->update();
 
         $user->syncRoles($request->roles);

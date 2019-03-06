@@ -82,15 +82,15 @@
                 {!! Form::model($settings, ['route' => ['common.update'], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
                 <div class="col-sm-6 col-xs-12">
                     {!! Form::label('data[phone_1][value]', 'Facebook link:') !!}
-                    <input class="form-control" name="data[phone_1][value]" type="text" value="{{ $settings['social_facebook']->value }}">
+                    <input class="form-control" name="data[social_facebook][value]" type="text" value="{{ $settings['social_facebook']->value }}">
                     <input name="data[social_facebook][title]" type="hidden" value="{{ $settings['social_facebook']->title }}">
 
                     {!! Form::label('data[email_1][value]', 'Instagram link:') !!}
-                    <input class="form-control" name="data[email_1][value]" type="text" value="{{ $settings['social_instagram']->value }}">
+                    <input class="form-control" name="data[social_instagram][value]" type="text" value="{{ $settings['social_instagram']->value }}">
                     <input name="data[social_instagram][title]" type="hidden" value="{{ $settings['social_instagram']->title }}">
 
                     {!! Form::label('data[work_hours_1][value]', 'Youtube link:') !!}
-                    <input class="form-control" name="data[work_hours_1][value]" type="text" value="{{ $settings['social_youtube']->value }}">
+                    <input class="form-control" name="data[social_youtube][value]" type="text" value="{{ $settings['social_youtube']->value }}">
                     <input name="data[social_youtube][title]" type="hidden" value="{{ $settings['social_youtube']->title }}">
                 </div>
 

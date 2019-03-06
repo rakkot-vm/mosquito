@@ -1,15 +1,15 @@
 <template>
     <li class="product">
         <div class="border-image">
-            <img src="" alt="">
+            <img :src="this.product.image" alt="">
         </div>
         <div class="info">
-            <p class="title-product">JAROLIFT Insektenschutz Spannrahmen SlimLine nach Maß</p>
+            <p class="title-product">{{this.product.title}}</p>
             <p class="code">Art.Nr. 50000053</p>
             <p class="weight">Lieferzeit <strong>3 - 5</strong> Werktage (RAL Farbe: <strong>16 - 18</strong> Werktage)</p>
         </div>
         <div class="price">
-            <span class="value">32,99</span><span class="currency">€</span>
+            <span class="value">{{this.product.price}}</span><span class="currency">€</span>
         </div>
     </li>
 </template>
@@ -17,7 +17,8 @@
 
 <script>
 export default{
-    name: 'productCart'
+    name: 'productCart',
+    props: ['product', 'index']
 }
 </script>
 
@@ -41,6 +42,10 @@ export default{
         height: 84px;
         border: 1px solid #242424;
         padding: 5px;
+        overflow: hidden;
+        img{
+            width: 100%;
+        }
     }
     .info{
         width: 300px;
@@ -49,6 +54,7 @@ export default{
             font-family: 'Proxima-Nova-Regular';
             margin-bottom: 12px;
             line-height: 1.4;
+            height: 38px;
         }
         .code{
             font-size: 12px;

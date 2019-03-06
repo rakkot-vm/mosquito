@@ -46,6 +46,8 @@ class ProductController extends Controller
         $product->fill($request->all());
         $product->img = is_object($request['img']) ? $request['img']->store('imgs') : '';
 
+        $product->save();
+
         return view('admin.products.show', compact('product'));
     }
 
@@ -57,7 +59,7 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id)->with('attributes')->get()->first();
+        $product = Product::with('attributes')->findOrFail($id);
 
         return view('admin.products.show', compact('product'));
     }
