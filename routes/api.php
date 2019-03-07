@@ -34,6 +34,10 @@ Route::middleware('api')->group(function () {
 
     Route::get('pages/{id}', 'PageController@get');
 
+    Route::get('texts/by-id/{text_id}', 'TextController@getByTextId');
+    Route::get('texts/by-type/{type}', 'TextController@getByType');
+    Route::get('texts/all', 'TextController@getAll');
+
     Route::get('products/{id}', 'ProductController@get');
     Route::resource('attributes', 'AttributeController')->only('index','show');
 
