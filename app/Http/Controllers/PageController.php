@@ -81,6 +81,7 @@ class PageController extends Controller
     public function update(Request $request, Page $page)
     {
         $page->fill($request->all());
+        $page->update();
 
         return redirect(route('pages.show', ['id' => $page->id]))->with('success', 'Page has been update');
     }
