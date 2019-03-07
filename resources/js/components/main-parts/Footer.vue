@@ -16,10 +16,10 @@
                             </p>
                            <p>
                                <img src="../../../static/img/icons/envelope.svg" alt="" class="icon--mr">
-                               <a :href="'email:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
+                               <a :href="'mailto:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                             </p>
                            <p>
-                               <a href="#">FAQ</a> und <a href="#">Kontaktformular</a>
+                               <router-link to="/faq">FAQ</router-link> und <router-link to="/Kontaktformular">Kontaktformular</router-link>
                             </p>
                        </div>
                    </div>
@@ -63,9 +63,9 @@
             <hr>
             <div class="footer-bottom">
                 <div class="social-links">
-                    <a :href="this.$store.state.common.social_instagram" title="instagram"><img src="../../../static/img/icons/instagram.svg" alt=""></a>
-                    <a :href="this.$store.state.common.social_facebook" title="facebook"><img src="../../../static/img/icons/facebook.svg" alt=""></a>
-                    <a :href="this.$store.state.common.social_youtube" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_instagram" target="_blank" title="instagram"><img src="../../../static/img/icons/instagram.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_facebook" target="_blank" title="facebook"><img src="../../../static/img/icons/facebook.svg" alt=""></a>
+                    <a :href="this.$store.state.common.social_youtube" target="_blank" title="youtube"><img src="../../../static/img/icons/youtube.svg" alt=""></a>
                 </div>
                 <div class="copyright">
                     <p><span>© Copyright Website 2018</span></p>
@@ -77,7 +77,7 @@
 
 <script>
 export default{
-  name: 'footer1',
+  name: 'footer1'
 }
 </script>
 

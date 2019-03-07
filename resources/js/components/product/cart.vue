@@ -1,9 +1,11 @@
 <template>
     <div 
+        id="productCart"
        ref="productCart" 
        class="cart">
        <div 
           ref="productCartWrapper"
+          id="productCartWrapper"
           class="wrapper" 
           :class="{fixed: this.position.fixed}">
            <p class="price underline underline-right">{{this.$store.state.productPrice}} €</p>
@@ -42,10 +44,14 @@ export default{
     methods:{
         getPositionCart(){
             if(window.innerWidth >= 1200 && location.pathname == '/'){
-                this.position.wrapper.height = this.$refs.productCartWrapper.getBoundingClientRect().height;
+                var elProductCartWrapper = document.getElementById('productCartWrapper').getBoundingClientRect();
+
+                this.position.wrapper.height = elProductCartWrapper.height;
                 /*position cart*/
-                this.position.cart.top = this.$refs.productCart.getBoundingClientRect().y;
-                this.position.cart.height = this.$refs.productCart.getBoundingClientRect().height;
+                var elProductCart = document.getElementById('productCart').getBoundingClientRect();
+
+                this.position.cart.top = elProductCart.y;
+                this.position.cart.height = elProductCart.height;
 
                 /*position wrapper*/
                 this.position.wrapper.top = this.position.cart.height + this.position.cart.top;

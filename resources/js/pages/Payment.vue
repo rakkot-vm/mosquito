@@ -170,7 +170,7 @@ export default{
             this.$validator.validateAll().then((result) => {
                 if (result) {
                     // eslint-disable-next-line
-                    /* alert('Form Submitted!'); */
+
                     this.$store.dispatch('postStore');
                     if( this.$store.state.stripeId != "" ){
                         this.$store.state.popupStripe = true;
@@ -184,48 +184,12 @@ export default{
                     
             });
         },
-        /* postForm(){
-            if(this.formValidate){
-                this.$store.dispatch('postStore');
-                if( this.$store.state.stripeId != "" ){
-                    this.$store.state.popupStripe = true;
-                    document.body.style.overflow = 'hidden';
-                }
-            }
-            this.stripeFunc();
-        }, */
-        /* validPhone(){
-            // eslint-disable-next-line
-            var re = /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im;
-            if(re.test(this.$store.state.payment.phone)){
-                this.valid.phone = true;
-            } else {
-                this.valid.phone = false;
-            }
-        },
-        validEmail(){
-            // eslint-disable-next-line
-            var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-            if(re.test(this.$store.state.payment.email)){
-                this.valid.email = true;
-            } else {
-                this.valid.email = false;
-            }
-        }, */
-        /* validateForm(){
-            if( this.valid.email && this.valid.phone && this.checkbox3 && this.$store.state.countCart != 0){
-                this.formValidate = true;
-            } else {
-                this.formValidate = false;
-            }
-        }, */
         stripeFunc(){
+            // eslint-disable-next-line
+            let stripe = Stripe(this.$store.state.common.stripe.stripe_publish_key, {
+                betas: ['payment_intent_beta_3']
+            });
             setTimeout(function(){
-
-                    // eslint-disable-next-line
-                let stripe = Stripe('pk_test_AcmqjKi2CpY5PgKpGDwKp8SV', {
-                    betas: ['payment_intent_beta_3']
-                });
 
                 var style = {
                     base:{

@@ -26,6 +26,17 @@ export default new Vuex.Store({
 
       cart: [],
 
+      page: {
+          faq:{
+            "title": "Title",
+            "content": "Content"
+          },
+          kontaktformular:{
+            "title": "Title",
+            "content": "Content"
+          }
+      },
+
       payment:{
           "amount": "52",
           "first_name": "",
@@ -317,7 +328,11 @@ export default new Vuex.Store({
           "social_instagram": "",
           "social_facebook": "",
           "social_youtube": "",
-          "privacy_policy": ""
+          "privacy_policy": "",
+          "stripe": {
+            "currency": "eur",
+            "stripe_publish_key": "pk_test_AcmqjKi2CpY5PgKpGDwKp8SV"
+          }
       },
       
   },
@@ -328,6 +343,12 @@ export default new Vuex.Store({
       updateHome(state, res){
           state.home = res;
           state.getJsonHome = true;
+      },
+      updateFaq(state, res){
+        state.page.faq = res;
+      },
+      updateKontaktformular(state, res){
+        state.page.kontaktformular = res;
       },
       updateProducts(state, res){
           state.products = res
@@ -372,6 +393,24 @@ export default new Vuex.Store({
             .catch(e => {
                 this.errors.push(e)
             })
+      },
+      getDataFaq: function(context){
+        axios.get('http://vetalya-mosquito.urich.work/api/pages/1', {crossdomain: true})
+          .then(response => {
+              context.commit('updateFaq', response.data)    
+          })
+          .catch(e => {
+              this.errors.push(e)
+          })
+      },
+      getDataKontaktformular: function(context){
+        axios.get('http://vetalya-mosquito.urich.work/api/pages/13', {crossdomain: true})
+          .then(response => {
+              context.commit('updateKontaktformular', response.data)    
+          })
+          .catch(e => {
+              this.errors.push(e)
+          })
       },
       getDataProducts: function(context){
           axios.get('http://vetalya-mosquito.urich.work/api/products/1', {crossdomain: true})

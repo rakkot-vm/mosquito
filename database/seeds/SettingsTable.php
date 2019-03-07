@@ -321,5 +321,27 @@ class SettingsTable extends Seeder
             'title' => 'stripe_secret_key',
             'value' => 'sk_test_wxsNKuPVMxQAjX5ot0aBoCiS'
         ]);
+
+        //email settings
+
+        DB::table('settings')->insert([
+            'type' => 'email',
+            'title' => 'success_order',
+            'value' => 'Your order is success'
+        ]);
+
+//        DB::table('settings')->insert([
+//            'type' => 'email',
+//            'title' => 'success_order',
+//            'value' => 'Your order is success'
+//        ]);
+
+//        'address' => env('MAIL_FROM_ADDRESS', 'mosquito@mail.com'),
+//        'name' => env('MAIL_FROM_NAME', 'Mosquito'),
+//        MAIL_HOST=127.0.0.1
+//        MAIL_PORT=1025
+//        MAIL_USERNAME=testuser
+//        MAIL_PASSWORD=testpwd
+//        MAIL_ENCRYPTION=null
     }
 }

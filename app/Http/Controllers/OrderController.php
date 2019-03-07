@@ -6,7 +6,10 @@ use App\Http\Requests\Order\OrderCalcRequest;
 use App\Http\Requests\Order\OrderConfirmRequest;
 use App\Http\Requests\Order\OrderStatusRequest;
 use App\Http\Requests\Order\OrderStoreRequest;
+use App\Mail\OrderSuccessEmail;
 use App\Order;
+use Illuminate\Support\Facades\Mail;
+use App\Setting;
 
 class OrderController extends Controller
 {
@@ -99,7 +102,16 @@ class OrderController extends Controller
             return response()->json(['status'=>'error']);
         }
 
+        $this->orderMail($order);
         return response()->json(['status'=>'OK']);
+    }
+
+    private function orderMail($order)
+    {
+        $objDemo = new \stdClass();
+        $objDemo->receiver = 'ReceiverUserName';
+
+        Mail::to("valet89@i.ua")->send(new OrderSuccessEmail($objDemo));
     }
 
 
