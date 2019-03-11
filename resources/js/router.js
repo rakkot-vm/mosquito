@@ -19,6 +19,16 @@ export default new Router({
       component: () => import( './pages/Payment.vue')
     },
     {
+      path: '/faq',
+      name: 'faq',
+      component: () => import( './pages/Faq.vue')
+    },
+    {
+      path: '/kontaktformular',
+      name: 'kontaktformular',
+      component: () => import( './pages/Kontaktformular.vue')
+    },
+    {
       path: '/404',
       name: '404',
       component: () => import( './pages/404.vue')

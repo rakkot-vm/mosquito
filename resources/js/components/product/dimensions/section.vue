@@ -5,7 +5,7 @@
 
         </div>
         
-        <a class="download-file-installation" :href="$store.state.products.doc" download>
+        <a class="download-file-installation" :href="$store.state.products.doc" target="_blank" download>
             <img src="../../../../static/img/pdf-file-format-symbol.png" alt=""><span>{{this.$store.state.products.docName}}</span>
         </a>
         

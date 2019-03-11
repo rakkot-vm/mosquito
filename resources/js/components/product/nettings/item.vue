@@ -21,7 +21,7 @@ export default{
         }
     },
     mounted(){
-        this.getData(this.$store.state.products.attributes[1].attributeValues[0].id)
+        this.getData(this.$store.state.products.attributes.attr_2.attributeValues[0].id)
     }
 }
 </script>

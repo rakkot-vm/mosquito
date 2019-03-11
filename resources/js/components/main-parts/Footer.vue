@@ -19,7 +19,7 @@
                                <a :href="'mailto:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                             </p>
                            <p>
-                               <a href="#">FAQ</a> und <a href="#">Kontaktformular</a>
+                               <router-link to="/faq">FAQ</router-link> und <router-link to="/Kontaktformular">Kontaktformular</router-link>
                             </p>
                        </div>
                    </div>
@@ -77,7 +77,7 @@
 
 <script>
 export default{
-  name: 'footer1',
+  name: 'footer1'
 }
 </script>
 

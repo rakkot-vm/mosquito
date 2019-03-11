@@ -1,10 +1,12 @@
 <template>
     <div 
-       ref="imageProduct" 
+       ref="imageProduct"
+       id="imageProduct" 
        class="image-product">
         <div 
            class="image-border"
            :class="{fixed: this.position.fixed}" 
+           id="imageWrapper"
            ref="imageWrapper">
             <img :src="this.$store.state.viewImg" alt="">
         </div>
@@ -35,13 +37,17 @@ export default{
     },
     methods:{
         getPosition(){
-            if(window.innerWidth >= 1200 && location.pathname == '/'){
+            if(window.innerWidth >= 1200 && location.pathname === '/'){
                 /*position wrapper*/
-                this.position.wrapper.top = this.$refs.imageProduct.getBoundingClientRect().y;
-                this.position.wrapper.height = this.$refs.imageProduct.getBoundingClientRect().height;
+                var elImage = document.getElementById('imageProduct').getBoundingClientRect();
+
+                this.position.wrapper.top = elImage.top
+                this.position.wrapper.height = elImage.height;
 
                 /*position scrollBlock*/
-                this.position.scrollBlock.height = this.$refs.imageWrapper.getBoundingClientRect().height;
+                var elWrapper = document.getElementById('imageWrapper').getBoundingClientRect();
+
+                this.position.scrollBlock.height = elWrapper.height;
                 this.position.scrollBlock.top = this.position.wrapper.height + this.position.wrapper.top;
 
 
@@ -55,6 +61,7 @@ export default{
     },
     mounted(){
         /*this.$store.state.selectedProduct.frame.image = this.$store.state.products.attributes[0].attribute_values[0].border_img*/
+        
         window.addEventListener('scroll', this.getPosition);
     }
 }
