@@ -54,8 +54,11 @@ class OrderController extends Controller
      */
     public function show(Order $order)
     {
+        $settings = Setting::where('title','currency')
+            ->get()
+            ->pluck('value', 'title');
         $products = json_decode($order->products_json, true);
-        return view('admin.orders.show', compact('order', 'products'));
+        return view('admin.orders.show', compact('order', 'products', 'settings'));
     }
 
     /**

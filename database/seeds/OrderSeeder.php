@@ -9,7 +9,8 @@ class OrderSeeder extends Seeder
             {
                 "id":"1",
                 "title":"Mosquite Net",
-                "count":"2",
+                "count":"2",                
+                "amount":"70",
                 "attributes" : [
                     {
                         "title":"Net",
@@ -33,6 +34,7 @@ class OrderSeeder extends Seeder
                 "id":"1",
                 "title":"Mosquite Net",
                 "count":"5",
+                "amount":"50",
                 "attributes" : [
                     {
                         "title":"Net",

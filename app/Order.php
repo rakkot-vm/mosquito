@@ -59,6 +59,7 @@ class Order extends Model
         foreach($order_products as &$order_product){
             $model_product = Product::findOrFail($order_product['id']);
             $order_product['title'] = $model_product->title;
+            $order_product['amount'] = $this->calcAmount($order_product);
 
             foreach ($order_product['attributes'] as $key=>$attr_value_id){
                 $model_value = AttributeValue::findOrFail($attr_value_id);
@@ -82,6 +83,11 @@ class Order extends Model
 
         return json_encode($order_products);
     }
+
+//    private function getProductAmount()
+//    {
+//
+//    }
 
     public function stripePay() : PaymentIntent
     {

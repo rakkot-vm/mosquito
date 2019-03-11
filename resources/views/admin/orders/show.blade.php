@@ -28,7 +28,7 @@
                             <p><strong>Order id: </strong> {{ $order->id }}</p>
                         </div>
                         <div class="col-xs-12 col-lg-4">
-                            <p><strong>Amount:</strong> {{ $order->amount }}</p>
+                            <p><strong>Amount:</strong> {{ $order->amount }} {{$settings['currency']}}</p>
                         </div>
                         <div class="col-xs-12 col-lg-4">
                             <p><strong>Client type: </strong> {{ $order->client_type }}</p>
@@ -70,7 +70,8 @@
             <div class="box">
 
                 <div class="box-header with-border">
-                    <h3>Product: {{$key+1}}</h3>
+                    <h3>Product: {{$key+1}}   </h3>
+                    <h4>Amount: {{$product['amount']}} {{$settings['currency']}}</h4>
                 </div>
                 <div class="box-body  with-border">
                     <div class="row">
