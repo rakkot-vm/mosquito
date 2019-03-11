@@ -5,7 +5,7 @@
 
         </div>
         
-        <a class="download-file-installation" :href="$store.state.products.doc" target="_blank" download>
+        <a class="download-file-installation" :href="$store.state.products.doc" download>
             <img src="../../../../static/img/pdf-file-format-symbol.png" alt=""><span>{{this.$store.state.products.docName}}</span>
         </a>
         
@@ -54,17 +54,11 @@
         <div class="dimension">
             <span class="caption">{{this.$store.state.home.sec2_textHols.value}}</span>
             <div class="field" style="padding: 0">
-                <!-- <select id="selOpen" name="selOpen" ref="selectBoolean" v-model="$store.state.selectedProduct.adds.holes">
+                <select v-model="$store.state.selectedProduct.adds.holes">
                     <option value="1">Ja</option>
                     <option value="0">No</option>
                 </select>
-                <label for="selOpen" class="select-arrow" @click="clickSelect"></label> -->
-                <!-- <v-select :options="['true','false']" v-model="$store.state.selectedProduct.adds.holes"></v-select> -->
-
-                <b-form-select v-model="$store.state.selectedProduct.adds.holes">
-                    <option value="true">Ja</option>
-                    <option value="false">No</option>
-                </b-form-select>
+                <label class="select-arrow"></label>
             </div>
             <div 
                 class="additional-information"
@@ -88,7 +82,7 @@
         </strong>
         <!-- {{this.$store.state.products.attributes[2].attributeValues}} -->
         <ul style="margin: 15px 0;">
-            <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="item.id">
+            <li v-for="(item, index) in $store.state.products.attributes[2].attributeValues" :key="item.id">
                 <label :for="'spec_param-' + index" @click="$store.state.selectedProduct.attributes.spec = item.id">
                     <input 
                         :id="'spec_param-' + index" 
@@ -130,13 +124,8 @@ export default{
     components: {
         popupDimension: () => import('./popup.vue')
     },
-    /* methods:{
-        clickSelect(){
-            this.$refs.selectBoolean.onselect;
-        }
-    }, */
     mounted(){
-        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes.attr_3.attributeValues[0].id
+        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes[2].attributeValues[0].id
     },
     beforeUpdate(){
         document.getElementById('spec_param-0').setAttribute('checked', 'checked');
