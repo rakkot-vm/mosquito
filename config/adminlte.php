@@ -135,6 +135,16 @@ return [
                 'url'         => 'admin/orders',
                 'icon'        => 'shopping-cart',
             ],
+            [
+                'text'        => 'Pages',
+                'url'         => 'admin/pages',
+                'icon'        => 'file',
+            ],
+            [
+                'text'        => 'Texts',
+                'url'         => 'admin/texts',
+                'icon'        => 'file-text',
+            ],
 
         'Settings',
             [

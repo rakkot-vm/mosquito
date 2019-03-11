@@ -45,6 +45,7 @@ class ProductController extends Controller
         $product = (new Product());
         $product->fill($request->all());
         $product->img = is_object($request['img']) ? $request['img']->store('imgs') : '';
+        $product->doc = is_object($request['doc']) ? $request['doc']->store('docs') : '';
 
         $product->save();
 
@@ -90,7 +91,8 @@ class ProductController extends Controller
     public function update(ProductStoreRequest $request, Product $product)
     {
         $product->fill($request->all());
-        $product->img = is_object($request['img']) ? $this->updateImg($request['img'], $product->img, 'imgs') : $product->img;
+        $product->img = is_object($request['img']) ? $this->updateFile($request['img'], $product->img, 'imgs') : $product->img;
+        $product->doc = is_object($request['doc']) ? $this->updateFile($request['doc'], $product->doc, 'docs') : $product->doc;
         $product->update();
 
         return view('admin.products.show', compact('product'));
@@ -122,20 +124,27 @@ class ProductController extends Controller
         } catch (ModelNotFoundException $ex) {
             return response()->json(['error' => 'Product not found'], 404);
         }
+
         return response()->json($this->cleanApiResponse($product));
     }
 
     private function cleanApiResponse($product)
     {
-        $product->attributes = $product->attributes->map(function($item_attr, $key_attr){
+        $attributes = $product->attributes->map(function($item_attr, $key_attr){
 
             $item_attr->attributeValues = $item_attr->attributeValues->map(function($item, $key){
                 return $item->only(['id', 'title', 'preview_img', 'border_img', 'price']);
             });
 
             return $item_attr->only(['id', 'title', 'attributeValues']);
-        });
+        })->keyBy('id');
 
-        return $product->only(['id', 'title', 'img', 'price', 'attributes']);
+        $product = $product->only(['id', 'title', 'img', 'price', 'doc', 'docName']);
+
+        foreach($attributes->toArray() as $key => $attrs){
+            $product['attributes']['attr_'.$key] = $attrs;
+        }
+
+        return $product;
     }
 }

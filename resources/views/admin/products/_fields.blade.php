@@ -21,6 +21,24 @@
                     {!! Form::label('price', 'Price:') !!}
                     {!! Form::text('price', null, ['class' => 'form-control']) !!}
                 </div>
+
+                <div class="form-group">
+                    {!! Form::label('doc', 'Document name:') !!}
+
+                    {!! Form::text('docName', null, ['class' => 'form-control']) !!}
+                </div>
+
+                <div class="form-group">
+                    {!! Form::label('doc', 'Document file (pdf):') !!}
+
+                    @if (!empty($product->doc))
+                        <p>Document loaded: {{ url($product->doc) }}</p>
+                    @else
+                        <p>Pdf document not loaded</p>
+                    @endif
+
+                    {!! Form::file('doc', ['class' => 'form-control', 'accept' => 'application/pdf'] ) !!}
+                </div>
             </div>
 
             <div class="form-group col-xs-12">

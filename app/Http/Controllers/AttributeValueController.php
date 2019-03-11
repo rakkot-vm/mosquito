@@ -84,11 +84,11 @@ class AttributeValueController extends Controller
         $attributeValue->fill($request->all());
 
         $attributeValue->preview_img = is_object($request['preview_img']) ?
-            $this->updateImg($request['preview_img'], $attributeValue->preview_img, 'imgs') :
+            $this->updateFile($request['preview_img'], $attributeValue->preview_img, 'imgs') :
             $attributeValue->preview_img ;
 
         $attributeValue->border_img = is_object($request['border_img']) ?
-            $this->updateImg($request['border_img'], $attributeValue->border_img, 'imgs') :
+            $this->updateFile($request['border_img'], $attributeValue->border_img, 'imgs') :
             $attributeValue->border_img ;
 
         $attributeValue->update();

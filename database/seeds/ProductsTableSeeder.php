@@ -16,6 +16,8 @@ class ProductsTableSeeder extends Seeder
             'id' => '1',
             'title' => 'Mosquite Net',
             'img' => 'public/imgs/window_nec.jpg',
+            'doc' => 'public/docs/test-doc.pdf',
+            'docName' => 'Document test',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

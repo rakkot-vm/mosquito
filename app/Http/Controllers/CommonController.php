@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UpdateCommonRequest;
 use App\Setting;
+use App\Text;
 
 class CommonController extends Controller
 {
@@ -48,8 +49,14 @@ class CommonController extends Controller
 
     public function get()
     {
-        $settings = Setting::where('type','common')->get()->pluck('value', 'title');
+        $settings = Setting::where('type','common')->get()->pluck('value', 'title')->toArray();
 
-        return response()->json($settings);
+        $settings['texts'] = Text::all()->pluck('text', 'text_id')->toArray();
+        $settings['stripe'] = Setting::where('title','currency')
+            ->orWhere('title','stripe_publish_key')
+            ->get()
+            ->pluck('value', 'title');
+
+        return response()->json($settings );
     }
 }
