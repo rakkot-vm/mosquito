@@ -20,7 +20,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $orders = Order::all();
+        $orders = Order::all()->sortBy('updated_at');
         return view('admin.orders.index', compact('orders'));
     }
 
@@ -111,10 +111,9 @@ class OrderController extends Controller
 
     private function orderMail($order)
     {
-        $objDemo = new \stdClass();
-        $objDemo->receiver = 'ReceiverUserName';
+        $orderMail = new OrderSuccessEmail($order);
 
-        Mail::to("valet89@i.ua")->send(new OrderSuccessEmail($objDemo));
+        Mail::to($order->email)->send($orderMail);
     }
 
 

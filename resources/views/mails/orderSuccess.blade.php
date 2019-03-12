@@ -1,19 +1,5 @@
-Hello <i>{{ $demo->receiver }}</i>,
-<p>This is a demo email for testing purposes! Also, it's the HTML version.</p>
+{!!  __($texts['order_hello'], ['name' => $order->first_name . ' ' .$order->last_name])!!}
 
-<p><u>Demo object values:</u></p>
+{!! __($texts['order_body'], ['orderNumber' => $order->id]) !!}
 
-<div>
-    {{--<p><b>Demo One:</b>&nbsp;{{ $demo->demo_one }}</p>--}}
-</div>
-
-<p><u>Values passed by With method:</u></p>
-
-{{--<div>--}}
-    {{--<p><b>testVarOne:</b>&nbsp;{{ $testVarOne }}</p>--}}
-    {{--<p><b>testVarTwo:</b>&nbsp;{{ $testVarTwo }}</p>--}}
-{{--</div>--}}
-
-Thank You,
-<br/>
-<i>{{ $demo->sender }}</i>
+{!! __($texts['order_footer']) !!}

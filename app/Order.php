@@ -84,11 +84,6 @@ class Order extends Model
         return json_encode($order_products);
     }
 
-//    private function getProductAmount()
-//    {
-//
-//    }
-
     public function stripePay() : PaymentIntent
     {
         $secret_key = Setting::where('title', 'stripe_secret_key')->get()->first()->value;

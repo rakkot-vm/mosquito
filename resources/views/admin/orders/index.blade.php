@@ -35,13 +35,15 @@
                         @forelse($orders as $order)
 
                             <tr role="row" class="odd">
-                                <td class="sorting_1"><a href="{{ route('orders.show', $order->id) }}">{{ $order->id }}</a></td>
+                                <td><a href="{{ route('orders.show', $order->id) }}">{{ $order->id }}</a></td>
 
-                                <td class="sorting_1">
+                                <td>
                                     @if($order->status == 'paid')
                                         <span class="label label-success">paid</span>
                                     @elseif($order->status == 'not paid')
                                         <span class="label label-warning">not paid</span>
+                                    @elseif($order->status == 'completed')
+                                        <span class="label label-info">completed</span>
                                     @else
                                         <span class="label label-danger">undefined status</span>
                                     @endif
@@ -56,7 +58,7 @@
                                 <td>{{ $order->city }}</td>
 
                                 <td>{{ $order->created_at }}</td>
-                                <td>{{ $order->updated_at }}</td>
+                                <td class="sorting_1">{{ $order->updated_at }}</td>
                             </tr>
 
                         @empty
@@ -98,7 +100,8 @@
                 'searching'   : false,
                 'ordering'    : true,
                 'info'        : true,
-                'autoWidth'   : false
+                'autoWidth'   : false,
+                'order': [[ 9, 'desc' ]]
             });
         });
     </script>

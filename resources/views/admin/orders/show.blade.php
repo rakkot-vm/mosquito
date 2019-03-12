@@ -71,9 +71,20 @@
 
                 <div class="box-header with-border">
                     <h3>Product: {{$key+1}}   </h3>
-                    <h4>Amount: {{$product['amount']}} {{$settings['currency']}}</h4>
                 </div>
                 <div class="box-body  with-border">
+
+                    @if(!empty($product['amount']))
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <p>
+                                    <strong>Amount: </strong>
+                                    {{$product['amount']}} {{$settings['currency']}}
+                                </p>
+                            </div>
+                        </div>
+                    @endif
+
                     <div class="row">
 
                         <div class="col-xs-6">

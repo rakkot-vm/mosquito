@@ -2,23 +2,23 @@
 
 namespace App\Mail;
 
+use App\Order;
+use App\Text;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use App\Setting;
 
 class OrderSuccessEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    /**
-     * Create a new message instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $order;
+    public $texts;
+
+    public function __construct(Order $order)
     {
-        //
+        $this->order = $order;
+        $this->texts = Text::where('type','email')->get()->pluck('text','text_id');
     }
 
     /**
@@ -28,16 +28,7 @@ class OrderSuccessEmail extends Mailable
      */
     public function build()
     {
-        return $this->from('sender@example.com')
-            ->view('mails.orderSuccess')
-            ->text('mails.orderSuccess_plain')
-            ->with(
-                [
-                    'sender' => Setting::where('title','email_from')->first()->toArray()['title'],
-                ])
-            ->attach(public_path('/images').'/demo.jpg', [
-                'as' => 'demo.jpg',
-                'mime' => 'image/jpeg',
-            ]);
+        return $this->subject($this->texts['order_subject'])
+            ->view('mails.orderSuccess');
     }
 }
