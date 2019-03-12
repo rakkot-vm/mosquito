@@ -65,7 +65,7 @@
                         <div class="col-xs-12 col-lg-4">
                             <div class="row">
                                 <div class="col-xs-12 col-lg-6">
-                                    <p><strong>Preview image: </strong>
+                                    <p><strong>Preview image: </strong></p>
                                     <div class="min-height-100">
                                         <img src="{{ $value->preview_img ? url($value->preview_img) : '' }}" class="img-responsive">
                                     </div>

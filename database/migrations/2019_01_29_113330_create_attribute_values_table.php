@@ -19,6 +19,7 @@ class CreateAttributeValuesTable extends Migration
             $table->string('title');
             $table->string('preview_img')->nullable();
             $table->string('border_img')->nullable();
+            $table->json('additional')->nullable();
             $table->float('price')->nullable()->default(0);
             $table->timestamps();
         });

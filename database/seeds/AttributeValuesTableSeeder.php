@@ -19,6 +19,7 @@ class AttributeValuesTableSeeder extends Seeder
             'preview_img' => '',
             'border_img' => '',
             'price' => '10',
+            'additional' => '{"ral":"105"}',
             'created_at' => Carbon::now()->format('Y-m-d H:i:s'),
             'updated_at' => Carbon::now()->format('Y-m-d H:i:s'),
         ]);

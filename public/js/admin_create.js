@@ -1,5 +1,11 @@
 $(document).ready(function() {
     $('#value-text').summernote();
+
+    $('.delete-confirm').click(function () {
+        return confirm('Are you sure?');
+    });
+
+    initAdditionalItemFunctions();
 });
 
 $('[name="value-type"]').click(function(e){
@@ -22,11 +28,11 @@ $('#add_acc_item').click(function(e){
     newTabId = newTabId+1;
 
     $('#add_acc_item').before(
-        '<div class="row accordion-item tab_new'+newTabId+'">\n' +
+        '<div class="row accordion-item tab_new'+newTabId+'">' +
 
         '    <input id="" name="sec3_acc[new'+newTabId+'][setting_id]" type="hidden" value="'+accordion_setting_id+'">' +
 
-        '    <div class="form-group col-sm-12">\n' +
+        '    <div class="form-group col-sm-12">' +
         '        <label for="sec3_acc[new'+newTabId+'][title]">Title:</label>' +
         '        <input class="form-control" name="sec3_acc[new'+newTabId+'][title]" type="text" value="" id="sec3_acc[new'+newTabId+'][title]">' +
         '    </div>'+
@@ -97,6 +103,58 @@ $(".image-upload").change(function(input) {
     }
 });
 
-$('.delete-confirm').click(function () {
-   return confirm('Are you sure?');
+function initAdditionalItemFunctions()
+{
+    $(".delete-additional").click(function (e) {
+        if (!confirm('Are you sure?')) return;
+
+        $(e.target).parents('.additional-item').remove();
+    });
+
+
+    $(".additional-id").change(function(e) {
+        let elementsIds = ['', '[title]', '[value]'];
+        let oldName = e.target.name;
+
+        elementsIds.forEach(function (id) {
+            $('[for="'+ oldName + id +'"]').attr('for', 'additional['+ e.target.value +']'+ id);
+            $('[name="'+ oldName + id +'"]').attr('name', 'additional['+ e.target.value +']'+ id);
+        });
+    });
+}
+$(".add-additional").click(function(e) {
+    let additional_item = '<div class="col-xs-12 col-xs-6 additional-item">' +
+    '    <hr>' +
+    '    <div class="row">' +
+    '        <div class="col-xs-6">' +
+    '            <div class="form-group">' +
+    '                <label for="additional[null]">ID *:</label>' +
+    '                <input class="form-control additional-id" name="additional[null]" type="text" value="" id="additional[null]">' +
+    '            </div>' +
+    '        </div>' +
+    '        <div class="col-xs-2">' +
+    '            <button type="button" class="btn btn-block btn-danger btn-xs delete-additional">' +
+    '                <i class="fa fa-trash-o"></i>' +
+    '            </button>' +
+    '        </div>' +
+    '    </div>' +
+    '    <div class="row">' +
+    '        <div class="col-xs-12 col-lg-6">' +
+    '            <div class="form-group">' +
+    '                <label for="additional[null][title]">Title *:</label>' +
+    '                <input class="form-control" name="additional[null][title]" type="text" value="" id="additional[null][title]">' +
+    '            </div>' +
+    '        </div>' +
+    '        <div class="col-xs-12 col-lg-6">' +
+    '            <div class="form-group">' +
+    '                <label for="additional[null][value]">Value *:</label>' +
+    '                <input class="form-control" name="additional[null][value]" type="text" value="" id="additional[null][title]">' +
+    '            </div>' +
+    '        </div>' +
+    '    </div>' +
+    '</div>';
+
+    $('.additional-items').append(additional_item);
+
+    initAdditionalItemFunctions();
 });

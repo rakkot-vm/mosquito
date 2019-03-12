@@ -28,7 +28,8 @@ class AttributeValuesStoreRequest extends FormRequest
             'title' => 'required|string|max:255',
             'price' => 'nullable|numeric',
             'preview_img' => 'nullable|image',
-            'border_img' => 'nullable|image'
+            'border_img' => 'nullable|image',
+            'additional' => 'nullable|array'
         ];
     }
 }
