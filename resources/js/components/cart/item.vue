@@ -5,8 +5,9 @@
         </div>
         <div class="info">
             <p class="title-product">{{this.product.title}}</p>
-            <p class="code">Art.Nr. 50000053</p>
-            <p class="weight">Lieferzeit <strong>3 - 5</strong> Werktage (RAL Farbe: <strong>16 - 18</strong> Werktage)</p>
+            <p class="code">RAL: Art.Nr. 50000053</p>
+            <!-- <p>{{this.$store.state.products.attributes.attr_1}}</p> -->
+            <p class="weight">Abmessungen <strong>{{this.product.adds.weight}} x {{this.product.adds.height}}.<br/></strong> Deep: <strong>{{this.product.adds.deep}}</strong>. Holes: <strong>{{this.product.adds.holes}}</strong>.</p>
         </div>
         <div class="price">
             <span class="value">{{this.product.price}}</span><span class="currency">€</span>
@@ -29,8 +30,8 @@ export default{
         justify-content: space-between;
         flex-wrap: wrap;
         border-bottom: 1px solid #333;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
+        margin-bottom: 18px;
+        padding-bottom: 18px;
         position: relative;
         &:last-child{
             border-bottom: 0;
@@ -52,9 +53,9 @@ export default{
         .title-product{
             font-size: 14px;
             font-family: 'Proxima-Nova-Regular';
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             line-height: 1.4;
-            height: 38px;
+            height: 20px;
         }
         .code{
             font-size: 12px;

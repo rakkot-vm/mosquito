@@ -32,6 +32,13 @@
                                         <p><strong>Title: </strong>{{ $value->title }}</p>
                                         <p><strong>Price: </strong>{{ $value->price }}</p>
 
+                                        @if(!empty($value->additional))
+                                            <hr>
+                                            @foreach ($value->additional as $add_values)
+                                                <p><strong>{{ $add_values['title']}}: </strong>{{ $add_values['value'] }}</p>
+                                            @endforeach
+                                        @endif
+
                                         {{Form::open(['method'  => 'DELETE', 'route' => ['attributeValues.destroy', $value->id], 'id' => 'form_del_'.$value->id])}}
                                         {{Form::close()}}
                                         <div class="form-group">

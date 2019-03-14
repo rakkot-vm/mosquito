@@ -7,7 +7,8 @@
             <img :src="this.profile.preview_img" alt="">
         </div>
         <p class="caption">{{this.profile.title}}</p>
-        <p class="code">{{this.profile.price}}</p>
+        <p v-if="this.profile.additional.ral"
+           class="code">{{this.profile.additional.ral.title}}: {{this.profile.additional.ral.value}}</p>
     </div>
 </template>
 

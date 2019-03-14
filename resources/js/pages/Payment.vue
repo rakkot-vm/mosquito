@@ -133,8 +133,8 @@
                             
                             <span class="policy">
                                 Mit deiner Bestellung erklärst du dich mit unseren
-                                Allgemeinen Geschäftsbedingungen und 
-                                Widerrufsbestimmungen einverstanden.</span>
+                                <router-link to="/conditions">Allgemeinen Geschäftsbedingungen</router-link> und 
+                                <router-link to="/policy">Widerrufsbestimmungen einverstanden</router-link>.</span>
                             <span v-show="errors.has('policy')" class="help is-danger">{{ errors.first('policy') }}</span>
                         </li>
                     </ul>

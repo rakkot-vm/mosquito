@@ -19,7 +19,7 @@
                                <a :href="'mailto:' + $store.state.common.email_1">{{this.$store.state.common.email_1}}</a>
                             </p>
                            <p>
-                               <router-link to="/faq">FAQ</router-link> und <router-link to="/Kontaktformular">Kontaktformular</router-link>
+                               <router-link to="/faq">FAQ</router-link> <!-- und <router-link to="/Kontaktformular">Kontaktformular</router-link> -->
                             </p>
                        </div>
                    </div>
@@ -100,6 +100,7 @@ footer{
     .caption{
         color: #395781;
         margin-bottom: 29px;
+        height: 38px;
     }
     hr{
         margin: 20px 0;

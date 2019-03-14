@@ -75,6 +75,12 @@
                                     <p><strong>Title: </strong>{{ $value->title }}</p>
                                     <p><strong>Price: </strong>{{ $value->price }}</p>
 
+                                    @if(!empty($value->additional))
+                                        <hr>
+                                        @foreach ($value->additional as $add_values)
+                                            <p><strong>{{ $add_values['title']}}: </strong>{{ $add_values['value'] }}</p>
+                                        @endforeach
+                                    @endif
                                     {{--<a href="{{ url('/attributes/edit') }}" class="btn btn-default">Edit attribute value</a>--}}
                                 </div>
                             </div>

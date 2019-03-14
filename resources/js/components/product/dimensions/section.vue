@@ -1,8 +1,17 @@
 <template>
     <div class="dimensions-section">
         <h3 class="title">Abmessungen</h3>
-        <div style="margin-bottom: 15px;" v-html="$store.state.home.sec2_text.value">
+        <div style="margin-bottom: 15px;">
+            <div>
+                <div v-html="$store.state.home.sec2_text.value" style="display: inline">
 
+                </div>
+                
+                 <div
+                    class="additional-information additional-information--static">
+                    <span>i</span>
+                </div>
+            </div>
         </div>
         
         <a class="download-file-installation" :href="$store.state.products.doc" target="_blank" download>
@@ -54,11 +63,10 @@
         <div class="dimension">
             <span class="caption">{{this.$store.state.home.sec2_textHols.value}}</span>
             <div class="field" style="padding: 0">
-                <select v-model="$store.state.selectedProduct.adds.holes">
-                    <option value="1">Ja</option>
-                    <option value="0">No</option>
-                </select>
-                <label class="select-arrow"></label>
+                <b-form-select v-model="$store.state.selectedProduct.adds.holes">
+                    <option value="true">Ja</option>
+                    <option value="false">No</option>
+                </b-form-select>
             </div>
             <div 
                 class="additional-information"
@@ -74,21 +82,29 @@
                 <input type="text" v-model="$store.state.selectedProduct.count">
             </div>
         </div>
-        <p class="text-blue" style="margin: 20px 0;">
-            Insektenschutz Alu Rahmen mit Maße ab 1500 mm (Breite oder Höhe) wird mit einer Querstange ausgestattet
-        </p>
+        <div>
+            <p class="text-blue" style="display:inline">
+                Insektenschutz Alu Rahmen mit Maße ab 1500 mm (Breite oder Höhe) wird mit einer Querstange ausgestattet
+            </p>
+            <div
+                class="additional-information additional-information--static">
+                <span>i</span>
+            </div>
+        </div>
+        
         <strong>
             Preisspanne bei Rahmengröße
         </strong>
         <!-- {{this.$store.state.products.attributes[2].attributeValues}} -->
         <ul style="margin: 15px 0;">
-            <li v-for="(item, index) in $store.state.products.attributes[2].attributeValues" :key="item.id">
+            <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="item.id">
                 <label :for="'spec_param-' + index" @click="$store.state.selectedProduct.attributes.spec = item.id">
                     <input 
                         :id="'spec_param-' + index" 
                         type="radio"
+                        :checked="index == 0"
                         name="spec_param">
-                        <span>{{item.title}} <strong>({{item.price}} €)</strong></span>
+                        <span style="padding-left:10px;">{{item.title}} <strong>({{item.price}} €)</strong></span>
                 </label>
             </li>
         </ul>
@@ -125,7 +141,7 @@ export default{
         popupDimension: () => import('./popup.vue')
     },
     mounted(){
-        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes[2].attributeValues[0].id
+        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes.attr_3.attributeValues[0].id
     },
     beforeUpdate(){
         document.getElementById('spec_param-0').setAttribute('checked', 'checked');
@@ -134,7 +150,7 @@ export default{
 </script>
 
 
-<style scoped lang="scss">
+<style lang="scss">
     .dimension{
         background-color: #395781;
         display: flex;
@@ -144,16 +160,16 @@ export default{
         height: 37px;
         margin-bottom: 9px;
         position: relative;
+        .caption{
+            color: #fff;
+            display: inline-block;
+            width: calc(100% - 110px);
+            height: 22px;
+            overflow: hidden;
+        }
     }
     .title{
         font-size: 16px;
-    }
-    .caption{
-        color: #fff;
-        display: inline-block;
-        width: calc(100% - 110px);
-        height: 22px;
-        overflow: hidden;
     }
     .field{
         display: flex;
@@ -211,6 +227,7 @@ export default{
     }
     .count-product{
         display: flex;
+        margin: 15px 0;
         span{
             padding-top: 12px;
         }
@@ -233,6 +250,11 @@ export default{
         cursor: pointer;
         span{
             font-family: "Proxima-Nova-Bold"
+        }
+        &--static{
+            position: static;
+            display: inline-flex;
+            border: 1px solid #000;
         }
     }
     .close{

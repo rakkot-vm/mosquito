@@ -23,6 +23,7 @@ export default new Vuex.Store({
       stripeId: "",
       resultId: "",
       popupStripeContent: true,
+      storageCookie: false,
 
       cart: [],
 
@@ -38,34 +39,34 @@ export default new Vuex.Store({
       },
 
       payment:{
-          "amount": "52",
-          "first_name": "",
-          "last_name": "",
-          "phone": "",
-          "email": "",
-          "land": "",
-          "index": "",
-          "city":	"",
-          "street": "",
-          "house": "",
-          "client_type": "",
-          "private_policy": 0
+        "amount": "52",
+        "first_name": "",
+        "last_name": "",
+        "phone": "",
+        "email": "",
+        "land": "",
+        "index": "",
+        "city":	"",
+        "street": "",
+        "house": "",
+        "client_type": "client",
+        "private_policy": 0
       },
       
       selectedProduct:{
-            "id":"1",
-            "count":"1",
-            "attributes" : {
-              "border" : '1',
-              "net" : '7',
-              "spec": '9'
-            },
-            "adds" : {
-                "weight" : "20",
-                "height" : "20",
-                "deep" : "20",
-                "holes" : "true"
-            },
+        "id":"1",
+        "count":"1",
+        "attributes" : {
+          "border" : '1',
+          "net" : '7',
+          "spec": '9'
+        },
+        "adds" : {
+            "weight" : "20",
+            "height" : "20",
+            "deep" : "20",
+            "holes" : "true"
+        },
       },
       
       home: {
@@ -257,14 +258,13 @@ export default new Vuex.Store({
                         "title": "Border",
                         "attributeValues": [
                             {
-                                "id": '1',                                
-                                "title": null,
-                                "preview_img": null,
-                                "border_img": null,
-                                "price": 0,
-                            },
-                            {
-                                "id": null,
+                                "id": '1',
+                                "additional":{
+                                  "ral":{
+                                    "title": null,
+                                    "value": null
+                                  }
+                                },                         
                                 "title": null,
                                 "preview_img": null,
                                 "border_img": null,
@@ -297,19 +297,12 @@ export default new Vuex.Store({
                         "title": "Special parameters",
                         "attributeValues": [
                             {
-                              "id": '5',
-                              "title": "Breite bis 1000 mm x Höhe bis 1200",
-                              "preview_img": "",
-                              "border_img": "",
-                              "price": 30.00,
-                            },
-                            {
-                              "id": '11',
-                              "title": "Breite bis 1000 mm x Höhe bis 1200",
-                              "preview_img": "",
-                              "border_img": "",
-                              "price": 30.00,
-                            },
+                              "id": null,
+                              "title": null,
+                              "preview_img": null,
+                              "border_img": null,
+                              "price": null,
+                            }
                         ]
                     }
                 }
@@ -376,8 +369,7 @@ export default new Vuex.Store({
   },
   actions: {
       getDataCommon: function(context){
-          axios.get('http://vetalya-mosquito.urich.work/api/common', 
-          {crossdomain: true})
+          axios.get('http://vetalya-mosquito.urich.work/api/common', {crossdomain: true})
             .then(response => {
                 context.commit('updateCommon', response.data)    
             })

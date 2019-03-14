@@ -11,6 +11,9 @@
                         :index="index"
                     ></product-item>
                 </ul>
+                <p style="text-align: right; font-family: 'Proxima-Nova-Bold';">
+                    Gesamtpreis: {{this.$store.state.payment.amount}} €
+                </p>
                 <div class="buttons">
                     <div class="btn btn-grey" @click="closePopupCart">
                         <span>Weiter Einkaufen</span>
@@ -100,7 +103,7 @@ export default{
     }
     .products{
         margin-top: 40px;
-        margin-bottom: 44px;
+        margin-bottom: 10px;
     }
     .buttons{
         display: flex;

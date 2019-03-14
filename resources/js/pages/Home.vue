@@ -21,6 +21,6 @@ export default {
     TabsSection: () => import('./../components/tabs/Tabs.vue'),
     AdviceSection: () => import('./../components/sections/Advice.vue'),
     AdvantageSection: () => import('./../components/sections/Advantage.vue')
-  },
+  }
 }
 </script>

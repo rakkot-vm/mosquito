@@ -29,6 +29,16 @@ export default new Router({
       component: () => import( './pages/Kontaktformular.vue')
     },
     {
+      path: '/conditions',
+      name: 'conditions',
+      component: () => import( './pages/Conditions.vue')
+    },
+    {
+      path: '/policy',
+      name: 'policy',
+      component: () => import( './pages/Policy.vue')
+    },
+    {
       path: '/404',
       name: '404',
       component: () => import( './pages/404.vue')
