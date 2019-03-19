@@ -139,11 +139,11 @@ class SettingsTable extends Seeder
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec2_infoAttention1',
+            'title' => 'sec2_infoAttention2',
         ]);
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec2_popupAttention1',
+            'title' => 'sec2_popupAttention2',
         ]);
 
         //3
