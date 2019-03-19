@@ -207,13 +207,13 @@
                     <input class="form-control" name="sec2_textAttention2" type="text" value="{{ $settings['sec2_textAttention2']->value }}" id="sec2_textAttention2">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2_infoAttention1', 'Popup button:') !!}
-                    <input {{ $settings['sec2_infoAttention1']->value != 'on' ?: 'checked' }}
-                           name="sec2_infoAttention1" type="checkbox" id="sec2_infoAttention1" class="popup-toggle">
+                    {!! Form::label('sec2_infoAttention2', 'Popup button:') !!}
+                    <input {{ $settings['sec2_infoAttention2']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoAttention2" type="checkbox" id="sec2_infoAttention2" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2_popupAttention1', 'Popup text:') !!}
-                    <textarea class="form-control" name="sec2_popupAttention1" cols="50" rows="10" id="sec2_popupAttention1">{{ $settings['sec2_popupAttention1']->value }}</textarea>
+                    {!! Form::label('sec2_popupAttention2', 'Popup text:') !!}
+                    <textarea class="form-control" name="sec2_popupAttention2" cols="50" rows="10" id="sec2_popupAttention2">{{ $settings['sec2_popupAttention2']->value }}</textarea>
                 </div>
             </div>
         </section>
