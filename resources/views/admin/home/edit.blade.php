@@ -69,79 +69,151 @@
         </section>
 
         <section class="sec2 box">
-            <h3>Section 2</h3>
+            <h3>Section 2 (Size)</h3>
 
             <div class="row">
-                <div class="form-group col-sm-6">
-                    {!! Form::label('sec2_text', 'Text:') !!}
-                    <textarea class="form-control" name="sec2_text" cols="50" rows="10" id="sec2_text">{{ $settings['sec2_text']->value }}</textarea>
+                <div class="form-group col-sm-12">
+                    {!! Form::label('sec2_title', 'Title:') !!}
+                    <input class="form-control" name="sec2_title" type="text" value="{{ $settings['sec2_title']->value }}" id="sec2_title">
                 </div>
             </div>
 
             <div class="row">
+                <div class="form-group col-sm-12">
+                    {!! Form::label('sec2_description', 'Description:') !!}
+                    <textarea class="form-control" name="sec2_description" cols="50" rows="10" id="sec2_description">{{ $settings['sec2_description']->value }}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+
+                    <h4 class="text-bold">Attention ( wrong size )</h4>
+                </div>
+
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2_textWidth', 'Width text:') !!}
+                    {!! Form::label('sec2_textAttention1', 'Text:') !!}
+                    <textarea class="form-control" name="sec2_textAttention1" cols="50" rows="10" id="sec2_textAttention1">{{ $settings['sec2_textAttention1']->value }}</textarea>
+                </div>
+                <div class="form-group col-sm-1">
+                    {!! Form::label('sec2_infoAttention1', 'Popup button:') !!}
+
+                    <input {{ $settings['sec2_infoAttention1']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoAttention1" type="checkbox" id="sec2_infoAttention1" class="popup-toggle">
+                </div>
+                <div class="form-group col-sm-7">
+                    {!! Form::label('sec2_popupAttention1', 'Popup content:') !!}
+                    <textarea class="form-control" name="sec2_popupAttention1" cols="50" rows="10" id="sec2_popupAttention1">{{ $settings['sec2_popupAttention1']->value }}</textarea>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <h4 class="text-bold">Width</h4>
+                </div>
+
+                <div class="form-group col-sm-4">
+                    {!! Form::label('sec2_textWidth', 'Text:') !!}
                     <input class="form-control" name="sec2_textWidth" type="text" value="{{ $settings['sec2_textWidth']->value }}" id="sec2_textWidth">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2_infoWidth', 'Width info button:') !!}
+                    {!! Form::label('sec2_infoWidth', 'Popup button:') !!}
 
                     <input {{ $settings['sec2_infoWidth']->value != 'on' ?: 'checked' }}
                            name="sec2_infoWidth" type="checkbox" id="sec2_infoWidth" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2_popupWidth', 'Width popup:') !!}
+                    {!! Form::label('sec2_popupWidth', 'Popup content:') !!}
                     <textarea class="form-control" name="sec2_popupWidth" cols="50" rows="10" id="sec2_popupWidth">{{ $settings['sec2_popupWidth']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <h4 class="text-bold">Height</h4>
+                </div>
+
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2_textHeight', 'Height text:') !!}
+                    {!! Form::label('sec2_textHeight', 'Text:') !!}
                     <input class="form-control" name="sec2_textHeight" type="text" value="{{ $settings['sec2_textHeight']->value }}" id="sec2_textHeight">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2_infoHeight', 'Height info button:') !!}
+                    {!! Form::label('sec2_infoHeight', 'Popup button:') !!}
 
                     <input {{ $settings['sec2_infoHeight']->value != 'on' ?: 'checked' }}
                            name="sec2_infoHeight" type="checkbox" id="sec2_infoHeight" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2_popupHeight', 'Height popup:') !!}
+                    {!! Form::label('sec2_popupHeight', 'Popup content:') !!}
                     <textarea class="form-control" name="sec2_popupHeight" cols="50" rows="10" id="sec2_popupHeight">{{ $settings['sec2_popupHeight']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <h4 class="text-bold">Deep</h4>
+                </div>
+
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2_textDeep', 'Deep text:') !!}
+                    {!! Form::label('sec2_textDeep', 'Text:') !!}
                     <input class="form-control" name="sec2_textDeep" type="text" value="{{ $settings['sec2_textDeep']->value }}" id="sec2_textDeep">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2_infoDeep', 'Deep info button:') !!}
+                    {!! Form::label('sec2_infoDeep', 'Popup button:') !!}
 
                     <input {{ $settings['sec2_infoDeep']->value != 'on' ?: 'checked' }}
                            name="sec2_infoDeep" type="checkbox" id="sec2_infoDeep" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2_popupDeep', 'Deep popup:') !!}
+                    {!! Form::label('sec2_popupDeep', 'Popup content:') !!}
                     <textarea class="form-control" name="sec2_popupDeep" cols="50" rows="10" id="sec2_popupDeep">{{ $settings['sec2_popupDeep']->value }}</textarea>
                 </div>
             </div>
 
             <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <h4 class="text-bold">Hols</h4>
+                </div>
+
                 <div class="form-group col-sm-4">
-                    {!! Form::label('sec2_textHols', 'Hols text:') !!}
+                    {!! Form::label('sec2_textHols', 'Text:') !!}
                     <input class="form-control" name="sec2_textHols" type="text" value="{{ $settings['sec2_textHols']->value }}" id="sec2_textHols">
                 </div>
                 <div class="form-group col-sm-1">
-                    {!! Form::label('sec2_infoHols', 'Hols info button:') !!}
+                    {!! Form::label('sec2_infoHols', 'Popup button:') !!}
                     <input {{ $settings['sec2_infoHols']->value != 'on' ?: 'checked' }}
                            name="sec2_infoHols" type="checkbox" id="sec2_infoHols" class="popup-toggle">
                 </div>
                 <div class="form-group col-sm-7">
-                    {!! Form::label('sec2_popupHols', 'Hols popup:') !!}
+                    {!! Form::label('sec2_popupHols', 'Popup content:') !!}
                     <textarea class="form-control" name="sec2_popupHols" cols="50" rows="10" id="sec2_popupHols">{{ $settings['sec2_popupHols']->value }}</textarea>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-xs-12">
+                    <hr>
+                    <h4 class="text-bold">Attention ( interval size )</h4>
+                </div>
+
+                <div class="form-group col-sm-4">
+                    {!! Form::label('sec2_textAttention2', 'Text:') !!}
+                    <textarea class="form-control" name="sec2_textAttention2" cols="50" rows="10" id="sec2_textAttention2">{{ $settings['sec2_textAttention2']->value }}</textarea>
+                </div>
+                <div class="form-group col-sm-1">
+                    {!! Form::label('sec2_infoAttention2', 'Popup button:') !!}
+                    <input {{ $settings['sec2_infoAttention2']->value != 'on' ?: 'checked' }}
+                           name="sec2_infoAttention2" type="checkbox" id="sec2_infoAttention2" class="popup-toggle">
+                </div>
+                <div class="form-group col-sm-7">
+                    {!! Form::label('sec2_popupAttention2', 'Popup text:') !!}
+                    <textarea class="form-control" name="sec2_popupAttention2" cols="50" rows="10" id="sec2_popupAttention2">{{ $settings['sec2_popupAttention2']->value }}</textarea>
                 </div>
             </div>
         </section>

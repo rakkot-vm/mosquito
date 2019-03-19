@@ -60,7 +60,24 @@ class SettingsTable extends Seeder
         //sec2
         DB::table('settings')->insert([
             'type' => 'home',
-            'title' => 'sec2_text',
+            'title' => 'sec2_title',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_description',
+        ]);
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_textAttention1',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_infoAttention1',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_popupAttention1',
         ]);
 
         DB::table('settings')->insert([
@@ -113,6 +130,20 @@ class SettingsTable extends Seeder
         DB::table('settings')->insert([
             'type' => 'home',
             'title' => 'sec2_popupHols',
+        ]);
+
+
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_textAttention2',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_infoAttention2',
+        ]);
+        DB::table('settings')->insert([
+            'type' => 'home',
+            'title' => 'sec2_popupAttention2',
         ]);
 
         //3
