@@ -204,7 +204,7 @@
 
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textAttention2', 'Text:') !!}
-                    <input class="form-control" name="sec2_textAttention2" type="text" value="{{ $settings['sec2_textAttention2']->value }}" id="sec2_textAttention2">
+                    <textarea class="form-control" name="sec2_textAttention2" cols="50" rows="10" id="sec2_textAttention2">{{ $settings['sec2_textAttention2']->value }}</textarea>
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoAttention2', 'Popup button:') !!}
