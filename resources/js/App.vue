@@ -6,11 +6,11 @@
     <div 
       v-if="$store.state.storageCookie"
       class="cookie">
-      <div class="close-cookie" @click="closeCookie()">
-        x
-      </div>
       <div class="container">
-        <p>Wenn Sie Ihren Besuch auf dieser Website fortsetzen, akzeptieren Sie die Verwendung von Cookies zur Erstellung von Besucherstatistiken. Erfahren Sie mehr.</p>
+        <p>
+          <span class="attention-cookie">Wenn Sie Ihren Besuch auf dieser Website fortsetzen, akzeptieren Sie die Verwendung von Cookies zur Erstellung von Besucherstatistiken. Erfahren Sie mehr.</span> 
+          <span class="agree-cookie" @click="closeCookie()">Stimme zu</span>
+        </p>
       </div>
     </div>
   </div>
@@ -31,15 +31,14 @@ export default{
           this.$store.state.storageCookie = false
         } else {
           this.$store.state.storageCookie = true
-
-          var date = new Date;
-              date.setDate(date.getDate() + 30);
-        
-          document.cookie = "storageCookie=empty;path=/; expires=" + date.toUTCString()
         }
       },
       closeCookie(){
         this.$store.state.storageCookie = false
+        var date = new Date;
+            date.setDate(date.getDate() + 30);
+      
+        document.cookie = "storageCookie=empty;path=/; expires=" + date.toUTCString()
       }
     },
     mounted(){
@@ -63,20 +62,38 @@ export default{
       width: 100%;
       background-color: grey;
       padding: 30px 0;
-      .close-cookie{
-        position: absolute;
-        top: 5px;
-        right: 30px;
-        font-size: 20px;
-        color: #fff;
-        cursor: pointer;
-        width: 30px;
-        height: 30px;
-        text-align: center;
-      }
       p{
         margin: 0;
         color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+    .attention-cookie{
+      display: inline-block;
+      width: calc(100% - 100px);
+    }
+    .agree-cookie{
+      display: inline-block;
+      padding: 3px 10px;
+      border: 1px solid #fff;
+      cursor: pointer;
+    }
+    @media(max-width:768px){
+      .attention-cookie{
+        width: 100%;
+        font-size: 14px;
+      }
+      .cookie{
+        padding: 14px 0;
+        p{
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+      .agree-cookie{
+        margin-top: 8px;
       }
     }
 </style>

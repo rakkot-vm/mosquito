@@ -42,8 +42,6 @@ class AttributeValueController extends Controller
         $attributeValue = new AttributeValue();
         $attributeValue->fill($request->all());
 
-//        $attributeValue->additionalToJson();
-
         $attributeValue->preview_img = is_object($request['preview_img']) ?  url('/'.$request['preview_img']->store('imgs')) : '' ;
         $attributeValue->border_img = is_object($request['border_img']) ?  url('/'.$request['preview_img']->store('imgs')) : '' ;
 
@@ -71,8 +69,6 @@ class AttributeValueController extends Controller
      */
     public function edit(AttributeValue $attributeValue)
     {
-//        $attributeValue->additionalFromJson();
-
         return view('admin.attributeValues.edit', compact('attributeValue'));
     }
 
@@ -86,7 +82,6 @@ class AttributeValueController extends Controller
     public function update(AttributeValuesStoreRequest $request, AttributeValue $attributeValue)
     {
         $attributeValue->fill($request->all());
-//        $attributeValue->additionalToJson();
 
         $attributeValue->preview_img = is_object($request['preview_img']) ?
             $this->updateFile($request['preview_img'], $attributeValue->preview_img, 'imgs') :

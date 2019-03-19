@@ -22,26 +22,11 @@ class AttributeValue extends Model
 
     public function setAdditionalAttribute($value)
     {
-        return json_encode($value);
+        $this->attributes['additional'] = json_encode($value);
     }
 
     public function attribute()
     {
         $this->belongsTo('Attributes');
-    }
-
-    public function additionalFromJson()
-    {
-        if(!empty($this->additional)){
-            $this->additional = json_decode($this->additional, true);
-        }else {
-            $this->additional = [];
-        }
-    }
-    public function additionalToJson()
-    {
-        if(!empty($this->additional)){
-            $this->additional = json_encode($this->additional);
-        }
     }
 }
