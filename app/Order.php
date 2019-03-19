@@ -30,8 +30,8 @@ class Order extends Model
 
         $amount = !empty($model_product->price) ? $model_product->price : 0;
 
-        foreach ($product['attributes'] as $attr_value_id){
-            $model_value = AttributeValue::findOrFail($attr_value_id);
+        foreach ($product['attributes'] as $attrName => $attrValue){
+            $model_value = AttributeValue::findOrFail($attrValue['id']);
             $model_attr = Attribute::findOrFail($model_value->attribute_id);
 
             $amount += !empty($model_attr->price) ? $model_attr->price : 0;
@@ -61,11 +61,11 @@ class Order extends Model
             $order_product['title'] = $model_product->title;
             $order_product['amount'] = $this->calcAmount($order_product);
 
-            foreach ($order_product['attributes'] as $key=>$attr_value_id){
-                $model_value = AttributeValue::findOrFail($attr_value_id);
+            foreach ($order_product['attributes'] as $attrName => $attrValue){
+                $model_value = AttributeValue::findOrFail($attrValue['id']);
                 $model_attr = Attribute::findOrFail($model_value->attribute_id);
 
-                unset($order_product['attributes'][$key]);
+                unset($order_product['attributes'][$attrName]);
 
                 $order_product['attributes'][] = [
                     'title' => $model_attr->title,
