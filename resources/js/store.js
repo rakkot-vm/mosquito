@@ -11,10 +11,6 @@ export default new Vuex.Store({
       getJsonHome: false,
 
       viewImg: null,
-      popupDimension1: false,
-      popupDimension2: false,
-      popupDimension3: false,
-      popupDimension4: false,
       popupCart: false,
       popupStripe: false,
       showTablets: false,
@@ -24,8 +20,6 @@ export default new Vuex.Store({
       resultId: "",
       popupStripeContent: true,
       storageCookie: false,
-
-      cart: [],
 
       page: {
           faq:{
@@ -52,6 +46,8 @@ export default new Vuex.Store({
         "client_type": "client",
         "private_policy": 0
       },
+
+      cart: [],
       
       selectedProduct:{
         "id":"1",
@@ -68,6 +64,28 @@ export default new Vuex.Store({
             "holes" : "true"
         },
       },
+
+      /* selectedProduct:{
+        "id":"1",
+        "count":"1",
+        "attributes" : {
+          "border" : {
+            "id": '1',
+            "title": 'Title'
+          },
+          "net" : {
+            "id": '7',
+            "title": 'Title'
+          },
+          "spec": '9'
+        },
+        "adds" : {
+            "weight" : "20",
+            "height" : "20",
+            "deep" : "20",
+            "holes" : "true"
+        },
+      }, */
       
       home: {
           "sec1_title": {
@@ -297,11 +315,11 @@ export default new Vuex.Store({
                         "title": "Special parameters",
                         "attributeValues": [
                             {
-                              "id": null,
-                              "title": null,
-                              "preview_img": null,
-                              "border_img": null,
-                              "price": null,
+                              "id": '1',
+                              "title": '',
+                              "preview_img": '',
+                              "border_img": '',
+                              "price": '',
                             }
                         ]
                     }
@@ -362,10 +380,7 @@ export default new Vuex.Store({
       },
       UPDATE_PRODUCTS_AMOUNT(state, res){
         state.payment.amount = res.amount;
-      },
-      /* GET_CLIENT_KEY(state, res){
-        state.stripeId = res.client_key;
-      } */
+      }
   },
   actions: {
       getDataCommon: function(context){
@@ -422,9 +437,9 @@ export default new Vuex.Store({
           .then(response => {
             context.commit('updateProductPrice', response.data);
           })
-          /* .catch(e => {
+          .catch(e => {
               this.errors.push(e)
-          }) */
+          })
       },
       calcProducts: function(context){
           let calcProducts = JSON.stringify(context.state.cart);

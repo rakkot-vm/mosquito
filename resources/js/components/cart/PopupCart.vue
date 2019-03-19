@@ -18,7 +18,7 @@
                     <div class="btn btn-grey" @click="closePopupCart">
                         <span>Weiter Einkaufen</span>
                     </div>
-                    <router-link to="/payment">
+                    <router-link to="/payment" class="router-link--mobile">
                     <div class="btn btn-darkblue btn-img" @click="closePopupCart()">
                         <img src="../../../static/img/icons/shopping-cart-white.svg" alt=""><span>Zum warekorb</span>
                     </div>
@@ -125,6 +125,12 @@ export default{
         .buttons .btn{
             width: 49%;
         }
+        .router-link--mobile{
+            width: 49%;
+            .btn{
+                width: 49%;
+            }
+        }
     }
     @media(max-width: 480px){
         .popup{
@@ -133,6 +139,9 @@ export default{
             padding: 50px 20px 40px;
         }
         .buttons .btn{
+            width: 100%;
+        }
+        .router-link--mobile{
             width: 100%;
         }
     }

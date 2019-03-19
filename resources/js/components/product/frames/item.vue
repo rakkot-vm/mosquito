@@ -78,4 +78,18 @@ export default{
             height: 120px;
         }
     }
+    @media(max-width:480px){
+        .profile{
+            width: 33.3%;
+            .image-border{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    @media(max-width:380px){
+        .profile{
+            width: 50%;
+        }
+    }
 </style>

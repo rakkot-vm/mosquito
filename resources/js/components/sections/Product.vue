@@ -51,6 +51,9 @@ export default{
 <style scoped lang="scss">
     #product{
         margin-bottom: 58px;
+        @media(max-width: 600px){
+            margin-bottom: 20px;
+        }
     }
     .product__grid{
         display: flex;

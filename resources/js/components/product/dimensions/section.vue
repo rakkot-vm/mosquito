@@ -1,14 +1,17 @@
 <template>
     <div class="dimensions-section">
-        <h3 class="title">Abmessungen</h3>
+        <h3 class="title">{{this.$store.state.home.sec2_title.value}}</h3>
         <div style="margin-bottom: 15px;">
-            <div>
-                <div v-html="$store.state.home.sec2_text.value" style="display: inline">
+            <div v-html="$store.state.home.sec2_description.value"></div>
+            <div class="text-with-popup">
+                <div v-html="$store.state.home.sec2_textAttention1.value" style="display: inline">
 
                 </div>
                 
                  <div
-                    class="additional-information additional-information--static">
+                    class="additional-information additional-information--static"
+                    @click="popups.popupDimension5 = true"
+                    v-if="this.$store.state.home.sec2_infoAttention1.value === 'on'">
                     <span>i</span>
                 </div>
             </div>
@@ -26,7 +29,7 @@
             </div>
             <div 
                 class="additional-information"
-                @click="$store.state.popupDimension1 = true"
+                @click="popups.popupDimension1 = true"
                 v-if="this.$store.state.home.sec2_infoWidth.value === 'on'">
                  <span>i</span>
             </div>
@@ -40,7 +43,7 @@
             </div>
             <div 
                 class="additional-information"
-                @click="$store.state.popupDimension2 = true"
+                @click="popups.popupDimension2 = true"
                 v-if="this.$store.state.home.sec2_infoHeight.value === 'on'">
                  <span>i</span>
             </div>
@@ -54,7 +57,7 @@
             </div>
             <div 
                 class="additional-information"
-                @click="$store.state.popupDimension3 = true"
+                @click="popups.popupDimension3 = true"
                 v-if="this.$store.state.home.sec2_infoDeep.value === 'on'">
                  <span>i</span>
             </div>
@@ -70,7 +73,7 @@
             </div>
             <div 
                 class="additional-information"
-                @click="$store.state.popupDimension4 = true"
+                @click="popups.popupDimension4 = true"
                 v-if="this.$store.state.home.sec2_infoHols.value === 'on'">
                  <span>i</span>
             </div>
@@ -78,57 +81,77 @@
         
         <div class="count-product">
             <span><strong>Anzahl von</strong></span>
-            <div class="field">
-                <input type="text" v-model="$store.state.selectedProduct.count">
+            <div class="field" style="padding: 0">
+                <b-form-select v-model="$store.state.selectedProduct.count">
+                    <option 
+                        v-for="(count, index) in 10" :key="count.index"
+                        :value="index + 1">{{index + 1}}</option>                
+                </b-form-select>
             </div>
         </div>
-        <div>
-            <p class="text-blue" style="display:inline">
-                Insektenschutz Alu Rahmen mit Maße ab 1500 mm (Breite oder Höhe) wird mit einer Querstange ausgestattet
-            </p>
+
+        <div class="text-with-popup">
+            <div class="text-blue" style="display:inline" v-html="$store.state.home.sec2_textAttention2.value">
+            </div>
             <div
-                class="additional-information additional-information--static">
+                class="additional-information additional-information--static"
+                @click="popups.popupDimension6 = true"
+                v-if="this.$store.state.home.sec2_infoAttention2.value === 'on'">
                 <span>i</span>
             </div>
         </div>
-        
-        <strong>
-            Preisspanne bei Rahmengröße
-        </strong>
-        <!-- {{this.$store.state.products.attributes[2].attributeValues}} -->
-        <ul style="margin: 15px 0;">
-            <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="item.id">
-                <label :for="'spec_param-' + index" @click="$store.state.selectedProduct.attributes.spec = item.id">
+       
+        <div class="interval-size-options">
+            <strong>Preisspanne bei Rahmengröße</strong>
+
+            <ul class="dimansion-radio-btns">
+                <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="item.id">
+                    <label 
+                        :for="'spec_param-' + index" @click="selectRadioBtn(item, index)"
+                        
+                        >
+                        <span class="radio-circle" :class="{'checked': index == selectedRadioBtn}"></span>
+                        
+                        <span style="padding-left:10px;">{{item.title}} <strong>({{item.price}} €)</strong></span>
+                    </label>
                     <input 
                         :id="'spec_param-' + index" 
                         type="radio"
-                        :checked="index == 0"
+                        :checked="index == selectedRadioBtn"
                         name="spec_param">
-                        <span style="padding-left:10px;">{{item.title}} <strong>({{item.price}} €)</strong></span>
-                </label>
-            </li>
-        </ul>
-        
+                </li>
+            </ul>
+        </div>
 
-        
-        <popupDimension v-if="$store.state.popupDimension1">
-            <div class="close" @click="$store.state.popupDimension1 = false"></div>
+        <!-- Popups -->
+        <popupDimension v-if="popups.popupDimension1">
+            <div class="close" @click="popups.popupDimension1 = false"></div>
             <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupWidth.value"></div>
         </popupDimension>
 
-        <popupDimension v-if="$store.state.popupDimension2">
-            <div class="close" @click="$store.state.popupDimension2 = false"></div>
+        <popupDimension v-if="popups.popupDimension2">
+            <div class="close" @click="popups.popupDimension2 = false"></div>
             <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupHeight.value"></div>
         </popupDimension>
 
-        <popupDimension v-if="$store.state.popupDimension3">
-            <div class="close" @click="$store.state.popupDimension3 = false"></div>
+        <popupDimension v-if="popups.popupDimension3">
+            <div class="close" @click="popups.popupDimension3 = false"></div>
             <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupDeep.value"></div>
         </popupDimension>
 
-        <popupDimension v-if="$store.state.popupDimension4">
-            <div class="close" @click="$store.state.popupDimension4 = false"></div>
+        <popupDimension v-if="popups.popupDimension4">
+            <div class="close" @click="popups.popupDimension4 = false"></div>
             <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupHols.value"></div>
+        </popupDimension>
+
+        <popupDimension v-if="popups.popupDimension5">
+            <div class="close" @click="popups.popupDimension5 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupAttention1.value"></div>
+        </popupDimension>
+
+        <popupDimension v-if="popups.popupDimension6">
+            <div class="close" @click="popups.popupDimension6 = false"></div>
+            <div class="popupDimension__content" v-html="this.$store.state.home.sec2_popupAttention2.value"></div>
         </popupDimension>
     </div>
 </template>
@@ -137,20 +160,71 @@
 <script>
 export default{
     name: 'dimensions-section',
+    data() {
+      return {
+        selectedRadioBtn: '0',
+        popups: {
+            popupDimension1: false,
+            popupDimension2: false,
+            popupDimension3: false,
+            popupDimension4: false,
+            popupDimension5: false,
+            popupDimension6: false,
+        }
+      }
+    },
     components: {
         popupDimension: () => import('./popup.vue')
+    },
+    methods: {
+        selectRadioBtn (item, index) {
+            this.$store.state.selectedProduct.attributes.spec = item.id
+            this.selectedRadioBtn = index
+        }
     },
     mounted(){
         this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes.attr_3.attributeValues[0].id
     },
-    beforeUpdate(){
+    /* beforeUpdate(){
         document.getElementById('spec_param-0').setAttribute('checked', 'checked');
-    }
+    } */
 }
 </script>
 
 
 <style lang="scss">
+    .interval-size-options{
+        margin: 20px 0;
+    }
+    .dimansion-radio-btns{
+        margin: 15px 0;
+        position: relative;
+        label{
+            position: relative;
+            z-index: 1;
+        }
+        input{
+            position: absolute;
+            left: 0;
+            opacity: 0;
+        }
+        .radio-circle{
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border: 1px solid grey;
+            border-radius: 50%;
+            &.checked{
+                border: 1px solid #395780;
+                background: radial-gradient(#fff 0%, #fff 30%, #395780 40%, #395780 100%);
+            }
+        }
+        @media(max-width:400px){
+            strong{
+                display: inline-block;
+            }
+        }
+    }
     .dimension{
         background-color: #395781;
         display: flex;
@@ -234,6 +308,11 @@ export default{
         .field{
             border: 1px solid #242424;
             margin-left: 22px;
+            padding: 6px 12px;
+            input{
+                width: 100%;
+                margin-right: 0;
+            }
         }
     }
     .additional-information{
@@ -255,6 +334,7 @@ export default{
             position: static;
             display: inline-flex;
             border: 1px solid #000;
+            margin-left: 5px;
         }
     }
     .close{

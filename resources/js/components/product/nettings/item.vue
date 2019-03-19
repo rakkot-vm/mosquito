@@ -66,4 +66,18 @@ export default{
             height: 120px;
         }
     }
+    @media(max-width:480px){
+        .netting{
+            width: 33.3%;
+            .image-border{
+                width: 100%;
+                height: auto;
+            }
+        }
+    }
+    @media(max-width:380px){
+        .netting{
+            width: 50%;
+        }
+    }
 </style>

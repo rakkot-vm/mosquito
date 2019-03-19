@@ -25,7 +25,7 @@
                     </ul>
                 </div>
                 <div class="user-information row">
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-xs-12">
                         <div class="personal-data form">
                             <p class="title-form">Ihre persönlichen Daten:</p>
                             <ul>
@@ -70,7 +70,7 @@
                         </div>
                     </div>
 
-                    <div class="col-sm-6">
+                    <div class="col-sm-6 col-xs-12">
                         <div class="address">
                             <p class="title-form">Ihre Adresse:</p>
                             <ul>
@@ -324,6 +324,13 @@ export default{
         }
         .title{
             font-size: 20px;
+        }
+        .order-details li{
+            margin-right: 0;
+            width: 50%;
+        }
+        .policy{
+            width: auto;
         }
     }
 </style>
