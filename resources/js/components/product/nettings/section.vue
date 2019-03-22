@@ -1,10 +1,10 @@
 <template>
-    <div class="nettings-section" v-if="this.$store.state.getJsonHome">
+    <div class="nettings-section">
         <h3 class="title">Moskitonetz-Tuch</h3>
         <div class="nettings-grid">
             <netting
-                v-for="netting in $store.state.products.attributes.attr_2.attributeValues"
-                :key="netting.id"
+                v-for="(netting, index) in $store.state.products.attributes.attr_2.attributeValues"
+                :key="index"
                 :netting="netting"
             ></netting>
         </div>

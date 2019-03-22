@@ -9,9 +9,10 @@
                         :key="index"
                         :product="item"
                         :index="index"
+                        @hidePopupCart="closePopupCart()"
                     ></product-item>
                 </ul>
-                <p style="text-align: right; font-family: 'Proxima-Nova-Bold';">
+                <p class="total-price">
                     Gesamtpreis: {{this.$store.state.payment.amount}} €
                 </p>
                 <div class="buttons">
@@ -116,6 +117,11 @@ export default{
             }
         }
     }
+    .total-price{
+        text-align: right;
+        font-family: 'Proxima-Nova-Bold';
+        font-size: 18px;
+    }
     @media(max-width: 767px){
         .popup{
             width: 86%;
@@ -128,7 +134,7 @@ export default{
         .router-link--mobile{
             width: 49%;
             .btn{
-                width: 49%;
+                width: 100%;
             }
         }
     }
@@ -137,6 +143,12 @@ export default{
             width: 96%;
             margin-top: 5vh;
             padding: 50px 20px 40px;
+        }
+        .title-popup{
+            font-size: 16px;
+        }
+        .total-price{
+            font-size: 16px;
         }
         .buttons .btn{
             width: 100%;

@@ -1,8 +1,8 @@
 <template>
     <div 
        class="profile" 
-       :class="{active: profile.id == this.$store.state.selectedProduct.attributes.border}" 
-       @click='getData(profile.border_img, profile.id)'>
+       :class="{active: profile.id == this.$store.state.selectedProduct.attributes.border.id}" 
+       @click="getData(profile.border_img, profile.id, profile.title)">
         <div class="image-border">
             <img :src="this.profile.preview_img" alt="">
         </div>
@@ -18,13 +18,14 @@ export default{
     name: "frame",
     props: ['profile'],
     methods: {
-        getData: function (image, id){
+        getData: function (image, id, title){
             this.$store.state.viewImg = image;
-            this.$store.state.selectedProduct.attributes.border = id;
+            this.$store.state.selectedProduct.attributes.border.id = id;
+            this.$store.state.selectedProduct.attributes.border.title = title;
         }
     },
     mounted() {
-        this.getData(this.$store.state.products.attributes.attr_1.attributeValues[0].border_img, this.$store.state.products.attributes.attr_1.attributeValues[0].id)
+        this.getData(this.$store.state.products.attributes.attr_1.attributeValues[0].border_img, this.$store.state.products.attributes.attr_1.attributeValues[0].id, this.$store.state.products.attributes.attr_1.attributeValues[0].title)
     },
 }
 </script>

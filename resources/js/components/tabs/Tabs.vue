@@ -19,3 +19,12 @@ export default{
     },
 }
 </script>
+
+<style lang="scss">
+.content{
+    ul{
+        list-style-type: disc;
+        padding-left: 20px;
+    }
+}
+</style>

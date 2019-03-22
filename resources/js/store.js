@@ -53,9 +53,18 @@ export default new Vuex.Store({
         "id":"1",
         "count":"1",
         "attributes" : {
-          "border" : '1',
-          "net" : '7',
-          "spec": '9'
+          "border" : {
+            "id": '1',
+            "title": "gfhfg"
+          },
+          "net" : {
+            "id": '7',
+            "title": "hfgh"
+          },
+          "spec": {
+            "id": '9',
+            "title": "hfgh"
+          }
         },
         "adds" : {
             "weight" : "20",
@@ -64,28 +73,6 @@ export default new Vuex.Store({
             "holes" : "true"
         },
       },
-
-      /* selectedProduct:{
-        "id":"1",
-        "count":"1",
-        "attributes" : {
-          "border" : {
-            "id": '1',
-            "title": 'Title'
-          },
-          "net" : {
-            "id": '7',
-            "title": 'Title'
-          },
-          "spec": '9'
-        },
-        "adds" : {
-            "weight" : "20",
-            "height" : "20",
-            "deep" : "20",
-            "holes" : "true"
-        },
-      }, */
       
       home: {
           "sec1_title": {
@@ -264,10 +251,10 @@ export default new Vuex.Store({
       },
       products: [
           {
-                "id": null,
+                "id": 'null',
                 "title": "",
                 "img": "#",
-                "price": null,
+                "price": 'null',
                 "doc": "#",
                 "docName": "TEst doc",
                 "attributes": {
@@ -279,13 +266,13 @@ export default new Vuex.Store({
                                 "id": '1',
                                 "additional":{
                                   "ral":{
-                                    "title": null,
-                                    "value": null
+                                    "title": 'null',
+                                    "value": 'null'
                                   }
                                 },                         
-                                "title": null,
-                                "preview_img": null,
-                                "border_img": null,
+                                "title": 'null',
+                                "preview_img": 'null',
+                                "border_img": 'null',
                                 "price": 0,
                             }
                         ]
@@ -297,15 +284,8 @@ export default new Vuex.Store({
                             {
                               "id": '1',
                               "title": "null",
-                              "preview_img": null,
-                              "border_img": null,
-                              "price": 0,
-                            },
-                            {
-                              "id": null,
-                              "title": "null",
-                              "preview_img": null,
-                              "border_img": null,
+                              "preview_img": 'null',
+                              "border_img": 'null',
                               "price": 0,
                             }
                         ]

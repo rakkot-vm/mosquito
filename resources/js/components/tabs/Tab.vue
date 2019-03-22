@@ -78,17 +78,16 @@ export default{
     }
     .body{
         padding: 9px 36px 38px;
-        height: 512px;
+        height: auto;
         display: flex;
     }
     .image{
         width: 50%;
-        border: 1px solid #242424;
-        padding: 10px;
         img{
             width: 100%;
-            height: 100%;
             object-fit: cover;
+            border: 1px solid #b4b4b4;
+            padding: 10px;
         }
     }
     .content{

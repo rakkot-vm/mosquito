@@ -1,5 +1,5 @@
 <template>
-  <div id="content-page" class="home">
+  <div id="content-page" class="home" v-if="$store.state.getJsonHome">
     <banner-section></banner-section>
     <gallery-section></gallery-section>
     <product-section></product-section>

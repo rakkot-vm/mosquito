@@ -41,7 +41,11 @@ export default new Router({
     {
       path: '/404',
       name: '404',
-      component: () => import( './pages/404.vue')
+      component: () => import( './pages/NotFound.vue')
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
   ]
 })

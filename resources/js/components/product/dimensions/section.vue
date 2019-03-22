@@ -105,11 +105,10 @@
             <strong>Preisspanne bei Rahmengröße</strong>
 
             <ul class="dimansion-radio-btns">
-                <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="item.id">
+                <li v-for="(item, index) in $store.state.products.attributes.attr_3.attributeValues" :key="index">
                     <label 
-                        :for="'spec_param-' + index" @click="selectRadioBtn(item, index)"
-                        
-                        >
+                        :for="'spec_param-' + index" 
+                        @click="selectRadioBtn(item.id, item.title, index)">
                         <span class="radio-circle" :class="{'checked': index == selectedRadioBtn}"></span>
                         
                         <span style="padding-left:10px;">{{item.title}} <strong>({{item.price}} €)</strong></span>
@@ -177,17 +176,15 @@ export default{
         popupDimension: () => import('./popup.vue')
     },
     methods: {
-        selectRadioBtn (item, index) {
-            this.$store.state.selectedProduct.attributes.spec = item.id
+        selectRadioBtn (id, title, index) {
+            this.$store.state.selectedProduct.attributes.spec.id = id;
+            this.$store.state.selectedProduct.attributes.spec.title = title;
             this.selectedRadioBtn = index
         }
     },
     mounted(){
-        this.$store.state.selectedProduct.attributes.spec = this.$store.state.products.attributes.attr_3.attributeValues[0].id
-    },
-    /* beforeUpdate(){
-        document.getElementById('spec_param-0').setAttribute('checked', 'checked');
-    } */
+        this.selectRadioBtn(this.$store.state.products.attributes.attr_3.attributeValues[0].id, this.$store.state.products.attributes.attr_3.attributeValues[0].title, 0)
+    }
 }
 </script>
 

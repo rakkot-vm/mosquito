@@ -1,8 +1,8 @@
 <template>
     <div 
        class="netting"
-       :class="{active: netting.id == this.$store.state.selectedProduct.attributes.net}" 
-       @click='getData(netting.id)'>
+       :class="{active: netting.id == this.$store.state.selectedProduct.attributes.net.id}" 
+       @click='getData(netting.id, netting.title)'>
         <div class="image-border">
             <img :src="this.netting.preview_img" alt="">
         </div>
@@ -16,12 +16,13 @@ export default{
     name: 'netting',
     props: ['netting'],
     methods: {
-        getData: function (idNetting){
-            this.$store.state.selectedProduct.attributes.net = idNetting;
+        getData: function (id, title){
+            this.$store.state.selectedProduct.attributes.net.id = id;
+            this.$store.state.selectedProduct.attributes.net.title = title;
         }
     },
     mounted(){
-        this.getData(this.$store.state.products.attributes.attr_2.attributeValues[0].id)
+        this.getData(this.$store.state.products.attributes.attr_2.attributeValues[0].id, this.$store.state.products.attributes.attr_2.attributeValues[0].title)
     }
 }
 </script>

@@ -73,6 +73,7 @@ export default {
 }
 .title{
         text-align: center;
+        font-size: 24px;
 }
 .close{
         position: absolute;

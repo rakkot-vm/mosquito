@@ -1,50 +1,26 @@
 <template>
   <div id="app">
-    <header-comp></header-comp>
+    <app-header></app-header>
     <router-view id="page-content"/>
-    <footer-comp></footer-comp>
-    <div 
-      v-if="$store.state.storageCookie"
-      class="cookie">
-      <div class="container">
-        <p>
-          <span class="attention-cookie">Wenn Sie Ihren Besuch auf dieser Website fortsetzen, akzeptieren Sie die Verwendung von Cookies zur Erstellung von Besucherstatistiken. Erfahren Sie mehr.</span> 
-          <span class="agree-cookie" @click="closeCookie()">Stimme zu</span>
-        </p>
-      </div>
-    </div>
+    <app-footer></app-footer>
+    <app-cookie></app-cookie>
   </div>
 </template>
 
 <script>
+import appHeader from './components/main-parts/Header.vue'
+import appFooter from './components/main-parts/Footer.vue'
+import appCookie from './components/cookie/index.vue'
+
 export default{
     components: {
-      HeaderComp: () => import('./components/main-parts/Header.vue'),
-      FooterComp: () => import('./components/main-parts/Footer.vue')
-    },
-    methods:{
-      getCookie(name) {
-        // eslint-disable-next-line
-        var matches = document.cookie.match(new RegExp("(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"));
-
-        if(matches){
-          this.$store.state.storageCookie = false
-        } else {
-          this.$store.state.storageCookie = true
-        }
-      },
-      closeCookie(){
-        this.$store.state.storageCookie = false
-        var date = new Date;
-            date.setDate(date.getDate() + 30);
-      
-        document.cookie = "storageCookie=empty;path=/; expires=" + date.toUTCString()
-      }
+      appHeader,
+      appFooter,
+      appCookie
     },
     mounted(){
-        this.$store.dispatch('getDataCommon');
-        this.$store.dispatch('getDataHome');
-        this.getCookie('storageCookie');
+        this.$store.dispatch('getDataCommon')
+        this.$store.dispatch('getDataHome')
     }
 }
 </script>
@@ -54,46 +30,4 @@ export default{
     @import "../static/scss/buttons";
     @import "../static/scss/settings";
     @import "../static/scss/media";
-
-    .cookie{
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: grey;
-      padding: 30px 0;
-      p{
-        margin: 0;
-        color: #fff;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-    }
-    .attention-cookie{
-      display: inline-block;
-      width: calc(100% - 100px);
-    }
-    .agree-cookie{
-      display: inline-block;
-      padding: 3px 10px;
-      border: 1px solid #fff;
-      cursor: pointer;
-    }
-    @media(max-width:768px){
-      .attention-cookie{
-        width: 100%;
-        font-size: 14px;
-      }
-      .cookie{
-        padding: 14px 0;
-        p{
-          flex-direction: column;
-          align-items: flex-start;
-        }
-      }
-      .agree-cookie{
-        margin-top: 8px;
-      }
-    }
 </style>
