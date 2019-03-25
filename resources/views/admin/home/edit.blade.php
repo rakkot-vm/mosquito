@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="form-group col-sm-8">
                     {!! Form::label('sec1_text', 'Text:') !!}
-                    <textarea class="form-control" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec1_text']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec1_text" cols="50" rows="10" id="sec1_text">{{ $settings['sec1_text']->value }}</textarea>
                 </div>
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec1_img', 'Img(mosquito):') !!}
@@ -81,7 +81,7 @@
             <div class="row">
                 <div class="form-group col-sm-12">
                     {!! Form::label('sec2_description', 'Description:') !!}
-                    <textarea class="form-control" name="sec2_description" cols="50" rows="10" id="sec2_description">{{ $settings['sec2_description']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_description" cols="50" rows="10" id="sec2_description">{{ $settings['sec2_description']->value }}</textarea>
                 </div>
             </div>
 
@@ -94,7 +94,7 @@
 
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textAttention1', 'Text:') !!}
-                    <textarea class="form-control" name="sec2_textAttention1" cols="50" rows="10" id="sec2_textAttention1">{{ $settings['sec2_textAttention1']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_textAttention1" cols="50" rows="10" id="sec2_textAttention1">{{ $settings['sec2_textAttention1']->value }}</textarea>
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoAttention1', 'Popup button:') !!}
@@ -104,7 +104,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupAttention1', 'Popup content:') !!}
-                    <textarea class="form-control" name="sec2_popupAttention1" cols="50" rows="10" id="sec2_popupAttention1">{{ $settings['sec2_popupAttention1']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_popupAttention1" cols="50" rows="10" id="sec2_popupAttention1">{{ $settings['sec2_popupAttention1']->value }}</textarea>
                 </div>
             </div>
 
@@ -126,7 +126,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupWidth', 'Popup content:') !!}
-                    <textarea class="form-control" name="sec2_popupWidth" cols="50" rows="10" id="sec2_popupWidth">{{ $settings['sec2_popupWidth']->value }}</textarea>
+                    <textarea class="form-control text-editor text-editor" name="sec2_popupWidth" cols="50" rows="10" id="sec2_popupWidth">{{ $settings['sec2_popupWidth']->value }}</textarea>
                 </div>
             </div>
 
@@ -148,7 +148,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHeight', 'Popup content:') !!}
-                    <textarea class="form-control" name="sec2_popupHeight" cols="50" rows="10" id="sec2_popupHeight">{{ $settings['sec2_popupHeight']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_popupHeight" cols="50" rows="10" id="sec2_popupHeight">{{ $settings['sec2_popupHeight']->value }}</textarea>
                 </div>
             </div>
 
@@ -170,7 +170,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupDeep', 'Popup content:') !!}
-                    <textarea class="form-control" name="sec2_popupDeep" cols="50" rows="10" id="sec2_popupDeep">{{ $settings['sec2_popupDeep']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_popupDeep" cols="50" rows="10" id="sec2_popupDeep">{{ $settings['sec2_popupDeep']->value }}</textarea>
                 </div>
             </div>
 
@@ -191,7 +191,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupHols', 'Popup content:') !!}
-                    <textarea class="form-control" name="sec2_popupHols" cols="50" rows="10" id="sec2_popupHols">{{ $settings['sec2_popupHols']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_popupHols" cols="50" rows="10" id="sec2_popupHols">{{ $settings['sec2_popupHols']->value }}</textarea>
                 </div>
             </div>
 
@@ -204,7 +204,7 @@
 
                 <div class="form-group col-sm-4">
                     {!! Form::label('sec2_textAttention2', 'Text:') !!}
-                    <textarea class="form-control" name="sec2_textAttention2" cols="50" rows="10" id="sec2_textAttention2">{{ $settings['sec2_textAttention2']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_textAttention2" cols="50" rows="10" id="sec2_textAttention2">{{ $settings['sec2_textAttention2']->value }}</textarea>
                 </div>
                 <div class="form-group col-sm-1">
                     {!! Form::label('sec2_infoAttention2', 'Popup button:') !!}
@@ -213,7 +213,7 @@
                 </div>
                 <div class="form-group col-sm-7">
                     {!! Form::label('sec2_popupAttention2', 'Popup text:') !!}
-                    <textarea class="form-control" name="sec2_popupAttention2" cols="50" rows="10" id="sec2_popupAttention2">{{ $settings['sec2_popupAttention2']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec2_popupAttention2" cols="50" rows="10" id="sec2_popupAttention2">{{ $settings['sec2_popupAttention2']->value }}</textarea>
                 </div>
             </div>
         </section>
@@ -288,7 +288,7 @@
                 </div>
                 <div class="form-group col-sm-12">
                     {!! Form::label('sec4_text', 'Text:') !!}
-                    <textarea class="form-control" name="sec4_text" cols="50" rows="10" id="sec4_text">{{ $settings['sec4_text']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="sec4_text" cols="50" rows="10" id="sec4_text">{{ $settings['sec4_text']->value }}</textarea>
                 </div>
             </div>
         </section>
@@ -467,5 +467,7 @@
 
     <script>
         var accordion_setting_id = {{ $settings['sec3_acc']->id }};
+
+
     </script>
 @endsection

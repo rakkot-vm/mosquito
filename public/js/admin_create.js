@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    $('#value-text').summernote();
-
     $('.delete-confirm').click(function () {
         return confirm('Are you sure?');
     });

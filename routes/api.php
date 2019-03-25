@@ -34,24 +34,27 @@ Route::middleware('api')->group(function () {
 
     Route::get('pages/{id}', 'PageController@get');
 
-    Route::get('texts/by-id/{text_id}', 'TextController@getByTextId');
-    Route::get('texts/by-type/{type}', 'TextController@getByType');
-    Route::get('texts/all', 'TextController@getAll');
+    Route::prefix('texts')->group(function () {
+        Route::get('by-id/{text_id}', 'TextController@getByTextId');
+        Route::get('by-type/{type}', 'TextController@getByType');
+        Route::get('all', 'TextController@getAll');
+    });
 
     Route::get('products/{id}', 'ProductController@get');
     Route::resource('attributes', 'AttributeController')->only('index','show');
 
     Route::get('home', 'HomeController@get')->name('home.get');
-
     Route::get('common', 'CommonController@get')->name('common.get');
     Route::get('general', 'GeneralSettingsController@get')->name('general.get');
 
-    Route::get('orders/calc-product', 'OrderController@calcProduct')->name('order.calcProduct');
-    Route::get('orders/calc-all-products', 'OrderController@calcAllProducts')->name('order.calcAllProducts');
-    Route::middleware(['check_order_amount', 'check_private_policy'])->group(function () {
-        Route::post('orders', 'OrderController@store')->name('order.store');
+    Route::prefix('orders')->group(function () {
+        Route::get('calc-product', 'OrderController@calcProduct')->name('order.calcProduct');
+        Route::get('calc-all-products', 'OrderController@calcAllProducts')->name('order.calcAllProducts');
+        Route::middleware(['check_order_amount', 'check_private_policy'])->group(function () {
+            Route::post('', 'OrderController@store')->name('order.store');
+        });
+        Route::post('confirm', 'OrderController@confirm')->name('stripe.confirm');
     });
-    Route::post('orders/confirm', 'OrderController@confirm')->name('stripe.confirm');
 
     Route::any('/{any}', function(){
         return response()->json(['error' => 'Not Found.'], 404);

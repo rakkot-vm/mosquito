@@ -14,7 +14,7 @@
                 </div>
                 <div class="form-group note-editor-page">
                     {!! Form::label('text', 'Text:') !!}
-                    {!! Form::text('text', null, ['class' => 'form-control']) !!}
+                    <textarea class="form-control text-editor" name="text" cols="50" rows="10" id="text">{!!  $text->text !!}</textarea>
                 </div>
             </div>
 

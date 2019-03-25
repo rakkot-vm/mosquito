@@ -106,9 +106,9 @@
 
             <div class="row">
                 {!! Form::model($settings, ['route' => ['common.update'], 'method' => 'patch', 'enctype' => 'multipart/form-data']) !!}
-                <div class="col-sm-6 col-xs-12">
+                <div class="col-sm-12 col-xs-12">
                     {!! Form::label('data[privacy_policy][value]', 'Privacy policy:') !!}
-                    <textarea class="form-control" name="data[privacy_policy][value]" cols="50" rows="10">{{ $settings['privacy_policy']->value }}</textarea>
+                    <textarea class="form-control text-editor" name="data[privacy_policy][value]" cols="50" rows="10">{{ $settings['privacy_policy']->value }}</textarea>
                     <input name="data[privacy_policy][title]" type="hidden" value="{{ $settings['privacy_policy']->title }}">
                 </div>
 

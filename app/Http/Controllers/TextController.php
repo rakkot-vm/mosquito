@@ -78,6 +78,8 @@ class TextController extends Controller
      */
     public function update(Request $request, Text $text)
     {
+        $text->fill($request->all());
+
         $text->update();
 
         return redirect(route('texts.index', ['id' => $text->id]))->with('success', 'Text has been update');

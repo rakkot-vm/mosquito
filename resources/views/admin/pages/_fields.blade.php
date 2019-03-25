@@ -10,7 +10,7 @@
                 </div>
                 <div class="form-group note-editor-page">
                     {!! Form::label('content', 'Content:') !!}
-                    {!! Form::textarea('content', null, ['id' => 'value-text', 'rows' => 2, 'cols' => 40]) !!}
+                    <textarea class="form-control text-editor" name="content" cols="50" rows="10" id="value-text">{!!  $page->content !!}</textarea>
                 </div>
             </div>
 
